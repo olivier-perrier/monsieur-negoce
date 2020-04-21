@@ -1,7 +1,7 @@
 @component('layouts.exmachina')
 
 <x-slot name="sidebar">
-    content of the slot sidebar
+    Sibar from view
 </x-slot>
 
 

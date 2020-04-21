@@ -3,10 +3,12 @@
 <html>
 
 <head>
-	<title>Ex Machina by TEMPLATED</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
+
+	<title>Monsieur Négoce</title>
 
 	<link rel="icon" href="/favicon2.png" type="image/png" sizes="16x16">
 
@@ -18,34 +20,31 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+	<!-- Bulma -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
 
-	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-	<!-- <noscript> -->
-	<link rel="stylesheet" href="/exmachina/css/skel-noscript.css" />
 	<link rel="stylesheet" href="/exmachina/css/style.css" />
-	<link rel="stylesheet" href="/exmachina/css/style-desktop.css" />
-	<!-- </noscript> -->
-
-	<!-- @yield('head') -->
+	<!-- <link rel="stylesheet" href="/exmachina/css/style-desktop.css" /> -->
 
 </head>
 
-<body class="homepage" style="min-width:0">
+<body>
 	<x-header></x-header>
 
+	<div class="container-fluid">
 
-	<div class="p-4 d-flex">
-		@if(isset($sidebar))
-		<aside>
-			{{ $sidebar }}
-			<x-sidebar></x-sidebar>
-		</aside>
-		@endif
-		<main>
-			{{ $slot }}
-		</main>
+		<div class="row">
+			<div class="col-md-2">
+				<aside>
+					<x-sidebar></x-sidebar>
+				</aside>
+			</div>
+			<div class="col-md-10">
+				<main>
+					{{ $slot }}
+				</main>
+			</div>
+		</div>
 	</div>
 
 	<x-footer></x-footer>

@@ -41,21 +41,21 @@ class UserController extends Controller
 
         // dd($request);
         $validatedUser = $request->validate([
-            'firstname' => ['required', 'min:3', 'max:255'],
+            'firstname' => ['required'],
             'lastname' => 'required',
-            'birthdate' => 'required',
-            'adress' => 'required',
-            'adress_postcode' => 'required',
-            'adress_city' => 'required',
+            'birthday' => '',
+            'address' => '',
+            'address_postcode' => '',
+            'address_city' => '',
             'email' => 'required',
-            'phone' => 'required',
+            'phone' => '',
         ]);
 
-        $user->update($this->validateArticle());
+        $user->update($validatedUser);
 
-        // var_dump($article->path());
-        // return redirect('/articles/' . $article->id);
+        // return redirect('/users/' . $user->id . '/edit');
         // return redirect(route('article.show', $article));
-        return redirect($user->path());
+        return redirect(route('users.edit', $user));
+        // return redirect($user->path());
     }
 }

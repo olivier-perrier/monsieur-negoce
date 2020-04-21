@@ -16,7 +16,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstname',
+        'lastname',
+        'birthday',
+        'address',
+        'address_postcode',
+        'address_city',
+        'email' ,
+        'phone',
+        'password',
     ];
 
     /**
@@ -36,6 +44,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function path()
+    {
+        return route("users.show", $this);
+    }
 
     public function articles()
     {

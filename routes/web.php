@@ -50,7 +50,7 @@ Route::get('/projects/{project}', 'ProjectController@show')->name('projects.show
 // Route::delete('/projects/{project}', 'ProjectController@destroy');
 
 // Users
-Route::get('/users/{user}/edit', 'UserController@edit');
+Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
 Route::put('/users/{user}', 'UserController@update');
 
 
