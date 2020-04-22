@@ -59,4 +59,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class);
     }
+
+    public function isNegotiator()
+    {
+        return $this->role === "negotiator";
+    }
+
+    // protected string $ROLE_CLIENT = "client";
+    // protected string $ROLE_NEGOTIATOR = "negotiator";
+    // protected string $ROLE_ADMINISTRATOR = "administrator";
 }

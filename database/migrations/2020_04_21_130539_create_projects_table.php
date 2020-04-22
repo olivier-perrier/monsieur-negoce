@@ -16,6 +16,8 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('client_id');
+            $table->foreignId('negotiator_id');
             // -> Categorie
             $table->string('company_name');
             // -> Adresse
@@ -25,7 +27,17 @@ class CreateProjectsTable extends Migration
             // -> Etat
             // $table->string('state');
             $table->timestamps();
+            
+            $table->foreign('client_id')->references('id')->on('users');
+            $table->foreign('negotiator_id')->references('id')->on('users');
+
+
+        
         });
+
+        Factory(App\Project::class)->create();
+
+
     }
 
     /**

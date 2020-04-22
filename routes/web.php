@@ -44,10 +44,13 @@ Route::post('/projects', 'ProjectController@store');
 
 Route::get('/projects/{project}', 'ProjectController@show')->name('projects.show');
 
-// Route::get('/projects/{project}/edit', 'ProjectController@edit');
-// Route::put('/projects/{project}', 'ProjectController@update');
 
-// Route::delete('/projects/{project}', 'ProjectController@destroy');
+// Négociations
+Route::get('/negotiations', 'NegotiationController@index')->name('negotiations.index');
+
+// Notifications
+Route::post('/notifications', 'NotificationController@store');
+
 
 // Users
 Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
@@ -55,9 +58,7 @@ Route::put('/users/{user}', 'UserController@update');
 
 
 Route::get('/about', function () {
-    $articles = App\Article::latest()->take(3)->get();
-    // return $articles;
-    return view('about', ['articles' => $articles]);
+    return view('about');
 });
 
 

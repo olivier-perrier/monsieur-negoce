@@ -1,11 +1,12 @@
 <aside class="menu">
     <p class="menu-label">
-        Client
+        {{ App\User::find(1)->role }}
     </p>
     <ul class="menu-list">
         <li><a href="/" class="{{Request::is('/') ? 'is-active' :'' }}">Accueil</a></li>
         <li><a href="/projects">Mes projets</a></li>
-        <li><a href="/users/1/edit">Mon profile</a></li>
+        <li><a href="/negotiations">Mes négociations</a></li>
+        <li><a href="/users/1/edit">Mon profil</a></li>
     </ul>
     <p class="menu-label">
         Aide

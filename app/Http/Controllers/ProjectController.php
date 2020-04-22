@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -14,7 +16,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('projects.index', ['projects' => Project::all()]);
+        $user_id = Auth::id() || 1;
+
+        $projects = Project::where('client_id', $user_id)->latest()->get();
+        return view('projects.index', compact('projects'));
     }
 
     /**
@@ -42,10 +47,14 @@ class ProjectController extends Controller
             // 'tags' => 'exists:tags,id',
         ]);
 
-        Project::create($validatedAttributes);
+        $project = new Project(request(['name', 'description', 'company_name']));
+        $project->client_id = Auth::id() || 1;
+        $project->save();
+
+
+        // Project::create($project);
 
         return redirect(route('projects.index'));
-
     }
 
     /**

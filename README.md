@@ -1,8 +1,17 @@
 # Monsieur négoce
 
+
+Vues : 
+    Clients
+        Mes projets
+        Mon profil
+    Négociateur
+        Mes projets (à faire)
+        Mon profil (à faire)
+
+    
 # Routes
 
-Supposons qu'il n'y a que des clients
 Routes :
     Projets
         Voir les projets : index
