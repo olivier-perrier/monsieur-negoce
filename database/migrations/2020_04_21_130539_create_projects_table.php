@@ -25,12 +25,13 @@ class CreateProjectsTable extends Migration
             // -> Devis
             // -> Type de contact
             // -> Etat
-            // $table->string('state');
+            $table->foreignId('state_id');
             $table->timestamps();
             
             $table->foreign('client_id')->references('id')->on('users');
             $table->foreign('negotiator_id')->references('id')->on('users');
 
+            $table->foreign('state_id')->references('id')->on('states');
 
         
         });

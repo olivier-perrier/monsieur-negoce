@@ -15,7 +15,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        return redirect(route('users.edit', $user));
+        // return view('users.show', compact('user'));
     }
 
     /**
@@ -43,6 +44,7 @@ class UserController extends Controller
         $validatedUser = $request->validate([
             'firstname' => ['required'],
             'lastname' => 'required',
+            'nationality' => '',
             'birthday' => '',
             'address' => '',
             'address_postcode' => '',

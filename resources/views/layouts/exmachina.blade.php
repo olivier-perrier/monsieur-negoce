@@ -23,9 +23,6 @@
 	<!-- Bulma -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
 
-	<link rel="stylesheet" href="/exmachina/css/style.css" />
-	<!-- <link rel="stylesheet" href="/exmachina/css/style-desktop.css" /> -->
-
 </head>
 
 <body>

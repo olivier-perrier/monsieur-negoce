@@ -21,6 +21,7 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'firstname' => $faker->firstName(),
         'lastname' => $faker->lastName(),
+        'nationality' => $faker->country(),
         'birthday' => $faker->date(),
         'address' => $faker->address(),
         'address_postcode' => $faker->postcode(),

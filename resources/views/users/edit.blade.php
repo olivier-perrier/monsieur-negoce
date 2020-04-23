@@ -20,14 +20,23 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group w-50">
             <label for="birthday">Date de naissance</label>
             <input type="date" class="form-control" name="birthday" value="{{$user->birthday}}">
         </div>
 
+        <!-- Nationalité -->
+        <div class="form-group w-50">
+            <label for="nationality">Nationalité</label>
+            <input type="text" class="form-control" name="nationality" value="{{$user->nationality}}">
+            @error('nationality')
+            <div class="invalid-feedback">{{$errors->first('nationality')}}</div>
+            @enderror
+        </div>
+
         <!-- Address -->
         <div class="form-group">
-            <label for="address">addresse</label>
+            <label for="address">Adresse</label>
             <input type="text" class="form-control" name="address" value="{{$user->address}}">
         </div>
 
@@ -46,7 +55,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" value="{{$user->email}}">
+                <input type="email" class="form-control" name="email" value="{{$user->email}}" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="phone">Téléphone</label>

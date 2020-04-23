@@ -53,6 +53,7 @@ Route::post('/notifications', 'NotificationController@store');
 
 
 // Users
+Route::get('/users/{user}', 'UserController@show')->name('users.show');
 Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
 Route::put('/users/{user}', 'UserController@update');
 

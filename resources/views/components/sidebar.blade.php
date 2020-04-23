@@ -4,9 +4,10 @@
     </p>
     <ul class="menu-list">
         <li><a href="/" class="{{Request::is('/') ? 'is-active' :'' }}">Accueil</a></li>
+        <li><a href="/users/1/edit">Mon profil client</a></li>
+        <li><a href="/users/1/edit">Mon profil négociateur</a></li>
         <li><a href="/projects">Mes projets</a></li>
         <li><a href="/negotiations">Mes négociations</a></li>
-        <li><a href="/users/1/edit">Mon profil</a></li>
     </ul>
     <p class="menu-label">
         Aide
