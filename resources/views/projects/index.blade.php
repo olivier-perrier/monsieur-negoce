@@ -31,7 +31,6 @@
                         <td>{{$project->created_at}}</td>
                         <td>{{$project->name}}</td>
                         <td>{{$project->negotiator->firstname}} {{$project->negotiator->lastname}}</td>
-                        <!-- TODO avec uen clé étrangere -->
                         <td><span class="tag {{ $project->state->level }} is-rounded">{{ $project->state->title }}</span></td>
                         <td><a href="/projects/{{$project->id}}" class="btn btn-link">></a></td>
                     </tr>

@@ -5,7 +5,6 @@
         <header>
             <h2>{{$article->title}}</h2>
         </header>
-        <img src="/exmachina/images/pics4.jpg" alt="" width="512" height="256">
         <p>
             {{$article->body}}
         </p>

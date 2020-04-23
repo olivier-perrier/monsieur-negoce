@@ -16,11 +16,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome2');
-});
-
-Route::get('/welcome', function () {
-    return ['Salut' => '1'];
+    return view('welcome');
 });
 
 // Articles
@@ -47,6 +43,7 @@ Route::get('/projects/{project}', 'ProjectController@show')->name('projects.show
 
 // Négociations
 Route::get('/negotiations', 'NegotiationController@index')->name('negotiations.index');
+Route::get('/negotiations/{negotiation}', 'NegotiationController@show')->name('negotiations.show');
 
 // Notifications
 Route::post('/notifications', 'NotificationController@store');

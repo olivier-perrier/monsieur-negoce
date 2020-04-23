@@ -63,7 +63,6 @@
         .m-b-md {
             margin-bottom: 30px;
         }
-
     </style>
 </head>
 
@@ -80,30 +79,32 @@
             <a href="{{ route('register') }}">Register</a>
             @endif
             @endauth
-
-            <a href="{{ route('articles.index') }}">Articles</a>
         </div>
         @endif
 
         <div class="content">
             <div class="title m-b-md">
                 @auth
-                Hello {{ Auth::user()-> name }}
+                Bonjour {{ Auth::user()-> name }}
                 @else
-                Laracast
+                Monsieur Négoce
                 @endauth
             </div>
 
+            {{-- @auth --}}
+
             <div class="links">
-                <a href="https://laravel.com/docs">Docs</a>
-                <a href="https://laracasts.com">Laracasts</a>
-                <a href="https://laravel-news.com">News</a>
-                <a href="https://blog.laravel.com">Blog</a>
-                <a href="https://nova.laravel.com">Nova</a>
-                <a href="https://forge.laravel.com">Forge</a>
-                <a href="https://vapor.laravel.com">Vapor</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
+                <a href="/users/1/edit">Pofil client</a>
+                <a href="/users/1/edit">Profil négociateur</a>
+                <a href="/projects">Projets</a>
+                <a href="/negotiations">Négociations</a>
+                <a href="/about">FAQ</a>
+                <a href="/about">A propos</a>
+                <a href="/articles">Articles</a>
             </div>
+
+            {{-- @endauth --}}
+
         </div>
     </div>
 </body>

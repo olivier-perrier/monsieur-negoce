@@ -15,7 +15,6 @@
                     <p class="subtitle">{{$article->body}}</p>
                     <p>
                         <a href="{{ $article->path() }}">
-                            <img src="/exmachina/images/pics4.jpg" alt="" width="200">
                         </a>
                     </p>
                     <a href="/articles/{{$article->id}}" class="button">More</a>
