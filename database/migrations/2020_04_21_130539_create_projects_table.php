@@ -36,7 +36,7 @@ class CreateProjectsTable extends Migration
         
         });
 
-        Factory(App\Project::class)->create();
+        // Factory(App\Project::class)->create();
 
 
     }

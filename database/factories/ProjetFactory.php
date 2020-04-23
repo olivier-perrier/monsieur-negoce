@@ -13,5 +13,6 @@ $factory->define(Project::class, function (Faker $faker) {
         'negotiator_id' => factory(App\User::class),
         'description' => $faker->paragraph,
         'company_name' => $faker->sentence,
+        'state_id' => 1
     ];
 });

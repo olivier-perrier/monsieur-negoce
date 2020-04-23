@@ -29,7 +29,7 @@ class CreateTagsTable extends Migration
             $table->unique(['article_id', 'tag_id']);
 
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
 
@@ -40,7 +40,7 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
         Schema::dropIfExists('article_tag');
+        Schema::dropIfExists('tags');
     }
 }

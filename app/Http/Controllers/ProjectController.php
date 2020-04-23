@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\State;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,11 @@ class ProjectController extends Controller
         $user_id = Auth::id() || 1;
 
         $projects = Project::where('client_id', $user_id)->latest()->get();
-        return view('projects.index', compact('projects'));
+
+        return view('projects.index', [
+            'projects' => $projects,
+            'states' => State::all()
+        ]);
     }
 
     /**

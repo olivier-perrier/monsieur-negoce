@@ -32,7 +32,7 @@
                         <td>{{$project->name}}</td>
                         <td>{{$project->negotiator->firstname}} {{$project->negotiator->lastname}}</td>
                         <!-- TODO avec uen clé étrangere -->
-                        <td>{{$project->state}} <span class="tag {{ $project['attributes'] }} is-rounded">{{ $project['title'] }}</span></td>
+                        <td><span class="tag {{ $project->state->level }} is-rounded">{{ $project->state->title }}</span></td>
                         <td><a href="/projects/{{$project->id}}" class="btn btn-link">></a></td>
                     </tr>
                     @endforeach
@@ -46,10 +46,10 @@
     <div class="mt-5">
         <table class="table table-sm table-borderless">
             <tbody>
-                @foreach($project->STATES as $state)
+                @foreach($states as $state)
                 <tr>
-                    <th><span class="tag {{ $state['attributes'] }} is-rounded">{{ $state['title'] }}</span></th>
-                    <td>{{ $state['description'] }}</td>
+                    <th><span class="tag {{ $state->level }} is-rounded">{{ $state->title }}</span></th>
+                    <td>{{ $state->description }}</td>
                 </tr>
                 @endforeach
             </tbody>

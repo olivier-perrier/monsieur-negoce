@@ -15,13 +15,12 @@ class CreateStatesTable extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->id();
+            $table->integer('step');
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('level')->nullable();
             $table->timestamps();
         });
-
-        // Schema::create(['title' => "title"]);
 
     }
 
