@@ -1,8 +1,8 @@
 @component('layouts.exmachina')
 
 
-<div class="container">
-    <h1>Nouveau projet</h1>
+<div class="container my-3">
+    <h3 class="title">Nouveau projet</h3>
 
 
     <form method="POST" action="/projects">
@@ -24,9 +24,8 @@
                 <div class="form-group">
                     <label for="body">Sélectionnez la catégorie de votre choix</label>
                     <select class="custom-select @error('category') is-invalid @enderror" name="category">
-                        <option value="1">Travaux au domicile principal</option>
-                        @foreach($categories ?? [] as $category)
-                        <option value="{{ $category->id }}">{{$category->name}}</option>
+                        @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{$category->title}}</option>
                         @endforeach
                     </select>
                     @error('category')
@@ -37,7 +36,7 @@
                 <!-- Description -->
                 <div class="form-group">
                     <label for="excerpt">Description</label>
-                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" row=10>{{old('description')}}</textarea>
+                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="5">{{old('description')}}</textarea>
                     @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

@@ -18,26 +18,24 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->foreignId('client_id');
             $table->foreignId('negotiator_id');
-            // -> Categorie
-            $table->string('company_name');
-            // -> Adresse
+            $table->foreignId('category_id');
+            $table->foreignId('address_contact_id');    // Contact address
             $table->text('description');
-            // -> Devis
-            // -> Type de contact
-            // -> Etat
+            // -> TODO Devis file
             $table->foreignId('state_id');
             $table->timestamps();
             
+
             $table->foreign('client_id')->references('id')->on('users');
             $table->foreign('negotiator_id')->references('id')->on('users');
 
             $table->foreign('state_id')->references('id')->on('states');
+            $table->foreign('category_id')->references('id')->on('categories');
+
+            $table->foreign('address_contact_id')->references('id')->on('addresses')->cascadeOnDelete();
 
         
         });
-
-        // Factory(App\Project::class)->create();
-
 
     }
 

@@ -29,5 +29,10 @@ class Project extends Model
         return $this->belongsTo(State::class);
     }
 
+    public function contactAddress()
+    {
+        return $this->belongsTo(Address::class, 'address_contact_id');
+    }
+
    
 }

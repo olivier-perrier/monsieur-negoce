@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Project;
 use App\State;
 use App\User;
@@ -34,7 +35,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return view('projects.create', [
+            'categories' => Category::All()
+        ]);
     }
 
     /**

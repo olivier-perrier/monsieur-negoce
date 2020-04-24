@@ -16,7 +16,7 @@ class NotificationController extends Controller
     public function store(Request $request)
     {
 
-        $project_id = $request->query('project');
+        $project_id = $request->query('negotiation');
 
         // dd($request->query('project'));
 
@@ -34,6 +34,6 @@ class NotificationController extends Controller
         // dd($notification);
         // return "salut";
 
-        return redirect(route('projects.show', $project_id));
+        return redirect(route('negotiations.show', $project_id));
     }
 }

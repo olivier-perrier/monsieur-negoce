@@ -1,6 +1,11 @@
 @component('layouts.exmachina')
 
-<div class="container">
+<div class="container my-3">
+
+    <div class="alert alert-success" role="alert">
+        <p>{{ $project->client->firstname }} {{ $project->client->lastname }} n°suivi {{ $project->id }} - {{ $project->type}}</p>
+    </div>
+
     <section>
         <div class="row">
 
@@ -9,8 +14,12 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title border-bottom">Informations de l'entreprise</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $project->company_name }}</h6>
-                        Adresse de l'entreprise
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $project->contactAddress->company_name }}</h6>
+                        <p>{{ $project->contactAddress->person_name }}</p>
+                        <p>{{ $project->contactAddress->street }}</p>
+                        <p>{{ $project->contactAddress->postcode }} {{ $project->contactAddress->city }}</p>
+                        <p>{{ $project->contactAddress->phone }}</p>
+                        <p>{{ $project->contactAddress->email }}</p>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title border-bottom">Demande du client</h5>
@@ -52,25 +61,6 @@
                             </tbody>
                         </table>
                         <!-- FIN SUIVI DE LA NEGOCIATION -->
-
-                        <!-- Ajoute d'une note pour les négociateurs -->
-                        @if( App\User::find(1)->isNegotiator() )
-
-                        <form method="POST" action="/notifications?project={{ $project->id }}" class="form-inline">
-                            @csrf
-
-                            <div class="form-group mx-2 mb-2">
-                                <input type="text" class="form-control" name="content">
-                                @error('content')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-info mb-2">Ajouter une note</button>
-                            <small class="form-text text-muted ml-1">Ajoutez une note de l'avancement de la négociation pour le client.</small>
-                        </form>
-
-                        @endif
-                        <!-- FIN AJOUT NOTE NEGOCIATEUR -->
 
                     </div>
                 </div>
