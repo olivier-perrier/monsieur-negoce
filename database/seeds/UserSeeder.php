@@ -13,5 +13,8 @@ class UserSeeder extends Seeder
     {
         factory(App\User::class)->create(['role' => 'client']);
         factory(App\User::class)->create(['role' => 'negotiator']);
+
+        factory(App\User::class, 100)->create();
+
     }
 }

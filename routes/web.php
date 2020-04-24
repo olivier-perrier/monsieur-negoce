@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,6 +54,19 @@ Route::post('/notifications', 'NotificationController@store');
 Route::get('/users/{user}', 'UserController@show')->name('users.show');
 Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
 Route::put('/users/{user}', 'UserController@update');
+
+// Administation
+Route::get('/admin/clients', function () {
+    return view('admin.clients.index', ['clients' => User::all()]);
+})->name('admin.clients.index');
+
+Route::post('/admin/users/{user}/validate', function (User $user) {
+    $user->validated = true;
+    $user->save();
+    return redirect(route('admin.clients.index'));
+});
+
+Route::get('/admin/negotiators', 'AdminController@index')->name('negotiations.index');
 
 
 Route::get('/about', function () {

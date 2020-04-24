@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
+        'role' => $faker->randomElement(['client', 'negotiator']),
         'firstname' => $faker->firstName(),
         'lastname' => $faker->lastName(),
         'nationality' => $faker->country(),

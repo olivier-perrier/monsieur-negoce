@@ -46,6 +46,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+      /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'validated' => false,
+    ];
+
     public function path()
     {
         return route("users.show", $this);
