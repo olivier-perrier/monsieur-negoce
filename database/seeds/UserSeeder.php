@@ -11,6 +11,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 5)->create(['password' => '123']);
+        factory(App\User::class)->create(['role' => 'client']);
+        factory(App\User::class)->create(['role' => 'negotiator']);
     }
 }

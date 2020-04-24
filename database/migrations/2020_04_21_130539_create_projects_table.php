@@ -17,9 +17,9 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('client_id');
-            $table->foreignId('negotiator_id');
+            $table->foreignId('negotiator_id')->nullable();
             $table->foreignId('category_id');
-            $table->foreignId('address_contact_id');    // Contact address
+            $table->foreignId('address_contact_id')->nullable();    // Contact address
             $table->text('description');
             // -> TODO Devis file
             $table->foreignId('state_id');

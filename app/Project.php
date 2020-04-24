@@ -7,7 +7,16 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Project extends Model
 {
-    protected $fillable = ['name', 'description', 'company_name'];
+    protected $fillable = ['name', 'description'];
+
+     /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'state_id' => 1,
+    ];
 
     public function client()
     {
@@ -27,6 +36,11 @@ class Project extends Model
     public function state()
     {
         return $this->belongsTo(State::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function contactAddress()

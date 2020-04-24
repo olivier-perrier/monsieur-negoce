@@ -51,36 +51,69 @@
 
             </div>
 
+            <!-- Colonne adresse de contact avec l'entreprise -->
             <div class="col-md-6">
 
                 <div class="form-group">
-                    <label for="title">Ajoutez le nom de l'entreprise concernée</label>
-                    <input type="text" class="form-control @error('company_name') is-invalid @enderror" name="company_name" value="{{old('company_name')}}">
-                    @error('company_name')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <label for="address_company_name">Ajoutez le nom de l'entreprise concernée</label>
+                    <input type="text" class="input form-control @error('address_company_name') is-danger @enderror" name="address_company_name" value="{{ old('address_company_name') }}">
+                    @error('address_company_name')
+                    <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <!-- Adresse entreprise -->
                 <div class="form-group">
-                    <label for="company_adress">Indiquez l'adresse de l'entreprise concernée</label>
-                    <input type="text" class="form-control @error('company_adress') is-invalid @enderror" name="company_adress" value="{{old('company_adress')}}">
-                    @error('company_adress')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <label for="address_street">Adresse de l'entreprise concernée</label>
+                    <input type="text" class="input form-control @error('address_street') is-danger @enderror" name="address_street" value="{{old('address_street')}}">
+                    @error('address_street')
+                    <p class="help is-danger">{{ $message }}</p>
                     @enderror
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="address_postcode">Code postal</label>
+                        <input type="text" class="form-control" name="address_postcode" value="{{ old('address_postcode') }}">
+                        @error('address_postcode')
+                        <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="address_city">Ville</label>
+                        <input type="text" class="form-control" name="address_city" value="{{ old('address_city') }}">
+                        @error('address_city')
+                        <p class="help is-danger">{{ $message }}</p>
+                        @enderror</div>
+                </div>
+
+                <!-- Email et Phone -->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="address_email">Email</label>
+                        <input type="email" class="form-control" name="address_email" value="{{ old('address_email') }}" required>
+                        @error('address_email')
+                        <p class="help is-danger">{{ $message }}</p>
+                        @enderror</div>
+                    <div class="form-group col-md-6">
+                        <label for="address_phone">Téléphone</label>
+                        <input type="phone" class="form-control" name="address_phone" value="{{ old('address_phone') }}">
+                        @error('address_phone')
+                        <p class="help is-danger">{{ $message }}</p>
+                        @enderror</div>
                 </div>
 
                 <!-- Personne rencontrée -->
                 <div class="form-group">
-                    <label for="company_person_met">Indiquez le nom de la personne rencontrée</label>
-                    <input type="text" class="form-control @error('company_person_met') is-invalid @enderror" name="company_person_met" value="{{old('company_person_met')}}">
-                    @error('company_person_met')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <label for="address_person_name">Indiquez le nom de la personne rencontrée</label>
+                    <input type="text" class="form-control" name="address_person_name" value="{{ old('address_person_name') }}">
+                    @error('address_person_name')
+                    <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </div>
 
             </div>
-            <!-- COL -->
+            <!-- COL ADDRESS CONTACT-->
 
         </div>
         <!-- ROW -->

@@ -3,7 +3,7 @@
 <div class="container my-3">
 
     <div class="alert alert-success" role="alert">
-        <p>{{ $project->client->firstname }} {{ $project->client->lastname }} n°suivi {{ $project->id }} - {{ $project->type}}</p>
+        <p>{{ $project->client->firstname }} {{ $project->client->lastname }} n°suivi {{ $project->id }} - {{ $project->category->title }}</p>
     </div>
 
     <section>
@@ -12,17 +12,21 @@
             <!-- Informations de l'entreprise avec demande client -->
             <div class="col-4">
                 <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title border-bottom">Informations de l'entreprise</h5>
+                    <div class="card-content">
+                        <h5 class="title is-5">Informations de l'entreprise</h5>
+                        @if($project->contactAddress)
                         <h6 class="card-subtitle mb-2 text-muted">{{ $project->contactAddress->company_name }}</h6>
                         <p>{{ $project->contactAddress->person_name }}</p>
                         <p>{{ $project->contactAddress->street }}</p>
                         <p>{{ $project->contactAddress->postcode }} {{ $project->contactAddress->city }}</p>
                         <p>{{ $project->contactAddress->phone }}</p>
                         <p>{{ $project->contactAddress->email }}</p>
+                        @else
+                        <p> - </p>
+                        @endif
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title border-bottom">Demande du client</h5>
+                    <div class="card-content border-top">
+                        <h5 class="title is-5">Demande du client</h5>
                         {{ $project->description }}
                     </div>
                 </div>
@@ -38,7 +42,7 @@
                         </h5>
 
                         <!-- Suivi de la négociation -->
-                        <h5 class="card-title">Suivi de la négociation</h5>
+                        <h5 class="is-6">Suivi de la négociation</h5>
 
                         <table class="table table-sm table-borderless table-hover">
                             <thead>
@@ -67,9 +71,16 @@
 
                 <!-- Etapes d'avancement de la négociation -->
                 <div class="card mt-3">
-                    <div class="card-body">
-                        <h5 class="card-title border-bottom">Avancement de la demande de négociation</h5>
-                        <p class="card-text">-</p>
+                    <div class="card-content">
+                        <h5 class="title is-5 text-center">Avancement de la demande de négociation</h5>
+                        <div class="row text-center">
+                            @foreach($states as $state)
+                            <div class="col-md">
+                                <strong>{{$state->step}}</strong><br>
+                                {{$state->title}}
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

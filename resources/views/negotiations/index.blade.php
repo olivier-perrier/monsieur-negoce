@@ -1,7 +1,7 @@
 @component('layouts.exmachina')
 
 
-<div class="container mt-5">
+<div class="container my-5">
 
     <!-- <div style="text-align:right;">
         <a class="btn btn-danger" href="/projects/create" role="button">Nouveau projet</a>
@@ -29,7 +29,7 @@
                     <tr>
                         <th>{{$negotiation->created_at}}</th>
                         <td>{{$negotiation->client->firstname}} {{$negotiation->client->lastname}}</td>
-                        <td>{{$negotiation->type}}</td>
+                        <td>{{$negotiation->category->title}}</td>
                         <td>{{$negotiation->amout_negociated }}</td>
                         <td><span class="tag {{ $negotiation->state->level }} is-rounded">{{ $negotiation->state->title }}</span></td>
                         <td><a href="/negotiations/{{$negotiation->id}}" class="btn btn-link">></a></td>

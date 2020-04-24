@@ -1,7 +1,7 @@
 @component('layouts.exmachina')
 
 
-<div class="container mt-5">
+<div class="container my-5">
 
     <div style="text-align:right;">
         <a class="btn btn-danger" href="/projects/create" role="button">Nouveau projet</a>
@@ -30,7 +30,11 @@
                         <th scope="row">N° {{$project->id}}</th>
                         <td>{{$project->created_at}}</td>
                         <td>{{$project->name}}</td>
+                        @if($project->negotiator)
                         <td>{{$project->negotiator->firstname}} {{$project->negotiator->lastname}}</td>
+                        @else
+                        <td> - </td>
+                        @endif
                         <td><span class="tag {{ $project->state->level }} is-rounded">{{ $project->state->title }}</span></td>
                         <td><a href="/projects/{{$project->id}}" class="btn btn-link">></a></td>
                     </tr>

@@ -17,7 +17,8 @@ class NegotiationController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::id() || 2;
+
+        $user_id = Auth::id() | 2;
 
         $negotiations = Project::where('negotiator_id', $user_id)->latest()->get();
         $states = State::All();

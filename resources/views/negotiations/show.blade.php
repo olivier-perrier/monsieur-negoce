@@ -2,11 +2,10 @@
 
 <div class="container my-3">
 
-    <article class="message is-info">
-        <div class="message-body">{{ $negotiation->client->firstname }} {{ $negotiation->client->lastname }}
-            n°suivi {{ $negotiation->id }} - {{ $negotiation->type}}
-        </div>
-    </article>
+    <div class="alert alert-success" role="alert">
+        <p>{{ $negotiation->client->firstname }} {{ $negotiation->client->lastname }}
+            n°suivi {{ $negotiation->id }} - {{ $negotiation->category->title}}</p>
+    </div>
 
     <section>
         <div class="row">
@@ -23,8 +22,16 @@
                     </div>
                     <div class="card-content">
                         <h5 class="title is-5">Informations de l'entreprise</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $negotiation->company_name }}</h6>
-                        Adresse de l'entreprise
+                        @if($negotiation->contactAddress)
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $negotiation->contactAddress->company_name }}</h6>
+                        <p>{{ $negotiation->contactAddress->person_name }}</p>
+                        <p>{{ $negotiation->contactAddress->street }}</p>
+                        <p>{{ $negotiation->contactAddress->postcode }} {{ $negotiation->contactAddress->city }}</p>
+                        <p>{{ $negotiation->contactAddress->phone }}</p>
+                        <p>{{ $negotiation->contactAddress->email }}</p>
+                        @else
+                        <p> - </p>
+                        @endif
                     </div>
                     <div class="card-content border-top">
                         <h5 class="title is-5">Demande du client</h5>
@@ -43,7 +50,7 @@
                         </h5>
 
                         <!-- Suivi de la négociation -->
-                        <h5 class="card-title">Suivi de la négociation</h5>
+                        <h5 class="is-6">Suivi de la négociation</h5>
 
                         <table class="table table-sm table-borderless table-hover">
                             <thead>
@@ -68,7 +75,7 @@
                         <!-- FIN SUIVI DE LA NEGOCIATION -->
 
                         <!-- Ajoute d'une note pour les négociateurs -->
-                        @if( App\User::find(1)->isNegotiator() )
+                        @if( App\User::find(2)->isNegotiator() )
 
                         <form method="POST" action="/notifications?negotiation={{ $negotiation->id }}" class="form-inline">
                             @csrf
@@ -91,8 +98,8 @@
 
                 <!-- Etapes d'avancement de la négociation -->
                 <div class="card mt-3">
-                    <div class="card-body">
-                        <h5 class="card-title border-bottom text-center">Avancement de la demande de négociation</h5>
+                    <div class="card-content">
+                        <h5 class="title is-5 text-center">Avancement de la demande de négociation</h5>
                         <div class="row text-center">
                             @foreach($states as $state)
                             <div class="col-md">
