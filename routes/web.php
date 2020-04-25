@@ -66,7 +66,8 @@ Route::get('/admin/users', function () {
 
 Route::get('/admin/projects', function () {
     return view('admin.projects.index', [
-        'projects' => Project::all()
+        'projects' => Project::all(),
+        'negotiators' => User::where('role', 'negotiator')->get(),
     ]);
 })->name('admin.projects.index');
 
@@ -76,13 +77,24 @@ Route::post('/admin/users/{user}/validate', function (User $user) {
     return redirect(route('admin.users.index'));
 });
 
+Route::put('/admin/projects/{project}/associate', function (Project $project) {
+    $negotiatorId = request('negotiator');
 
-Route::delete('/admin/users/{user}', function(User $user) {
+    // $project->negotiator()->save($negotiator); 
+
+    $project->negotiator_id = $negotiatorId;
+    $project->save();
+
+    return redirect(route('admin.projects.index'));
+});
+
+
+Route::delete('/admin/users/{user}', function (User $user) {
     $user->delete();
     return redirect(route('admin.users.index'));
 });
 
-Route::delete('/admin/projects/{project}', function(Project $project) {
+Route::delete('/admin/projects/{project}', function (Project $project) {
     $project->delete();
     return redirect(route('admin.projects.index'));
 });
@@ -93,6 +105,11 @@ Route::delete('/admin/projects/{project}', function(Project $project) {
 Route::get('/about', function () {
     return view('about');
 });
+
+Route::get('/faq', function () {
+    return view('about');
+});
+
 
 
 Auth::routes();
