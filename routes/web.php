@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Project;
 use App\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -56,18 +57,38 @@ Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
 Route::put('/users/{user}', 'UserController@update');
 
 // Administation
-Route::get('/admin/clients', function () {
-    return view('admin.clients.index', ['clients' => User::all()]);
-})->name('admin.clients.index');
+Route::get('/admin/users', function () {
+    return view('admin.users.index', [
+        'negotiators' => User::where('role', 'negotiator')->get(),
+        'clients' => User::where('role', 'client')->get()
+    ]);
+})->name('admin.users.index');
+
+Route::get('/admin/projects', function () {
+    return view('admin.projects.index', [
+        'projects' => Project::all()
+    ]);
+})->name('admin.projects.index');
 
 Route::post('/admin/users/{user}/validate', function (User $user) {
     $user->validated = true;
     $user->save();
-    return redirect(route('admin.clients.index'));
+    return redirect(route('admin.users.index'));
 });
 
-Route::get('/admin/negotiators', 'AdminController@index')->name('negotiations.index');
 
+Route::delete('/admin/users/{user}', function(User $user) {
+    $user->delete();
+    return redirect(route('admin.users.index'));
+});
+
+Route::delete('/admin/projects/{project}', function(Project $project) {
+    $project->delete();
+    return redirect(route('admin.projects.index'));
+});
+
+
+// FIN ADMINISTRATION
 
 Route::get('/about', function () {
     return view('about');

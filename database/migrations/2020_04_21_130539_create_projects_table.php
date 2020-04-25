@@ -16,7 +16,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('client_id');
+            $table->foreignId('client_id')->nullable();
             $table->foreignId('negotiator_id')->nullable();
             $table->foreignId('category_id');
             $table->foreignId('address_contact_id')->nullable();    // Contact address
@@ -26,8 +26,8 @@ class CreateProjectsTable extends Migration
             $table->timestamps();
             
 
-            $table->foreign('client_id')->references('id')->on('users');
-            $table->foreign('negotiator_id')->references('id')->on('users');
+            $table->foreign('client_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('negotiator_id')->references('id')->on('users')->onDelete('set null');
 
             $table->foreign('state_id')->references('id')->on('states');
             $table->foreign('category_id')->references('id')->on('categories');
