@@ -8,12 +8,12 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col"></th>   <!-- Identifiant -->
+                    <th scope="col"></th> <!-- Identifiant -->
                     <th scope="col">Nom</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Négociateur associé</th>    <!-- Associer négociateur -->
-                    <th scope="col"></th>   <!-- Voir -->
-                    <th scope="col"></th>   <!-- Supprimer -->
+                    <th scope="col">Négociateur associé</th> <!-- Associer négociateur -->
+                    <th scope="col"></th> <!-- Voir -->
+                    <th scope="col"></th> <!-- Supprimer -->
                 </tr>
             </thead>
 
@@ -22,7 +22,7 @@
                 @foreach($projects as $project)
 
                 <tr>
-                    <th scope="row">N°{{$project->id}}</th>
+                    <th scope="row">N°{{ $project->id }}</th>
                     <td>{{ $project->name }}</td>
                     <td>{{ $project->category->title }}</td>
 
@@ -33,10 +33,10 @@
                             @method('PUT')
                             <select class="custom-select" name="negotiator">
                                 @foreach($negotiators as $negotiator)
-                                <option 
-                                    {{ $project->negotiator->id ===  $negotiator->id ? 'selected' : '' }} 
+                                <option {{ $project->negotiator->id ===  $negotiator->id ? 'selected' : '' }}
                                     value="{{ $negotiator->id }}">
-                                    N°{{ $negotiator->id }} - {{ $negotiator->firstname }} {{ $negotiator->lastname }}
+                                    N°{{ $negotiator->id }} - {{ $negotiator->firstname }}
+                                    {{ $negotiator->lastname }}
                                 </option>
                                 @endforeach
                             </select>
