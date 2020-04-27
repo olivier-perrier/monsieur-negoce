@@ -100,7 +100,7 @@ class ProjectController extends Controller
 
 
         $project = new Project(request(['name', 'description']));
-        $project->client_id = Auth::id() || 1;
+        $project->client_id = Auth::id();
         $project->category_id = request('category');
         $project->state_id = 1;
         $project->address_contact_id = $address->id;

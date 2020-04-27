@@ -32,8 +32,11 @@
                             @csrf
                             @method('PUT')
                             <select class="custom-select" name="negotiator">
+                                <option value="">Aucun</option>
                                 @foreach($negotiators as $negotiator)
-                                <option {{ $project->negotiator->id ===  $negotiator->id ? 'selected' : '' }}
+                                <option @if ($project->negotiator)
+                                    {{ $project->negotiator->id ===  $negotiator->id ? 'selected' : '' }}
+                                    @endif
                                     value="{{ $negotiator->id }}">
                                     N°{{ $negotiator->id }} - {{ $negotiator->firstname }}
                                     {{ $negotiator->lastname }}
