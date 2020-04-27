@@ -51,48 +51,15 @@ Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
 Route::put('/users/{user}', 'UserController@update');
 
 // Administation
-Route::get('/admin/users', function () {
-    return view('admin.users.index', [
-        'negotiators' => User::where('role', 'negotiator')->get(),
-        'clients' => User::where('role', 'client')->get()
-    ]);
-})->name('admin.users.index')->middleware(('auth'));
+Route::get('/admin/users', 'Admin\UserController@index')->name('admin.users.index');
+Route::get('/admin/projects', 'Admin\ProjectController@index')->name('admin.projects.index');
 
-Route::get('/admin/projects', function () {
-    return view('admin.projects.index', [
-        'projects' => Project::all(),
-        'negotiators' => User::where('role', 'negotiator')->get(),
-    ]);
-})->name('admin.projects.index')->middleware(('auth'));
-
-Route::post('/admin/users/{user}/validate', function (User $user) {
-    $user->validated = true;
-    $user->save();
-    return redirect(route('admin.users.index'));
-});
-
-Route::put('/admin/projects/{project}/associate', function (Project $project) {
-    $negotiatorId = request('negotiator');
-
-    // $project->negotiator()->save($negotiator); 
-
-    $project->negotiator_id = $negotiatorId;
-    $project->save();
-
-    return redirect(route('admin.projects.index'));
-});
+Route::post('/admin/users/{user}/validate', 'Admin\UserController@validateUser');
+Route::put('/admin/projects/{project}/associate', 'Admin\ProjectController@associateUser');
 
 
-Route::delete('/admin/users/{user}', function (User $user) {
-    $user->delete();
-    return redirect(route('admin.users.index'));
-});
-
-Route::delete('/admin/projects/{project}', function (Project $project) {
-    $project->delete();
-    return redirect(route('admin.projects.index'));
-});
-
+Route::delete('/admin/users/{user}', 'Admin\UserController@destroy');
+Route::delete('/admin/projects/{project}', 'Admin\ProjectController@destroy');
 
 // FIN ADMINISTRATION
 

@@ -15,6 +15,8 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->authorizeResource(USer::class);
     }
 
     /**
@@ -26,7 +28,6 @@ class UserController extends Controller
     public function show(User $user)
     {
         return redirect(route('users.edit', $user));
-        // return view('users.show', compact('user'));
     }
 
     /**

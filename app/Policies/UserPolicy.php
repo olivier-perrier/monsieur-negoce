@@ -2,11 +2,10 @@
 
 namespace App\Policies;
 
-use App\Project;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ProjectPolicy
+class UserPolicy
 {
     use HandlesAuthorization;
 
@@ -18,31 +17,20 @@ class ProjectPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
-    }
-
-    public function viewAnyProject(User $user)
-    {
-        return $user->isClient();
-    }
-
-    public function viewAnyNegotiation(User $user)
-    {
-        return $user->isNegotiator();
+        //
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Project  $project
+     * @param  \App\User  $model
      * @return mixed
      */
-    public function view(User $user, Project $project)
+    public function view(User $user, User $model)
     {
-        return ($user->isClient() and $project->client_id === $user->id)
-            or ($user->isNegotiator() and $project->negotiator_id === $user->id)
-            or $user->isAdministrator();
+        return $user->isAdministrator()
+            or $user->id === $model->id;
     }
 
     /**
@@ -53,31 +41,30 @@ class ProjectPolicy
      */
     public function create(User $user)
     {
-        return $user->isClient();
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Project  $project
+     * @param  \App\User  $model
      * @return mixed
      */
-    public function update(User $user, Project $project)
+    public function update(User $user, User $model)
     {
-        return ($user->isClient() and $user->id === $project->client()->id)
-            or ($user->isNegotiator() and $user->id === $project->negotiator()->id)
-            or $user->isAdministrator();
+        return $user->isAdministrator()
+            or $user->id === $model->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Project  $project
+     * @param  \App\User  $model
      * @return mixed
      */
-    public function delete(User $user, Project $project)
+    public function delete(User $user, User $model)
     {
         //
     }
@@ -86,10 +73,10 @@ class ProjectPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Project  $project
+     * @param  \App\User  $model
      * @return mixed
      */
-    public function restore(User $user, Project $project)
+    public function restore(User $user, User $model)
     {
         //
     }
@@ -98,10 +85,10 @@ class ProjectPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\Project  $project
+     * @param  \App\User  $model
      * @return mixed
      */
-    public function forceDelete(User $user, Project $project)
+    public function forceDelete(User $user, User $model)
     {
         //
     }

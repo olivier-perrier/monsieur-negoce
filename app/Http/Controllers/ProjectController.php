@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Gate;
 
 class ProjectController extends Controller
 {
@@ -22,6 +23,8 @@ class ProjectController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->authorizeResource(Project::class, 'project');
     }
 
     /**
@@ -31,7 +34,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::id() | 1;
+        $this->authorize('viewAnyProject', Project::class);
+
+        $user_id = Auth::id();
 
         $projects = Project::where('client_id', $user_id)->latest()->get();
 
@@ -39,7 +44,6 @@ class ProjectController extends Controller
             'projects' => $projects,
             'states' => State::all()
         ]);
-
     }
 
     /**
@@ -49,6 +53,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Project::class);
+        
         return view('projects.create', [
             'categories' => Category::All()
         ]);

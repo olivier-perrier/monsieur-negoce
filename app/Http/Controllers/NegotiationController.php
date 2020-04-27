@@ -10,14 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class NegotiationController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->authorizeResource(Project::class, 'negotiation');
     }
 
     /**
@@ -25,10 +23,11 @@ class NegotiationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
+        $this->authorize('viewAnyNegotiation', Project::class);
 
-        $user_id = Auth::id() | 2;
+        $user_id = Auth::id();
 
         $negotiations = Project::where('negotiator_id', $user_id)->latest()->get();
         $states = State::All();

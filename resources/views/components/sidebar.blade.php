@@ -6,14 +6,14 @@
     @if(Auth::user()->isClient())
     <p class="menu-label">Client</p>
     <ul class="menu-list">
-        <li><a href="/users/1/edit">Mon profil</a></li>
+        <li><a href="/users/{{Auth::id()}}/edit">Mon profil</a></li>
         <li><a href="/projects">Mes projets</a></li>
     </ul>
     @endif
     @if(Auth::user()->isNegotiator())
     <p class="menu-label">Négociateur</p>
     <ul class="menu-list">
-        <li><a href="/users/1/edit">Mon profil</a></li>
+        <li><a href="/users/{{Auth::id()}}/edit">Mon profil</a></li>
         <li><a href="/negotiations">Mes négociations</a></li>
     </ul>
     @endif
