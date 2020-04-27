@@ -28,9 +28,9 @@ class Project extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function notifications()
+    public function notes()
     {
-        return $this->hasMany(Notification::class);
+        return $this->hasMany(Note::class);
     }
 
     public function state()

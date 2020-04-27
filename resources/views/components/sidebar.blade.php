@@ -29,7 +29,7 @@
         Aide
     </p>
     <ul class="menu-list">
-        <li><a href="/about">FAQ</a></li>
+        <li><a href="/faq">FAQ</a></li>
         <li><a href="/about">A propos</a></li>
     </ul>
     <p class="menu-label">

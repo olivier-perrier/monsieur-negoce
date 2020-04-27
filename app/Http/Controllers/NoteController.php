@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Note;
 use App\Notification;
 use Illuminate\Http\Request;
 
-class NotificationController extends Controller
+class NoteController extends Controller
 {
 
     public function __construct()
@@ -22,6 +23,8 @@ class NotificationController extends Controller
     public function store(Request $request)
     {
 
+        $this->authorize('negotiator');
+        
         $project_id = $request->query('negotiation');
 
         // dd($request->query('project'));
@@ -32,7 +35,7 @@ class NotificationController extends Controller
         ]);
 
         // dd($validatedAttributes);
-        $notification = new Notification(request(['type', 'content']));
+        $notification = new Note(request(['type', 'content']));
         $notification->type = "Contact entreprise";
         $notification->project_id = $project_id;
         $notification->save();

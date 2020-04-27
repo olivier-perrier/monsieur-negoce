@@ -41,8 +41,8 @@ Route::get('/projects/{project}', 'ProjectController@show')->name('projects.show
 Route::get('/negotiations', 'NegotiationController@index')->name('negotiations.index');
 Route::get('/negotiations/{negotiation}', 'NegotiationController@show')->name('negotiations.show');
 
-// Notifications
-Route::post('/notifications', 'NotificationController@store');
+// Notes
+Route::post('/notes', 'NoteController@store');
 
 
 // Users
@@ -68,7 +68,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/faq', function () {
-    return view('about');
+    return view('faq');
 });
 
 

@@ -2,6 +2,7 @@
 
 
 Vues : 
+
     Clients
         Mes projets
         Mon profil
@@ -13,6 +14,7 @@ Vues :
 # Routes
 
 Routes :
+
     Projets
         Voir les projets : index
         Voir un projet : show

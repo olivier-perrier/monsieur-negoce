@@ -54,11 +54,11 @@
                             </thead>
                             <tbody>
 
-                                @foreach($project->notifications as $notification)
+                                @foreach($project->notes as $note)
                                 <tr>
-                                    <td>{{ $notification->created_at }}</td>
-                                    <td>{{ $notification->type }}</td>
-                                    <td>{{ $notification->content }}</td>
+                                    <td>{{ $note->created_at }}</td>
+                                    <td>{{ $note->type }}</td>
+                                    <td>{{ $note->content }}</td>
                                 </tr>
                                 @endforeach
 

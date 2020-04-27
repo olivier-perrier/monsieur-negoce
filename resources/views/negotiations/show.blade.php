@@ -62,11 +62,11 @@
                             </thead>
                             <tbody>
 
-                                @foreach($negotiation->notifications as $notification)
+                                @foreach($negotiation->notes as $note)
                                 <tr>
-                                    <td>{{ $notification->created_at }}</td>
-                                    <td>{{ $notification->type }}</td>
-                                    <td>{{ $notification->content }}</td>
+                                    <td>{{ $note->created_at }}</td>
+                                    <td>{{ $note->type }}</td>
+                                    <td>{{ $note->content }}</td>
                                 </tr>
                                 @endforeach
 
@@ -77,7 +77,7 @@
                         <!-- Ajoute d'une note pour les négociateurs -->
                         @if( App\User::find(2)->isNegotiator() )
 
-                        <form method="POST" action="/notifications?negotiation={{ $negotiation->id }}" class="form-inline">
+                        <form method="POST" action="/notes?negotiation={{ $negotiation->id }}" class="form-inline">
                             @csrf
 
                             <div class="form-group mx-2 mb-2">

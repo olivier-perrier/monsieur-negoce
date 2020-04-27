@@ -71,7 +71,17 @@
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
-            <a href="{{ url('/home') }}">Home</a>
+            <a href="{{ url('/') }}">Home</a>
+
+            {{-- Logout --}}
+            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+
             @else
             <a href="{{ route('login') }}">Login</a>
 
@@ -90,9 +100,9 @@
                 Monsieur Négoce
                 @endauth
             </div>
-            
+
             <div class="links">
-            
+
                 @auth
 
                 @can('client')
@@ -111,13 +121,13 @@
                 @endcan
 
                 @endauth
-                
+
                 <a href="/about">FAQ</a>
                 <a href="/about">A propos</a>
                 <a href="/articles">Articles</a>
 
             </div>
-                
+
         </div>
     </div>
 </body>
