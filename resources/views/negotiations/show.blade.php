@@ -46,8 +46,15 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title border-bottom">Documents disponible(s)
-                            <a href="#" class="button ml-5 mb-1">Ajouter un document</a>
                         </h5>
+
+                        <a href="#" class="button ml-5 mb-1">Ajouter un document</a>
+                        <form action="/file/upload" method="post" enctype="multipart/form-data">
+                            @csrf
+                            Select image to upload:
+                            <input type="file" name="file" id="fileToUpload">
+                            <input type="submit" value="Upload File" name="submit">
+                        </form>
 
                         <!-- Suivi de la négociation -->
                         <h5 class="is-6">Suivi de la négociation</h5>
@@ -87,7 +94,8 @@
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-info mb-2">Ajouter une note</button>
-                            <small class="form-text text-muted ml-1">Ajoutez une note de l'avancement de la négociation du client.</small>
+                            <small class="form-text text-muted ml-1">Ajoutez une note de l'avancement de la négociation
+                                du client.</small>
                         </form>
 
                         @endif

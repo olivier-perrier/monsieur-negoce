@@ -1,11 +1,10 @@
 @component('layouts.exmachina')
 
 
-<div class="container">
-    <h1>Mon profil</h1>
+<div class="container my-5">
+    <h3 class="title">Modifier mon profil</h3>
 
-
-    <form method="POST" action="/users/{{$user->id}}" class="p-4 border rounded-lg shadow-sm">
+    <form method="POST" action="/users/{{$user->id}}" class="box col-md-10 mx-auto">
         @csrf
         @method('PUT')
 

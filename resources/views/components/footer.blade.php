@@ -1,15 +1,33 @@
-<!-- <footer class="footer">
-    <div class="content has-text-centered">
-        <p>
-            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-        </p>
-    </div>
-</footer> -->
+<footer class="footer pb-4 mt-5">
+    <div class="container py-3 border-top">
+        <div class="row">
+            <div class="col-md-3">
+                <strong>Monsieur négoce</strong>
+                <p>Notre équipe</p>
+                <p>CGV et mentions légales</p>
+                <p>Rejoingnez nous</p>
+            </div>
+            <div class="col-md-3">
+                <strong>Nous contacter</strong>
+                <p>0 805 66 22 14</p>
+                <p>contact@monsieur-negoce.com</p>
+            </div>
+            <div class="col-md-3">
+                <strong>Références</strong>
+                <p>Notre équipe</p>
+                <p>CGV et mentions légales</p>
+                <p>Rejoingnez nous</p>
+            </div>
+            <div class="col-md-3">
+                <strong>Ressources</strong>
+                <p>Notre équipe</p>
+                <p>CGV et mentions légales</p>
+                <p>Rejoingnez nous</p>
+            </div>
+        </div>
 
-<footer class="footer">
-    <div class="container text-center p-5 border-top">
-        Design: <a href="http://olivierperrier.com">Olivier Perrier</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+        <div class="text-center mt-4">
+            Développement <a href="http://olivierperrier.com">Olivier Perrier</a>
+        </div>
     </div>
 </footer>

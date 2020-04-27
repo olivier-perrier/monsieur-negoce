@@ -61,7 +61,9 @@ Route::put('/admin/projects/{project}/associate', 'Admin\ProjectController@assoc
 Route::delete('/admin/users/{user}', 'Admin\UserController@destroy');
 Route::delete('/admin/projects/{project}', 'Admin\ProjectController@destroy');
 
-// FIN ADMINISTRATION
+// File
+Route::post('/file/upload', 'FileController@upload');
+
 
 Route::get('/about', function () {
     return view('about');

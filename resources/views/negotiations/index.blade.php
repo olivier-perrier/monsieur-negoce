@@ -3,10 +3,6 @@
 
 <div class="container my-5">
 
-    <!-- <div style="text-align:right;">
-        <a class="btn btn-danger" href="/projects/create" role="button">Nouveau projet</a>
-    </div> -->
-
     <h3 class="title">Mes négociations</h3>
 
     <div class="box">
