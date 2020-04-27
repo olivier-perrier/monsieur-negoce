@@ -23,23 +23,17 @@ Route::get('/', function () {
 
 // Articles
 Route::get('/articles', 'ArticleController@index')->name('articles.index');
-
 Route::get('/articles/create', 'ArticleController@create');
 Route::post('/articles', 'ArticleController@store');
-
 Route::get('/articles/{article}', 'ArticleController@show')->name('articles.show');
-
 Route::get('/articles/{article}/edit', 'ArticleController@edit');
 Route::put('/articles/{article}', 'ArticleController@update');
-
 Route::delete('/articles/{article}', 'ArticleController@destroy');
 
 // Projects
 Route::get('/projects', 'ProjectController@index')->name('projects.index');
-
 Route::get('/projects/create', 'ProjectController@create');
 Route::post('/projects', 'ProjectController@store');
-
 Route::get('/projects/{project}', 'ProjectController@show')->name('projects.show');
 
 
@@ -62,14 +56,14 @@ Route::get('/admin/users', function () {
         'negotiators' => User::where('role', 'negotiator')->get(),
         'clients' => User::where('role', 'client')->get()
     ]);
-})->name('admin.users.index');
+})->name('admin.users.index')->middleware(('auth'));
 
 Route::get('/admin/projects', function () {
     return view('admin.projects.index', [
         'projects' => Project::all(),
         'negotiators' => User::where('role', 'negotiator')->get(),
     ]);
-})->name('admin.projects.index');
+})->name('admin.projects.index')->middleware(('auth'));
 
 Route::post('/admin/users/{user}/validate', function (User $user) {
     $user->validated = true;

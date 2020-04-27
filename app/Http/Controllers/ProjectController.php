@@ -9,9 +9,21 @@ use App\Address;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class ProjectController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,6 +39,7 @@ class ProjectController extends Controller
             'projects' => $projects,
             'states' => State::all()
         ]);
+
     }
 
     /**
@@ -54,6 +67,8 @@ class ProjectController extends Controller
             'category' => 'required',
             'description' => 'required',
         ]);
+
+        // $request->input('key', 'default')
 
         $validatedAttributes = request()->validate([
             'address_company_name' => ['required'],

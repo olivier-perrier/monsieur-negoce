@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Auth;
 class NegotiationController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,7 +35,7 @@ class NegotiationController extends Controller
         return view('negotiations.index', compact('negotiations', 'states'));
     }
 
-     /**
+    /**
      * Display the specified resource.
      *
      * @param  \App\Project  $project

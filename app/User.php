@@ -16,6 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'role',
         'firstname',
         'lastname',
         'nationality',
@@ -26,6 +27,7 @@ class User extends Authenticatable
         'email' ,
         'phone',
         'password',
+        'siren',
     ];
 
     /**
@@ -73,6 +75,16 @@ class User extends Authenticatable
     public function isNegotiator()
     {
         return $this->role === "negotiator";
+    }
+
+    public function isClient()
+    {
+        return $this->role === "client";
+    }
+
+    public function isAdministrator()
+    {
+        return $this->role === "administrator"; 
     }
 
     // protected string $ROLE_CLIENT = "client";

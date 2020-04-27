@@ -85,26 +85,39 @@
         <div class="content">
             <div class="title m-b-md">
                 @auth
-                Bonjour {{ Auth::user()-> name }}
+                Bonjour {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
                 @else
                 Monsieur Négoce
                 @endauth
             </div>
-
-            {{-- @auth --}}
-
+            
             <div class="links">
-                <a href="/users/1/edit">Pofil client</a>
-                <a href="/users/1/edit">Profil négociateur</a>
-                <a href="/projects">Projets</a>
+            
+                @auth
+
+                @can('client')
+                <a href="/users/{{ Auth::id() }}/edit">Pofil client</a>
+                <a href="/projects">Mes projets</a>
+                @endcan
+
+                @can('negotiator')
+                <a href="/users/{{ Auth::id() }}/edit">Pofil négociateur</a>
                 <a href="/negotiations">Négociations</a>
+                @endcan
+
+                @can('admin')
+                <a href="/admin/projects">Tous les projets</a>
+                <a href="/admin/users">Tous les utilisateurs</a>
+                @endcan
+
+                @endauth
+                
                 <a href="/about">FAQ</a>
                 <a href="/about">A propos</a>
                 <a href="/articles">Articles</a>
+
             </div>
-
-            {{-- @endauth --}}
-
+                
         </div>
     </div>
 </body>
