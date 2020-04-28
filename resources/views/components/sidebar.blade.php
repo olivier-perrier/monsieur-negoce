@@ -3,39 +3,47 @@
         <li><a href="/" class="{{Request::is('/') ? 'is-active' :'' }}">Accueil</a></li>
     </ul>
     @auth
-    @if(Auth::user()->isClient())
+
+    @can('client')
     <p class="menu-label">Client</p>
     <ul class="menu-list">
-        <li><a href="/users/{{Auth::id()}}/edit">Mon profil</a></li>
-        <li><a href="/projects">Mes projets</a></li>
+        <li><a href="{{ route('users.edit', Auth::id()) }}">Mon profil</a></li>
+        <li><a href="{{ route('projects.index') }}">Mes projets</a></li>
     </ul>
-    @endif
-    @if(Auth::user()->isNegotiator())
+    @endcan
+
+    @can('negotiator')
     <p class="menu-label">Négociateur</p>
     <ul class="menu-list">
-        <li><a href="/users/{{Auth::id()}}/edit">Mon profil</a></li>
-        <li><a href="/negotiations">Mes négociations</a></li>
+        <li><a href="{{ route('users.edit', Auth::id()) }}">Mon profil</a></li>
+        <li><a href="{{ route('negotiations.index') }}">Mes négociations</a></li>
     </ul>
-    @endif
-    @if(Auth::user()->isAdministrator())
+    @endcan
+
+    @can('admin')
     <p class="menu-label">Administrateur</p>
     <ul class="menu-list">
-        <li><a href="/admin/users" class="{{Request::is('/admin/users') ? 'is-active' :'' }}">Tous les utilisateurs</a></li>
-        <li><a href="/admin/projects" class="{{Request::is('/admin/projects') ? 'is-active' :'' }}">Tous les projets</a></li>
+        <li><a href="{{ route('admin.projects.index') }}"
+                class="{{ Request::is('/admin/users') ? 'is-active' :'' }}">Tous les projets</a></li>
+        <li><a href="{{ route('admin.users.index') }}"
+                class="{{ Request::is('/admin/projects') ? 'is-active' :'' }}">Tous les utilisateurs</a></li>
     </ul>
-    @endif
+    @endcan
+
     @endauth
+
     <p class="menu-label">
         Aide
     </p>
     <ul class="menu-list">
-        <li><a href="/faq">FAQ</a></li>
-        <li><a href="/about">A propos</a></li>
+        <li><a href="{{ route('faq.index') }}">FAQ</a></li>
+        <li><a href="{{ route('about.index') }}">A propos</a></li>
+
     </ul>
     <p class="menu-label">
         Autres
     </p>
     <ul class="menu-list">
-        <li><a href="/articles">Articles</a></li>
+        <li><a href="{{ route('articles.index') }}">Articles</a></li>
     </ul>
 </aside>

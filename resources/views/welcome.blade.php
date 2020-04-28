@@ -106,25 +106,25 @@
                 @auth
 
                 @can('client')
-                <a href="/users/{{ Auth::id() }}/edit">Pofil client</a>
-                <a href="/projects">Mes projets</a>
+                <a href="{{ route('users.edit', Auth::id()) }}"">Pofil client</a>
+                <a href="{{ route('projects.index') }}">Mes projets</a>
                 @endcan
 
                 @can('negotiator')
-                <a href="/users/{{ Auth::id() }}/edit">Pofil négociateur</a>
-                <a href="/negotiations">Négociations</a>
+                <a href="{{ route('users.edit', Auth::id()) }}">Pofil négociateur</a>
+                <a href="{{ route('negotiations.index') }}">Négociations</a>
                 @endcan
 
                 @can('admin')
-                <a href="/admin/projects">Tous les projets</a>
-                <a href="/admin/users">Tous les utilisateurs</a>
+                <a href="{{ route('admin.projects.index') }}">Tous les projets</a>
+                <a href="{{ route('admin.users.index') }}">Tous les utilisateurs</a>
                 @endcan
 
                 @endauth
 
-                <a href="/about">FAQ</a>
-                <a href="/about">A propos</a>
-                <a href="/articles">Articles</a>
+                <a href="{{ route('faq.index') }}">FAQ</a>
+                <a href="{{ route('about.index') }}">A propos</a>
+                <a href="{{ route('articles.index') }}">Articles</a>
 
             </div>
 

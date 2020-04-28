@@ -28,7 +28,7 @@
 
                     <!-- Négociateur associé -->
                     <td>
-                        <form method="POST" action="/admin/projects/{{ $project->id }}/associate" class="form-inline">
+                        <form method="POST" action=" {{ route('admin.projects.associate', $project->id) }}" class="form-inline">
                             @csrf
                             @method('PUT')
                             <select class="custom-select" name="negotiator">
@@ -48,13 +48,13 @@
                     </td>
                     <!-- Suppression -->
                     <td>
-                        <form method="POST" action="/admin/projects/{{ $project->id }}">
+                        <form method="POST" action="{{ route('admin.projects.delete', $project->id) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-link">Supprimer</button>
                         </form>
                     </td>
-                    <td><a href="/projects/{{ $project->id }}" class="btn btn-link">></a></td>
+                    <td><a href="{{ route('projects.show', $project->id) }}" class="btn btn-link">></a></td>
                 </tr>
 
                 @endforeach

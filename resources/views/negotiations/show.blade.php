@@ -82,9 +82,9 @@
                         <!-- FIN SUIVI DE LA NEGOCIATION -->
 
                         <!-- Ajoute d'une note pour les négociateurs -->
-                        @if( App\User::find(2)->isNegotiator() )
+                        @can('negotiator')
 
-                        <form method="POST" action="/notes?negotiation={{ $negotiation->id }}" class="form-inline">
+                        <form method="POST" action="{{ route('notes.store', ['negotiation' => $negotiation->id ]) }}" class="form-inline">
                             @csrf
 
                             <div class="form-group mx-2 mb-2">
@@ -98,7 +98,7 @@
                                 du client.</small>
                         </form>
 
-                        @endif
+                        @endcan
                         <!-- FIN AJOUT NOTE NEGOCIATEUR -->
 
                     </div>
@@ -123,9 +123,6 @@
 
             <!-- ROW -->
         </div>
-
-
-        <!-- <a href="/negotiations/{{$negotiation->id}}/edit" class="button">Edit</a> -->
 
     </section>
 </div>

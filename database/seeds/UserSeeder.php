@@ -11,10 +11,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class)->create(['role' => 'client']);
-        factory(App\User::class)->create(['role' => 'negotiator']);
+        factory(App\User::class)->create(['role' => 'client', 'email' => 'client@gmail.com']);
+        factory(App\User::class)->create(['role' => 'negotiator', 'email' => 'nego@gmail.com']);
+        // factory(App\User::class)->create(['role' => 'administator', 'email' => 'admin@gmail.com']);
 
-        factory(App\User::class, 100)->create();
+        factory(App\User::class, 10)->create();
 
     }
 }

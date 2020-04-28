@@ -5,7 +5,7 @@
     <h3 class="title">Nouveau projet</h3>
 
 
-    <form method="POST" action="/projects">
+    <form method="POST" action="{{ route('projects.store') }}">
         @csrf
 
         <div class="row">

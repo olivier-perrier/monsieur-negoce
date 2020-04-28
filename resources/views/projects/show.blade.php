@@ -89,9 +89,6 @@
             <!-- ROW -->
         </div>
 
-
-        <!-- <a href="/projects/{{$project->id}}/edit" class="button">Edit</a> -->
-
     </section>
 </div>
 

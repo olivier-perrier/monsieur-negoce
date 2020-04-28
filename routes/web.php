@@ -32,8 +32,8 @@ Route::delete('/articles/{article}', 'ArticleController@destroy');
 
 // Projects
 Route::get('/projects', 'ProjectController@index')->name('projects.index');
-Route::get('/projects/create', 'ProjectController@create');
-Route::post('/projects', 'ProjectController@store');
+Route::get('/projects/create', 'ProjectController@create')->name('projects.create');
+Route::post('/projects', 'ProjectController@store')->name('projects.store');
 Route::get('/projects/{project}', 'ProjectController@show')->name('projects.show');
 
 
@@ -42,24 +42,24 @@ Route::get('/negotiations', 'NegotiationController@index')->name('negotiations.i
 Route::get('/negotiations/{negotiation}', 'NegotiationController@show')->name('negotiations.show');
 
 // Notes
-Route::post('/notes', 'NoteController@store');
+Route::post('/notes', 'NoteController@store')->name('notes.store');
 
 
 // Users
 Route::get('/users/{user}', 'UserController@show')->name('users.show');
 Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
-Route::put('/users/{user}', 'UserController@update');
+Route::put('/users/{user}', 'UserController@update')->name('users.update');
 
 // Administation
 Route::get('/admin/users', 'Admin\UserController@index')->name('admin.users.index');
 Route::get('/admin/projects', 'Admin\ProjectController@index')->name('admin.projects.index');
 
-Route::post('/admin/users/{user}/validate', 'Admin\UserController@validateUser');
-Route::put('/admin/projects/{project}/associate', 'Admin\ProjectController@associateUser');
+Route::post('/admin/users/{user}/validate', 'Admin\UserController@validateUser')->name('admin.users.validate');
+Route::put('/admin/projects/{project}/associate', 'Admin\ProjectController@associateUser')->name('admin.projects.associate');
 
 
-Route::delete('/admin/users/{user}', 'Admin\UserController@destroy');
-Route::delete('/admin/projects/{project}', 'Admin\ProjectController@destroy');
+Route::delete('/admin/users/{user}', 'Admin\UserController@destroy')->name('admin.users.delete');
+Route::delete('/admin/projects/{project}', 'Admin\ProjectController@destroy')->name('admin.projects.delete');
 
 // File
 Route::post('/file/upload', 'FileController@upload');
@@ -67,11 +67,11 @@ Route::post('/file/upload', 'FileController@upload');
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about.index');
 
 Route::get('/faq', function () {
     return view('faq');
-});
+})->name('faq.index');
 
 
 

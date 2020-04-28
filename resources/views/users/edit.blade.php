@@ -4,7 +4,8 @@
 <div class="container my-5">
     <h3 class="title">Modifier mon profil</h3>
 
-    <form method="POST" action="/users/{{$user->id}}" class="box col-md-10 mx-auto">
+    <form method="POST" action="{{ route('users.update', $user->id) }}" class="box col-md-10 mx-auto">
+        {{-- <form method="POST" action="/users/{{$user->id}}" class="box col-md-10 mx-auto"> --}}
         @csrf
         @method('PUT')
 
@@ -39,6 +40,7 @@
             <input type="text" class="form-control" name="address" value="{{$user->address}}">
         </div>
 
+        {{-- TODO implémenter de maniere correct où aller chercher l'adresse $user->adress->... --}}
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="address_postcode">Code postal</label>

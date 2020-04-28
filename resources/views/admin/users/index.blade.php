@@ -28,11 +28,11 @@
                         <tr>
                             <th scope="row">N° {{$negotiator->id}}</th>
                             <td>{{ $negotiator->firstname }} {{ $negotiator->lastname }}</td>
-                            <td><a href="/users/{{ $negotiator->id }}" class="btn btn-link p-0">Voir</a></td>
+                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0">Voir</a></td>
                             <!-- Validation -->
                             <td>
                                 @if(!$negotiator->validated)
-                                <form method="POST" action="/admin/users/{{ $negotiator->id }}/validate">
+                                <form method="POST" action="{{ route('admin.users.validate', $negotiator->id) }}">
                                     @csrf
                                     <button type="submit" class="btn btn-link">Valider</button>
                                 </form>
@@ -42,7 +42,7 @@
                             </td>
                             <!-- Suppression -->
                             <td>
-                                <form method="POST" action="/admin/users/{{ $negotiator->id }}">
+                                <form method="POST" action="{{ route('admin.users.delete', $negotiator->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-link">Supprimer</button>
@@ -83,10 +83,10 @@
                         <tr>
                             <th scope="row">N° {{$client->id}}</th>
                             <td>{{ $client->firstname }} {{ $client->lastname }}</td>
-                            <td><a href="/users/{{ $client->id }}" class="btn btn-link p-0">Voir</a></td>
+                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0">Voir</a></td>
                             <!-- Suppression -->
                             <td>
-                                <form method="POST" action="/admin/users/{{ $client->id }}">
+                                <form method="POST" action="{{ route('admin.users.delete', $client->id) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-link">Supprimer</button>

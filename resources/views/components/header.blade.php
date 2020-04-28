@@ -33,7 +33,7 @@
                 @else
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a href="/login" class="button is-light">
+                        <a href="{{ route('login') }}" class="button is-light">
                             Log in
                         </a>
                     </div>

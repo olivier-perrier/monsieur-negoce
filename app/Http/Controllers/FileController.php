@@ -17,15 +17,15 @@ class FileController extends Controller
     {
 
         $path = Storage::putFile('devis', $request->file('file'));
-// TODO créer la ligne dans la base de donné pour stocker le path du fichier. Faut il prévoir d'upload plusieurs fichiers ?
-
+        // TODO faire les routes dynamiques pour la livraison en intégration
+        // TODO créer la ligne dans la base de donné pour stocker le path du fichier. Faut il prévoir d'upload plusieurs fichiers ?
         // $path = $request->file('file')->store('devis');
         dd($path);
 
         // $fileName = $uploadedFile->getClientOriginalName();
 
         // Storage::put($fileName, $uploadedFile);
-        
+
         // Storage::disk('local')->putFileAs(
         //     'files/'.$filename,
         //     $uploadedFile,

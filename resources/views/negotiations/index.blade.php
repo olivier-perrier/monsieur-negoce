@@ -28,7 +28,7 @@
                         <td>{{$negotiation->category->title}}</td>
                         <td>{{$negotiation->amout_negociated }}</td>
                         <td><span class="tag {{ $negotiation->state->level }} is-rounded">{{ $negotiation->state->title }}</span></td>
-                        <td><a href="/negotiations/{{$negotiation->id}}" class="btn btn-link">></a></td>
+                        <td><a href="{{ route('negotiations.show', $negotiation->id) }}" class="btn btn-link">></a></td>
                     </tr>
                     @endforeach
 

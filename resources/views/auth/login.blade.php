@@ -73,13 +73,6 @@
                     </form>
                 </div>
             </div>
-{{-- 
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="title">Vous êtes Négociateur ?</h3>
-                    <a href="/login-negotiator" class="btn btn-outline-danger">Accéder à mon espace</a>
-                </div>
-            </div> --}}
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -57,18 +58,23 @@ class UserController extends Controller
             'lastname' => 'required',
             'nationality' => '',
             'birthday' => '',
-            'address' => '',
-            'address_postcode' => '',
-            'address_city' => '',
             'email' => 'required',
             'phone' => '',
         ]);
 
+        $address = new Address([
+            'street' => request('address'),
+            'postcode' => request('address_postcode'),
+            'city' => request('address_city'),
+        ]);
+
+        $address->save();
+
         $user->update($validatedUser);
 
-        // return redirect('/users/' . $user->id . '/edit');
-        // return redirect(route('article.show', $article));
-        return redirect(route('users.edit', $user));
-        // return redirect($user->path());
+        $user->address_id = $address->id;
+        $user->save();
+
+        return redirect(route('users.show', $user));
     }
 }

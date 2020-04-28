@@ -4,7 +4,7 @@
 <div class="container my-5">
 
     <div style="text-align:right;">
-        <a class="btn btn-danger" href="/projects/create" role="button">Nouveau projet</a>
+        <a class="btn btn-danger" href="{{ route('projects.create') }}" role="button">Nouveau projet</a>
     </div>
 
     <h3 class="title">Mes projets</h3>
@@ -36,7 +36,7 @@
                         <td> - </td>
                         @endif
                         <td><span class="tag {{ $project->state->level }} is-rounded">{{ $project->state->title }}</span></td>
-                        <td><a href="/projects/{{$project->id}}" class="btn btn-link">></a></td>
+                        <td><a href="{{ route('projects.show', $project->id) }}" class="btn btn-link">></a></td>
                     </tr>
                     @endforeach
 
