@@ -123,7 +123,8 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $states = State::All();
-        return view('projects.show', compact('project', 'states'));
+        $files = $project->files()->get();
+        return view('projects.show', compact('project', 'states', 'files'));
     }
 
     /**

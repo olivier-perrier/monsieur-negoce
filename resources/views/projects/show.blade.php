@@ -36,10 +36,10 @@
             <div class="col-8">
 
                 <div class="card">
+
+                    <x-fileDepot :project="$project" :files="$files"/>
+
                     <div class="card-body">
-                        <h5 class="card-title border-bottom">Documents disponible(s)
-                            <a href="#" class="button ml-5 mb-1">Ajouter un document</a>
-                        </h5>
 
                         <!-- Suivi de la négociation -->
                         <h5 class="is-6">Suivi de la négociation</h5>

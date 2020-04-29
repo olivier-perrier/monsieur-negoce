@@ -44,23 +44,14 @@
             <div class="col-8">
 
                 <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title border-bottom">Documents disponible(s) ({{ $files->count() }})</h5>
-                        @foreach($files as $file)
-                        <p><a href="{{ route('file.download', $file->id) }}">{{ $file->original_name }} </a></p>
-                        @endforeach
+                    <x-fileDepot :project="$negotiation" :files="$files"/>
 
-                        <a href="#" class="button ml-5 mb-1">Ajouter un document</a>
-                        <form action="{{ route('file.upload', ['project_id' => $negotiation->id]) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            Select image to upload:
-                            <input type="file" name="file" id="fileToUpload">
-                            <input type="submit" value="Upload File" name="submit">
-                        </form>
+                    <!-- Suivi de la négociation -->
+                    <div class="card-content">
 
-                        <!-- Suivi de la négociation -->
-                        <h5 class="is-6">Suivi de la négociation</h5>
+                        <h5 class="title is-5 text-center">Suivi de la négociation</h5>
 
+                        @if($negotiation->notes->count())
                         <table class="table table-sm table-borderless table-hover">
                             <thead>
                                 <tr>
@@ -81,29 +72,33 @@
 
                             </tbody>
                         </table>
-                        <!-- FIN SUIVI DE LA NEGOCIATION -->
+                        @else
+                            <span>Aucune note n'a été ajouté</span>
+                        @endif
 
                         <!-- Ajoute d'une note pour les négociateurs -->
                         @can('negotiator')
 
-                        <form method="POST" action="{{ route('notes.store', ['negotiation' => $negotiation->id ]) }}" class="form-inline">
-                            @csrf
+                            <form method="POST" action="{{ route('notes.store', ['negotiation' => $negotiation->id ]) }}" class="form-inline">
+                                @csrf
 
-                            <div class="form-group mx-2 mb-2">
-                                <input type="text" class="form-control" name="content">
-                                @error('content')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-info mb-2">Ajouter une note</button>
-                            <small class="form-text text-muted ml-1">Ajoutez une note de l'avancement de la négociation
-                                du client.</small>
-                        </form>
-
+                                <div class="form-group mx-2 mb-2">
+                                    <input type="text" class="form-control" name="content">
+                                    @error('content')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <button type="submit" class="btn btn-info mb-2">Ajouter une note</button>
+                                <small class="form-text text-muted ml-1">Ajoutez une note de l'avancement de la négociation
+                                    du client.</small>
+                            </form>
                         @endcan
-                        <!-- FIN AJOUT NOTE NEGOCIATEUR -->
+                        <!-- FIN AJOUT NOTE -->
 
                     </div>
+                    <!-- FIN SUIVI DE LA NEGOCIATION -->
+
+
                 </div>
 
                 <!-- Etapes d'avancement de la négociation -->
