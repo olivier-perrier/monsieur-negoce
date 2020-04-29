@@ -16,35 +16,35 @@ class StateSeeder extends Seeder
             'step' => 1,
             'title' => "En cours de traitement",
             'description' => "Dossier en cours de traitement, nous prenons connaissance de votre demande, un négociateur vous sera attribué prochainement.",
-            'level' => "is-info"
+            'level' => "info"
         ]);
 
         State::create([
             'step' => 2,
             'title' => "En cours de négociation",
             'description' => "Dossier pris en charge par un de nos négociateurs.",
-            'level' => "is-warning"
+            'level' => "warning"
         ]);
 
         State::create([
             'step' => 3,
             'title' => "Négociation réussie",
             'description' => "La négociation a été concluante, votre règlement est requis pour finaliser ce projet",
-            'level' => "is-primary"
+            'level' => "primary"
         ]);
 
         State::create([
             'step' => 4,
             'title' => "Négociation terminée",
             'description' => "Dossier terminé avec succès.",
-            'level' => "is-success"
+            'level' => "success"
         ]);
 
         State::create([
             'step' => 5,
             'title' => "Négociation échouée",
             'description' => "La négociation a échoué, aucune action de votre part n'est requise.",
-            'level' => "is-danger"
+            'level' => "danger"
         ]);
     }
 }

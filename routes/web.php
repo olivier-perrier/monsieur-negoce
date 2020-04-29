@@ -54,6 +54,8 @@ Route::put('/users/{user}', 'UserController@update')->name('users.update');
 Route::get('/admin/users', 'Admin\UserController@index')->name('admin.users.index');
 Route::get('/admin/projects', 'Admin\ProjectController@index')->name('admin.projects.index');
 
+Route::put('/admin/projects/{project}', 'Admin\ProjectController@update')->name('admin.projects.update');
+
 Route::post('/admin/users/{user}/validate', 'Admin\UserController@validateUser')->name('admin.users.validate');
 Route::put('/admin/projects/{project}/associate', 'Admin\ProjectController@associateUser')->name('admin.projects.associate');
 

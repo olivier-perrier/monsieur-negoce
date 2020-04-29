@@ -82,7 +82,21 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        // dd($request);
+
+        // Todo validation
+
+        $project->update([
+            'state_id' => request('state'),
+            'amount_negotiated' => request('amount_negotiated'),
+            'fee_negotiator_pourcent' => request('fee_negotiator_pourcent'),
+        ]);
+
+        $project->save();
+
+        return back();
+
+
     }
 
     /**

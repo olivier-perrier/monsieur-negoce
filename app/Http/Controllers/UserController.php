@@ -63,7 +63,7 @@ class UserController extends Controller
         ]);
 
         $address = new Address([
-            'street' => request('address'),
+            'street' => request('address_street'),
             'postcode' => request('address_postcode'),
             'city' => request('address_city'),
         ]);

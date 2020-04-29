@@ -35,7 +35,7 @@
                         @else
                         <td> - </td>
                         @endif
-                        <td><span class="tag {{ $project->state->level }} is-rounded">{{ $project->state->title }}</span></td>
+                        <td><span class="tag is-{{ $project->state->level }} is-rounded">{{ $project->state->title }}</span></td>
                         <td><a href="{{ route('projects.show', $project->id) }}" class="btn btn-link">></a></td>
                     </tr>
                     @endforeach
@@ -51,7 +51,7 @@
             <tbody>
                 @foreach($states as $state)
                 <tr>
-                    <th><span class="tag {{ $state->level }} is-rounded">{{ $state->title }}</span></th>
+                    <th><span class="tag is-{{ $state->level }} is-rounded">{{ $state->title }}</span></th>
                     <td>{{ $state->description }}</td>
                 </tr>
                 @endforeach

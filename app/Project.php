@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Project extends Model
 {
-    protected $fillable = ['name', 'description'];
+    protected $fillable = [
+        'name', 'description', 'state_id', 'amount_negotiated', 'fee_negotiator_pourcent'
+    ];
 
-     /**
+    /**
      * The model's default values for attributes.
      *
      * @var array
@@ -52,6 +54,4 @@ class Project extends Model
     {
         return $this->belongsTo(Address::class, 'address_contact_id');
     }
-
-   
 }

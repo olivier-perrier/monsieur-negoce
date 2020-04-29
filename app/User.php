@@ -77,6 +77,11 @@ class User extends Authenticatable
         return $this->hasMany(File::class);
     }
 
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+
     public function isNegotiator()
     {
         return $this->role === "negotiator";
@@ -92,7 +97,4 @@ class User extends Authenticatable
         return $this->role === "administrator"; 
     }
 
-    // protected string $ROLE_CLIENT = "client";
-    // protected string $ROLE_NEGOTIATOR = "negotiator";
-    // protected string $ROLE_ADMINISTRATOR = "administrator";
 }
