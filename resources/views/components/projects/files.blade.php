@@ -1,4 +1,4 @@
-<div class="card-content">
+<div>
     <h5 class="title is-5 text-center">Documents disponible(s) ({{ $files->count() }})</h5>
     @foreach($files as $file)
     <p><a href="{{ route('file.download', $file->id) }}">{{ $file->original_name }} </a></p>

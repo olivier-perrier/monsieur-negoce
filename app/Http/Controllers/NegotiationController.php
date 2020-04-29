@@ -44,8 +44,13 @@ class NegotiationController extends Controller
     public function show(Project $negotiation)
     {
         $states = State::All();
-        $files = File::where('project_id', $negotiation->id)->get();
-        // $files = $negotiation->files();
-        return view('negotiations.show', compact('negotiation', 'states', 'files'));
+        // $files = File::where('project_id', $negotiation->id)->get();
+        $files = $negotiation->files()->get();
+        // return view('negotiations.show', compact('negotiation', 'states', 'files'));
+        return view('projects.show', [
+            'project' => $negotiation,
+            'states' => $states,
+            'files' => $files
+        ]);
     }
 }

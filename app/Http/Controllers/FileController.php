@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\File;
+use App\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -16,9 +17,8 @@ class FileController extends Controller
 
     public function download(Request $request, File $file)
     {
-        // TODO securité : L'utilisateur est bien client ou negociateur du projet 
-        // ou administrateur
-        
+        $this->authorize('ownerOrAdmin', $file->user_id);
+
         return Storage::download($file->path, $file->original_name);
     }
 
@@ -26,12 +26,15 @@ class FileController extends Controller
     public function upload(Request $request)
     {
 
+        $project_id = $request->query('project_id');
+
+        // Project::find($project_id)->contains();
+        // dd(Auth::user()->projects.contains($project_id, 'client_id'));
 
         // TODO Sécurité : L'utilisateur doit etre négociateur et sur un de ses projets
         // Autoriser uniquement certain type de fichier
 
 
-        $project_id = $request->query('project_id');
 
 
         $path = Storage::putFile('devis', $request->file('file'));

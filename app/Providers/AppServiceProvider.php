@@ -15,10 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // app()->bind('App\Project', function (Project $project) {
-        //     return $project;
-        // });
-
+        //
     }
 
     /**
@@ -39,6 +36,10 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::define('negotiator', function ($user) {
             return $user->isNegotiator();
+        });
+
+        Gate::define('ownerOrAdmin', function ($user, $id) {
+            return $user->id === $id or $user->isAdministrator();
         });
     }
 }
