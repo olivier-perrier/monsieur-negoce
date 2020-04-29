@@ -33,6 +33,11 @@ class Project extends Model
         return $this->hasMany(Note::class);
     }
 
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
+
     public function state()
     {
         return $this->belongsTo(State::class);

@@ -62,7 +62,8 @@ Route::delete('/admin/users/{user}', 'Admin\UserController@destroy')->name('admi
 Route::delete('/admin/projects/{project}', 'Admin\ProjectController@destroy')->name('admin.projects.delete');
 
 // File
-Route::post('/file/upload', 'FileController@upload');
+Route::post('/file/upload', 'FileController@upload')->name('file.upload');
+Route::get('/file/download/{file}', 'FileController@download')->name('file.download');
 
 
 Route::get('/about', function () {

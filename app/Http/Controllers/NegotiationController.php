@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Project;
 use App\State;
 use App\User;
+use App\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,6 +44,8 @@ class NegotiationController extends Controller
     public function show(Project $negotiation)
     {
         $states = State::All();
-        return view('negotiations.show', compact('negotiation', 'states'));
+        $files = File::where('project_id', $negotiation->id)->get();
+        // $files = $negotiation->files();
+        return view('negotiations.show', compact('negotiation', 'states', 'files'));
     }
 }

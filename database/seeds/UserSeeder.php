@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
     {
         factory(App\User::class)->create(['role' => 'client', 'email' => 'client@gmail.com']);
         factory(App\User::class)->create(['role' => 'negotiator', 'email' => 'nego@gmail.com']);
-        // factory(App\User::class)->create(['role' => 'administator', 'email' => 'admin@gmail.com']);
+        factory(App\User::class)->create(['role' => 'administrator', 'email' => 'admin@gmail.com']);
 
         factory(App\User::class, 10)->create();
 

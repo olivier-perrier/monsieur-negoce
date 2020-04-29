@@ -72,6 +72,11 @@ class User extends Authenticatable
         return $this->hasMany(Project::class);
     }
 
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
+
     public function isNegotiator()
     {
         return $this->role === "negotiator";

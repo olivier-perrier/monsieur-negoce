@@ -45,11 +45,13 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title border-bottom">Documents disponible(s)
-                        </h5>
+                        <h5 class="card-title border-bottom">Documents disponible(s) ({{ $files->count() }})</h5>
+                        @foreach($files as $file)
+                        <p><a href="{{ route('file.download', $file->id) }}">{{ $file->original_name }} </a></p>
+                        @endforeach
 
                         <a href="#" class="button ml-5 mb-1">Ajouter un document</a>
-                        <form action="/file/upload" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('file.upload', ['project_id' => $negotiation->id]) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             Select image to upload:
                             <input type="file" name="file" id="fileToUpload">
