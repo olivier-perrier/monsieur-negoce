@@ -2,7 +2,7 @@
 
 
 <div class="container my-5">
-    <h3 class="title">Modifier mon profil</h3>
+    <h3 class="title col-md-10 mx-auto">Modifier mon profil</h3>
 
     <form method="POST" action="{{ route('users.update', $user->id) }}" class="box col-md-10 mx-auto">
         @csrf
@@ -62,6 +62,37 @@
                 <input type="phone" class="form-control" name="phone" value="{{$user->phone}}">
             </div>
         </div>
+
+        {{-- Pour les encaissements --}}
+        @can('negotiator')
+
+        <div class="mt-3">
+            <h3 class="title">Mes encaissements</h3>
+
+            <!-- IBAN -->
+            <div class="form-group">
+                <label for="bank_iban">N°IBAN</label>
+                <input type="text" class="form-control" name="bank_iban" value="{{$bank ? $bank->iban : '' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="bank_swift">Code SWIFT</label>
+                <input type="text" class="form-control" name="bank_swift" value="{{$bank ? $bank->swift : '' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="bank_name">Nom de votre banque</label>
+                <input type="text" class="form-control" name="bank_name" value="{{$bank ? $bank->name : '' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="bank_address">Adresse de la Banque</label>
+                <input type="text" class="form-control" name="bank_address" value="{{$bank ? $bank->address : '' }}">
+            </div>
+
+        </div>
+
+        @endcan
 
         <button type="submit" class="btn btn-danger">Sauvegarder mon profil</button>
 

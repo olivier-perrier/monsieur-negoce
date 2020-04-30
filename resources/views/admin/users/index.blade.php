@@ -28,16 +28,15 @@
                         <tr>
                             <th scope="row">N° {{$negotiator->id}}</th>
                             <td>{{ $negotiator->firstname }} {{ $negotiator->lastname }}</td>
-                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0">Voir</a></td>
                             <!-- Validation -->
-                            <td>
+                            <td class="text-center">
                                 @if(!$negotiator->validated)
                                 <form method="POST" action="{{ route('admin.users.validate', $negotiator->id) }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-link">Valider</button>
+                                    <button type="submit" class="btn btn-link p-0">Valider</button>
                                 </form>
                                 @else
-                                Validé !
+                                <i class="fas fa-user-check text-success"></i>
                                 @endif
                             </td>
                             <!-- Suppression -->
@@ -45,9 +44,10 @@
                                 <form method="POST" action="{{ route('admin.users.delete', $negotiator->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-link">Supprimer</button>
+                                    <button type="submit" class="btn btn-link p-0"><i class="far fa-trash-alt text-danger"></i></button>
                                 </form>
                             </td>
+                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0"><i class="fas fa-chevron-right"></i></a></td>
                         </tr>
 
                         @endforeach
@@ -83,15 +83,16 @@
                         <tr>
                             <th scope="row">N° {{$client->id}}</th>
                             <td>{{ $client->firstname }} {{ $client->lastname }}</td>
-                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0">Voir</a></td>
                             <!-- Suppression -->
                             <td>
                                 <form method="POST" action="{{ route('admin.users.delete', $client->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-link">Supprimer</button>
+                                    <button type="submit" class="btn btn-link p-0"><i class="far fa-trash-alt text-danger"></i></button>
                                 </form>
                             </td>
+                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0"><i class="fas fa-chevron-right"></i></a></td>
+
                         </tr>
 
                         @endforeach

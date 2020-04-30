@@ -23,7 +23,7 @@
         </tbody>
     </table>
     @else
-    <span class="m-1">Suivez ici les commentaires ajouté par le négociateur</span>
+    <span class="m-1">Suivez ici les commentaires du projet</span>
     @endif
 
     <!-- Ajoute d'une note pour les négociateurs -->

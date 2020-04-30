@@ -23,7 +23,7 @@
 
                 <tr>
                     <th scope="row">N°{{ $project->id }}</th>
-                    <td>{{ $project->name }}</td>
+                    <td><a href="{{ route('projects.show', $project->id) }}" class="">{{ $project->name }}</a></td>
                     <td>{{ $project->category->title }}</td>
 
                     <!-- Négociateur associé -->
@@ -51,10 +51,10 @@
                         <form method="POST" action="{{ route('admin.projects.delete', $project->id) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-link">Supprimer</button>
+                            <button type="submit" class="btn btn-link"><i class="far fa-trash-alt text-danger"></i></button>
                         </form>
                     </td>
-                    <td><a href="{{ route('projects.show', $project->id) }}" class="btn btn-link">></a></td>
+                    <td><a href="{{ route('projects.show', $project->id) }}" class="btn btn-link"><i class="fas fa-chevron-right"></i></a></td>
                 </tr>
 
                 @endforeach

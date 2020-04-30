@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\Bank;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -39,7 +41,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        return view('users.edit', [
+            'user' => $user,
+            'bank' => $user->bank,
+        ]);
     }
 
     /**
@@ -67,8 +72,25 @@ class UserController extends Controller
             'postcode' => request('address_postcode'),
             'city' => request('address_city'),
         ]);
-
         $address->save();
+
+        $bank_request = [
+            'name' => request('bank_name'),
+            'address' => request('bank_address'),
+            'iban' => request('bank_iban'),
+            'swift' => request('bank_iban'),
+            'user_id' => $user->id,
+        ];
+
+        if ($user->bank)
+            $user->bank->update($bank_request);
+        else{
+            $bank = new Bank($bank_request);
+            $bank->save();
+        }
+
+        // Bank::firstOrCreate(['user_id' => $user->id], $bank_request);
+
 
         $user->update($validatedUser);
 

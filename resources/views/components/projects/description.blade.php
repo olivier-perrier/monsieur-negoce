@@ -8,6 +8,7 @@
             <p>{{ $project->client->address->street }} </p>
             <p>{{ $project->client->address_postcode }} {{ $project->client->address_city }}</p>
             <p>{{ $project->client->phone }}</p>
+            <p>{{ $project->client->email }}</p>
         </div>
         @endcan
 

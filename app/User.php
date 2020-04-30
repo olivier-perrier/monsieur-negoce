@@ -82,6 +82,11 @@ class User extends Authenticatable
         return $this->belongsTo(Address::class);
     }
 
+    public function bank()
+    {
+        return $this->hasOne(Bank::class);
+    }
+
     public function isNegotiator()
     {
         return $this->role === "negotiator";

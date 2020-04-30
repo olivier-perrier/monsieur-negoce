@@ -23,10 +23,10 @@
 
                     @foreach($negotiations as $negotiation)
                     <tr>
-                        <th>{{$negotiation->created_at}}</th>
+                        <td>{{$negotiation->created_at}}</td>
                         <td>{{$negotiation->client->firstname}} {{$negotiation->client->lastname}}</td>
                         <td>{{$negotiation->category->title}}</td>
-                        <td>{{$negotiation->amout_negociated }}</td>
+                        <td>{{$negotiation->amount_negotiated ? $negotiation->amount_negotiated . ' €' : '-'}}</td>
                         <td><span class="tag is-{{ $negotiation->state->level }} is-rounded">{{ $negotiation->state->title }}</span></td>
                         <td><a href="{{ route('negotiations.show', $negotiation->id) }}" class="btn btn-link">></a></td>
                     </tr>
