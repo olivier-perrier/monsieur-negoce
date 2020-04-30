@@ -34,7 +34,7 @@ class FileController extends Controller
         // TODO Sécurité : L'utilisateur doit etre négociateur et sur un de ses projets
         // Autoriser uniquement certain type de fichier
 
-
+        // TODO vérifier s'il y a vraiment un fichier
 
 
         $path = Storage::putFile('devis', $request->file('file'));

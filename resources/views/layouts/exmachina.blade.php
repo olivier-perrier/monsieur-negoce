@@ -1,16 +1,13 @@
-<!DOCTYPE HTML>
-
-<html>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-
 	<title>Monsieur Négoce</title>
-
-	<link rel="icon" href="/favicon2.png" type="image/png" sizes="16x16">
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="icon" href="{{ asset('favicon.png') }}" type="image/png" sizes="16x16">
 
 	<!-- jQuery and Popper.js -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

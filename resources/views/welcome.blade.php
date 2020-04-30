@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Monsieur Négoce</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -83,10 +83,10 @@
             </form>
 
             @else
-            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('login') }}">Se connecter</a>
 
             @if (Route::has('register'))
-            <a href="{{ route('register') }}">Register</a>
+            <a href="{{ route('register') }}">S'inscrire</a>
             @endif
             @endauth
         </div>
