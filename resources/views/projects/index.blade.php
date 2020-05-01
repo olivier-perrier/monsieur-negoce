@@ -7,7 +7,7 @@
         <a class="btn btn-danger" href="{{ route('projects.create') }}" role="button">Nouveau projet</a>
     </div>
 
-    <h3 class="title">Mes projets</h3>
+    <h3 class="">Mes projets</h3>
 
     <div class="box">
         <div class="table-responsive">

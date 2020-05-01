@@ -38,8 +38,11 @@ Route::get('/projects/{project}', 'ProjectController@show')->name('projects.show
 
 
 // Négociations
+Route::get('/negotiations/cashings', 'Negotiation\CashingController@index')->name('negotiations.cashings.index');
+
 Route::get('/negotiations', 'NegotiationController@index')->name('negotiations.index');
 Route::get('/negotiations/{negotiation}', 'NegotiationController@show')->name('negotiations.show');
+
 
 // Notes
 Route::post('/notes', 'NoteController@store')->name('notes.store');

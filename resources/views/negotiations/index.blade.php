@@ -3,7 +3,7 @@
 
 <div class="container my-5">
 
-    <h3 class="title">Mes négociations</h3>
+    <h3 class="">Mes négociations</h3>
 
     <div class="box">
         <div class="table-responsive">

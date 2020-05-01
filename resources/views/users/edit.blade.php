@@ -1,8 +1,10 @@
 @component('layouts.exmachina')
+{{-- @extends('layouts.main') --}}
 
+@section('content')
 
 <div class="container my-5">
-    <h3 class="title col-md-10 mx-auto">Modifier mon profil</h3>
+    <h3 class="col-md-10 mx-auto">Modifier mon profil</h3>
 
     <form method="POST" action="{{ route('users.update', $user->id) }}" class="box col-md-10 mx-auto">
         @csrf
@@ -66,7 +68,7 @@
         @can('negotiator')
 
         <div class="mt-3">
-            <h3 class="title">Mes encaissements</h3>
+            <h3 class="">Mes encaissements</h3>
 
             <!-- IBAN -->
             <div class="form-group">
@@ -98,6 +100,8 @@
     </form>
 
 </div>
+
+{{-- @endsection --}}
 
 
 @endcomponent

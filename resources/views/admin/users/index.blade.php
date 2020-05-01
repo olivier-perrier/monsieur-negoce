@@ -7,7 +7,7 @@
         <!-- Négociateurs -->
         <div class="col-md-6">
 
-            <h3 class="title">Négociateurs</h3>
+            <h3 class="">Négociateurs</h3>
 
             <div class="table-responsive">
                 <table class="table table-hover">
@@ -63,7 +63,7 @@
         <!-- Clients -->
         <div class="col-md-6">
 
-            <h3 class="title">Clients</h3>
+            <h3 class="">Clients</h3>
 
             <div class="table-responsive">
                 <table class="table table-hover">

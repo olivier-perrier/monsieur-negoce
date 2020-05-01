@@ -24,7 +24,7 @@ class NegotiationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index()
     {
         $this->authorize('viewAnyNegotiation', Project::class);
 

@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <h3 class="title">Projets</h3>
+    <h3 class="">Projets</h3>
 
     <div class="table-responsive">
         <table class="table table-hover">

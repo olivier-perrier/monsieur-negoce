@@ -1,3 +1,4 @@
+{{-- @component('layouts.exmachina') --}}
 @extends('layouts.layout')
 
 @section('content')
@@ -27,6 +28,15 @@
     @endif
 
     <div class="content">
+        
+        @auth
+        @if(Auth::user()->isNegotiator() & !Auth::user()->validated)
+        <div class="alert alert-info" role="alert" style="color:red;">
+            <p>Votre compte est en cours de vérification. Des projets vous seront attribués une fois votre compte validé.</p>
+        </div>
+        @endif
+        @endauth
+
         <div class="title m-b-md">
             @auth
             Bonjour {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
@@ -64,5 +74,7 @@
 
     </div>
 </div>
+
+{{-- @endcomponent --}}
 
 @endsection

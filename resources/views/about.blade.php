@@ -3,7 +3,7 @@
 
 <div class="container my-5">
 
-    <h1 class="title">Moniseur négoce en détail</h1>
+    <h1 class="">Moniseur négoce en détail</h1>
 
     <div class="box">
         <p>Sed etiam vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum pellentesque, justo
