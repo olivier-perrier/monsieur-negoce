@@ -43,7 +43,8 @@ class UserController extends Controller
     {
         return view('users.edit', [
             'user' => $user,
-            'bank' => $user->bank,
+            'bank' => $user->bank ?: new Bank(),
+            'address' => $user->address ?: new Address()
         ]);
     }
 
@@ -57,7 +58,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
 
-        // dd($request);
+        // User
         $validatedUser = $request->validate([
             'firstname' => ['required'],
             'lastname' => 'required',
@@ -67,13 +68,24 @@ class UserController extends Controller
             'phone' => '',
         ]);
 
-        $address = new Address([
+        $user->update($validatedUser);
+
+
+        // Address
+        $addressFields = [
             'street' => request('address_street'),
             'postcode' => request('address_postcode'),
             'city' => request('address_city'),
-        ]);
-        $address->save();
+        ];
 
+        if ($user->address)
+            $user->address->update($addressFields);
+        else {
+            $address = Address::create($addressFields);
+            $user->address_id = $address->id;
+        }
+
+        // Bank
         $bank_request = [
             'name' => request('bank_name'),
             'address' => request('bank_address'),
@@ -84,7 +96,7 @@ class UserController extends Controller
 
         if ($user->bank)
             $user->bank->update($bank_request);
-        else{
+        else {
             $bank = new Bank($bank_request);
             $bank->save();
         }
@@ -92,9 +104,6 @@ class UserController extends Controller
         // Bank::firstOrCreate(['user_id' => $user->id], $bank_request);
 
 
-        $user->update($validatedUser);
-
-        $user->address_id = $address->id;
         $user->save();
 
         return redirect(route('users.show', $user));

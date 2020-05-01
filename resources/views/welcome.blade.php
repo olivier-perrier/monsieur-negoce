@@ -10,7 +10,7 @@
         {{-- Logout --}}
         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
+            {{ __('Se deconnecter') }}
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
@@ -40,12 +40,12 @@
             @auth
 
             @can('client')
-            <a href="{{ route('users.edit', Auth::id()) }}"">Pofil client</a>
+            <a href="{{ route('users.edit', Auth::id()) }}">Profil client</a>
                 <a href=" {{ route('projects.index') }}">Mes projets</a>
             @endcan
 
             @can('negotiator')
-            <a href="{{ route('users.edit', Auth::id()) }}">Pofil négociateur</a>
+            <a href="{{ route('users.edit', Auth::id()) }}">Profil négociateur</a>
             <a href="{{ route('negotiations.index') }}">Négociations</a>
             @endcan
 

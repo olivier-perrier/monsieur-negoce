@@ -24,7 +24,7 @@ class AddressesCreateTable extends Migration
             $table->string('email')->nullable();
             $table->timestamps();
 
-            // $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            // $table->foreign('owner_d')->references('id')->on('projects')->onDelete('cascade');
         });
 
     }

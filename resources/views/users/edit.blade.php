@@ -29,25 +29,24 @@
             <label for="nationality">Nationalité</label>
             <input type="text" class="form-control" name="nationality" value="{{$user->nationality}}">
             @error('nationality')
-            <div class="invalid-feedback">{{$errors->first('nationality')}}</div>
+            <div class="invalid-feedback">{{$message}}</div>
             @enderror
         </div>
 
         <!-- Address -->
         <div class="form-group">
             <label for="address_street">Adresse</label>
-            <input type="text" class="form-control" name="address_street" value="{{$user->address->street}}">
+            <input type="text" class="form-control" name="address_street" value="{{$address->street}}">
         </div>
 
-        {{-- TODO implémenter de maniere correct où aller chercher l'adresse $user->adress->... --}}
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="address_postcode">Code postal</label>
-                <input type="text" class="form-control" name="address_postcode" value="{{$user->address->postcode}}">
+                <input type="text" class="form-control" name="address_postcode" value="{{$address->postcode}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="address_city">Ville</label>
-                <input type="text" class="form-control" name="address_city" value="{{$user->address->city}}">
+                <input type="text" class="form-control" name="address_city" value="{{$address->city}}">
             </div>
         </div>
 
@@ -72,22 +71,22 @@
             <!-- IBAN -->
             <div class="form-group">
                 <label for="bank_iban">N°IBAN</label>
-                <input type="text" class="form-control" name="bank_iban" value="{{$bank ? $bank->iban : '' }}">
+                <input type="text" class="form-control" name="bank_iban" value="{{ $bank->iban }}">
             </div>
 
             <div class="form-group">
                 <label for="bank_swift">Code SWIFT</label>
-                <input type="text" class="form-control" name="bank_swift" value="{{$bank ? $bank->swift : '' }}">
+                <input type="text" class="form-control" name="bank_swift" value="{{ $bank->swift }}">
             </div>
 
             <div class="form-group">
                 <label for="bank_name">Nom de votre banque</label>
-                <input type="text" class="form-control" name="bank_name" value="{{$bank ? $bank->name : '' }}">
+                <input type="text" class="form-control" name="bank_name" value="{{ $bank->name }}">
             </div>
 
             <div class="form-group">
                 <label for="bank_address">Adresse de la Banque</label>
-                <input type="text" class="form-control" name="bank_address" value="{{$bank ? $bank->address : '' }}">
+                <input type="text" class="form-control" name="bank_address" value="{{ $bank->address }}">
             </div>
 
         </div>
