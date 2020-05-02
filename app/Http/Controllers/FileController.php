@@ -30,8 +30,6 @@ class FileController extends Controller
             'file' => 'required|mimes:jpeg,bmp,png,pdf',
         ]);
 
-        // 'file' => 'mimes:jpeg,bmp,png,pdf',
-
         $project_id = $request->query('project_id');
 
         // Project::find($project_id)->contains();

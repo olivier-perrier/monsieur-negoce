@@ -13,7 +13,7 @@
                 <label class="file-label">
                     <input type="file" name="file" class="file-input">
                     <span class="file-cta">
-                        <span class="file-icon"><i class="fas fa-upload"></i></span>
+                        <span class="file-icon"><i class="fas fa-file-upload"></i></span>
                         <span class="file-label">Selectionner un devis</span>
                     </span>
                 </label>

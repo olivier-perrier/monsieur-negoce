@@ -1,4 +1,4 @@
-@component('layouts.app')
+@component('layouts.site')
 
 
 <div class="container my-3">
@@ -43,6 +43,16 @@
                         <p class="help is-danger">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    <div class="form-group">
+                        {{-- <label>Devis</label> --}}
+                        <div class="file-cta">
+                            <span class="file-icon"><i class="fas fa-file-upload"></i></span>
+                            <span class="file-label">Devis</span>
+                        </div>
+                        <small class="form-text text-muted">Pensez à ajouter un devis sur la page suivante.</small>
+                    </div>
+
 
                 </div>
             </div>
@@ -90,13 +100,26 @@
 
                     <!-- Email et Phone -->
                     <div class="form-row">
+
                         <div class="form-group col-md-6">
                             <label>Email</label>
                             <input type="email" class="form-control" name="address[email]"
-                                value="{{ old('address.email') }}" required>
+                                value="{{ old('address.email') }}" placeholder="Email" required>
                             @error('address.email')
                             <p class="help is-danger">{{ $message }}</p>
-                            @enderror</div>
+                            @enderror
+                        </div>
+
+                        {{-- <div class="field">
+                            <label>Email</label>
+                            <p class="control has-icons-left">
+                                <input class="input" type="email" name="address[email]"
+                                    value="{{ old('address.email') }}" placeholder="Email">
+                                <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                            </p>
+                            @error('address.email')<p class="help is-danger">{{ $message }}</p>@enderror
+                        </div> --}}
+
                         <div class="form-group col-md-6">
                             <label>Téléphone</label>
                             <input type="phone" class="form-control" name="address[phone]"

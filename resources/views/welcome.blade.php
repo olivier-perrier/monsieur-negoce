@@ -1,6 +1,6 @@
-@extends('layouts.layout')
+@extends('layouts.auth')
 
-@section('app')
+@section('content')
 
 <div class="flex-center position-ref full-height" id="home">
 

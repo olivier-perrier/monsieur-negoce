@@ -68,7 +68,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $validatedAttributes = request()->validate([
             'name' => ['required'],
             'category' => 'required',
@@ -94,7 +94,7 @@ class ProjectController extends Controller
 
         // Project::create($project);
 
-        return redirect(route('projects.index'));
+        return redirect(route('projects.show', $project->id));
     }
 
     /**
