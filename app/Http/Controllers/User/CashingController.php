@@ -26,7 +26,7 @@ class CashingController extends Controller
 
         $negotiations = Project::where('negotiator_id', $user_id)->latest()->get();
 
-        return view('negotiations.cashings.index', [
+        return view('users.cashings.index', [
             'user' => Auth::user(),
             'projects' => $negotiations
         ]);

@@ -21,16 +21,6 @@ class ProjectPolicy
         return true;
     }
 
-    public function viewAnyProject(User $user)
-    {
-        return $user->isClient();
-    }
-
-    public function viewAnyNegotiation(User $user)
-    {
-        return $user->isNegotiator();
-    }
-
     /**
      * Determine whether the user can view the model.
      *

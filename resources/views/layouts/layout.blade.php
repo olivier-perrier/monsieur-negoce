@@ -42,6 +42,8 @@
 </head>
 
 <body>
+	<x-header-base />
+	
     @yield('content')
 </body>
 

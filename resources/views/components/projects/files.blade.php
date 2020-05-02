@@ -17,8 +17,11 @@
                         <span class="file-label">Selectionner un devis</span>
                     </span>
                 </label>
-                <input type="submit" value="Ajouter" name="submit" class="btn btn-info ml-2">
+                <input type="submit" value="Ajouter" name="submit" class="button  is-info ml-2">
             </div>
         </form>
+        @error('file')
+        <p class="help is-danger">{{ $message }}</p>
+        @enderror
     </div>
 </div>

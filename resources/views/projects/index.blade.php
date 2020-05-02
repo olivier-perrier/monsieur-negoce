@@ -11,7 +11,7 @@
 
     <div class="box">
         <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover ">
                 <thead>
                     <tr>
                         <th scope="col">N° de dossier</th>
@@ -29,14 +29,20 @@
                     <tr>
                         <th scope="row">N° {{$project->id}}</th>
                         <td>{{$project->created_at}}</td>
-                        <td>{{$project->name}}</td>
-                        @if($project->negotiator)
-                        <td>{{$project->negotiator->firstname}} {{$project->negotiator->lastname}}</td>
-                        @else
-                        <td> - </td>
-                        @endif
-                        <td><span class="tag is-{{ $project->state->level }} is-rounded">{{ $project->state->title }}</span></td>
-                        <td><a href="{{ route('projects.show', $project->id) }}" class="btn btn-link">></a></td>
+                        <td><a href="{{ route('projects.show', $project->id) }}"
+                                class="btn btn-link">{{$project->name}}</a></td>
+                        <td>
+                            @if($project->negotiator)
+                            {{$project->negotiator->firstname . ' ' . $project->negotiator->lastname}}
+                            @else
+                            -
+                            @endif
+                        </td>
+                        <td><span
+                                class="badge badge-pill badge-{{ $project->state->level }} p-2">{{ $project->state->title }}</span>
+                        </td>
+                        <td><a href="{{ route('projects.show', $project->id) }}" class="btn btn-link"><i
+                                    class="fas fa-chevron-right"></i></a></td>
                     </tr>
                     @endforeach
 

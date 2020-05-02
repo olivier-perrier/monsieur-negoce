@@ -4,7 +4,7 @@
         <h5 class="text-center">Avancement de la demande de négociation</h5>
         
         <div class="text-center">
-            <p class="tag is-{{ $project->state->level }} is-rounded text-center">{{ $project->state->title }}</p>
+            <p class="badge badge-pill badge-{{ $project->state->level }} p-2">{{ $project->state->title }}</p>
             <p class="text-center">{{ $project->state->description }}</p>
         </div>
 
@@ -13,7 +13,7 @@
                 <tbody>
                     @foreach($states as $state)
                     <tr>
-                        <th><span class="tag is-{{ $state->level }} is-rounded">{{ $state->title }}</span></th>
+                        <th><span class="badge badge-pill badge-{{ $state->level }} p-2">{{ $state->title }}</span></th>
                         <td><small class="text-muted">{{ $state->description }}</small></td>
                     </tr>
                     @endforeach

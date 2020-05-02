@@ -26,8 +26,6 @@ class NegotiationController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAnyNegotiation', Project::class);
-
         $user_id = Auth::id();
 
         $negotiations = Project::where('negotiator_id', $user_id)->latest()->get();

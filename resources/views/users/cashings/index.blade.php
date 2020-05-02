@@ -51,7 +51,7 @@
                         <td>{{ $project->fee_negotiator_pourcent ? $project->fee_negotiator_pourcent . '%' : '-'}}</td>
                         <td>{{ $project->amount_due() ? $project->amount_due() . '€' : '-'}}
                         </td>
-                        <td><span class="tag is-{{ $project->state->level }} is-rounded">{{ $project->state->title }}</span></td>
+                        <td><span class="badge badge-pill badge-{{ $project->state->level }} p-2">{{ $project->state->title }}</span></td>
                         <td><a href="{{ route('negotiations.show', $project->id) }}">></a></td>
                     </tr>
                     @endforeach

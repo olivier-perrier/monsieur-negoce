@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class File extends Model
 {
@@ -17,4 +18,5 @@ class File extends Model
     {
         return $this->belongsTo(User::class);
     }
+
 }

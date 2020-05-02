@@ -7,10 +7,12 @@ use App\Project;
 use App\State;
 use App\Address;
 use App\User;
+use App\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
@@ -34,8 +36,6 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAnyProject', Project::class);
-
         $user_id = Auth::id();
 
         $projects = Project::where('client_id', $user_id)->latest()->get();
@@ -54,7 +54,7 @@ class ProjectController extends Controller
     public function create()
     {
         $this->authorize('create', Project::class);
-        
+
         return view('projects.create', [
             'categories' => Category::All()
         ]);
@@ -68,46 +68,29 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validatedAttributes = request()->validate([
             'name' => ['required'],
             'category' => 'required',
             'description' => 'required',
+            'address.company_name' => ['required'],
+            'address.person_name' => 'required',
+            'address.street' => 'required',
+            'address.postcode' => 'required',
+            'address.city' => 'required',
+            'address.email' => 'required',
+            'address.phone' => 'required',
         ]);
 
-        // $request->input('key', 'default')
-
-        $validatedAttributes = request()->validate([
-            'address_company_name' => ['required'],
-            'address_person_name' => 'required',
-            'address_street' => 'required',
-            'address_postcode' => 'required',
-            'address_city' => 'required',
-            'address_email' => 'required',
-            'address_phone' => 'required',
-        ]);
-
-        $address = new Address([
-            'company_name' => request('address_company_name'),
-            'person_name' => request('address_person_name'),
-            'street' => request('address_street'),
-            'postcode' => request('address_postcode'),
-            'city' => request('address_city'),
-            'email' => request('address_email'),
-            'phone' => request('address_phone'),
-        ]);
-
+        $address = new Address($request->get('address'));
         $address->save();
 
-
-        $project = new Project(request(['name', 'description']));
+        $project = new Project($validatedAttributes);
         $project->client_id = Auth::id();
-        $project->category_id = request('category');
         $project->state_id = 1;
-        $project->address_contact_id = $address->id;
+        $project->category_id =  request('category');
+        $project->contactAddress()->associate($address);
         $project->save();
-
-        // Uniquement pour le relation multiples dans les deux sens ?
-        // $project->category()->attach(request('category_id'));
 
         // Project::create($project);
 

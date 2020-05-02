@@ -1,47 +1,55 @@
-<header>
-    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                Monsieur Négoce
-                <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
-            </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
+        <a class="navbar-brand" href="/">Monsieur Négoce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-            </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
 
-            <div class="navbar-end">
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Authentication Links -->
+                @guest
+                @if (Route::has('login'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
+                </li>
+                @endif
+                @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('S\'inscrire') }}</a>
+                </li>
+                @endif
+
+                @endguest
+
                 @auth
-                <a class="navbar-item">
-                    {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
-                </a>
-                <a class="navbar-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                    {{ __('Se deconnecter') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-                @else
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a href="{{ route('login') }}" class="button is-light">
-                            Log in
-                        </a>
-                    </div>
-                </div>
+                    
+                <li class="nav-item">
+                    <a class="nav-link">
+                        {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                        {{ __('Se deconnecter') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+
                 @endauth
 
-            </div>
-        </div>
-    </nav>
+            </ul>
 
-</header>
+        </div>
+    </div>
+</nav>
