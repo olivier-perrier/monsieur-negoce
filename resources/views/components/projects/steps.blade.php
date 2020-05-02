@@ -1,7 +1,7 @@
 <div class="card mt-3">
     <div class="card-content">
 
-        <h5 class="title is-5 text-center">Avancement de la demande de négociation</h5>
+        <h5 class="text-center">Avancement de la demande de négociation</h5>
         
         <div class="text-center">
             <p class="tag is-{{ $project->state->level }} is-rounded text-center">{{ $project->state->title }}</p>

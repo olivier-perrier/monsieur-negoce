@@ -54,4 +54,9 @@ class Project extends Model
     {
         return $this->belongsTo(Address::class, 'address_contact_id');
     }
+
+    public function amount_due()
+    {
+        return $this->amount_negotiated * $this->fee_negotiator_pourcent / 100;
+    }
 }

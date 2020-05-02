@@ -46,7 +46,8 @@
 		<div class="row">
 			<div class="col-md-2">
 				<aside>
-					<x-sidebar></x-sidebar>
+					{{-- <x-sidebar></x-sidebar> --}}
+					<x-sidebar2/>
 				</aside>
 			</div>
 			<div class="col-md-10">

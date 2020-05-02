@@ -3,7 +3,7 @@
 
     @can('negotiator')
     <div class="card-body">
-        <h5 class="title is-5">Profil du client</h5>
+        <h5 class="">Profil du client</h5>
         <p>{{ $project->client->firstname }} {{ $project->client->lastname }}</p>
         <p>{{ $project->client->address->street }} </p>
         <p>{{ $project->client->address_postcode }} {{ $project->client->address_city }}</p>
@@ -13,7 +13,7 @@
     @endcan
 
     <div class="card-body">
-        <h5 class="title is-5">Informations de l'entreprise</h5>
+        <h5 class="">Informations de l'entreprise</h5>
         @if($project->contactAddress)
         <h6 class="card-subtitle mb-2 text-muted">{{ $project->contactAddress->company_name }}</h6>
         <p>{{ $project->contactAddress->person_name }}</p>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="card-body border-top">
-        <h5 class="title is-5">Demande du client</h5>
+        <h5 class="">Demande du client</h5>
         {{ $project->description }}
     </div>
     {{-- </div> --}}

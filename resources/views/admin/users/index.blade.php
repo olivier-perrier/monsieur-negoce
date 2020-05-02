@@ -13,11 +13,12 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th scope="col"></th> <!-- Supression -->
                             <th scope="col">Identifiant</th>
                             <th scope="col">Nom</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
+                            <th scope="col"></th> <!-- Valider -->
+                            <th scope="col"></th> <!-- Encaissements -->
+                            <th scope="col"></th> <!-- Voir -->
                         </tr>
                     </thead>
 
@@ -26,8 +27,20 @@
                         @foreach($negotiators as $negotiator)
 
                         <tr>
+                            <!-- Suppression -->
+                            <td>
+                                <form method="POST" action="{{ route('admin.users.delete', $negotiator->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-link p-0"><i
+                                            class="far fa-trash-alt text-danger"></i></button>
+                                </form>
+                            </td>
                             <th scope="row">N° {{$negotiator->id}}</th>
-                            <td>{{ $negotiator->firstname }} {{ $negotiator->lastname }}</td>
+                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0">
+                                    {{ $negotiator->firstname . ' ' . $negotiator->lastname }}
+                                </a>
+                            </td>
                             <!-- Validation -->
                             <td class="text-center">
                                 @if(!$negotiator->validated)
@@ -39,15 +52,12 @@
                                 <i class="fas fa-user-check text-success"></i>
                                 @endif
                             </td>
-                            <!-- Suppression -->
-                            <td>
-                                <form method="POST" action="{{ route('admin.users.delete', $negotiator->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-link p-0"><i class="far fa-trash-alt text-danger"></i></button>
-                                </form>
+
+                            <td><a href="{{ route('users.cashings.index', $negotiator->id) }}"
+                                    class="btn btn-link p-0">€</a>
                             </td>
-                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0"><i class="fas fa-chevron-right"></i></a></td>
+                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0"><i
+                                        class="fas fa-chevron-right"></i></a></td>
                         </tr>
 
                         @endforeach
@@ -69,9 +79,9 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th scope="col"></th> <!-- Supression -->
                             <th scope="col">Identifiant</th>
                             <th scope="col">Nom</th>
-                            <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -81,17 +91,22 @@
                         @foreach($clients as $client)
 
                         <tr>
-                            <th scope="row">N° {{$client->id}}</th>
-                            <td>{{ $client->firstname }} {{ $client->lastname }}</td>
                             <!-- Suppression -->
                             <td>
                                 <form method="POST" action="{{ route('admin.users.delete', $client->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-link p-0"><i class="far fa-trash-alt text-danger"></i></button>
+                                    <button type="submit" class="btn btn-link p-0"><i
+                                            class="far fa-trash-alt text-danger"></i></button>
                                 </form>
                             </td>
-                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0"><i class="fas fa-chevron-right"></i></a></td>
+                            <th scope="row">N° {{$client->id}}</th>
+                            <td><a href="{{ route('users.show', $client->id) }}" class="btn btn-link p-0">
+                                    {{ $client->firstname . ' ' . $client->lastname }}
+                                </a>
+                            </td>
+                            <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0"><i
+                                        class="fas fa-chevron-right"></i></a></td>
 
                         </tr>
 
@@ -105,6 +120,13 @@
         </div>
         <!-- FIN CLIENTS -->
 
+    </div>
+
+    <div class="box">
+        <p> Symbole € correspond aux encaissements</p>
+        <p> Symbole <i class="fas fa-user-check text-success"></i> correspond à un utilisateur validé</p>
+        <p> Symbole <i class="fas fa-chevron-right"></i> correspond au lien vers l'utilisateur</p>
+        <p> Symbole <i class="far fa-trash-alt text-danger"></i> correspond au lien pour supprimer l'utlisateur</p>
     </div>
 
 </div>

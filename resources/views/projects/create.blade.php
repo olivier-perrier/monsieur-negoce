@@ -47,6 +47,9 @@
                     <label for="devisFile">Vous diposez d'un devis, transmettez-le.</label>
                     <input type="file" class="form-control-file" id="devisFile">
                     <small class="text-muted">Ajouter une ou plusiuers pièces (facultatif).</small>
+                    @error('devisFile')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
             </div>

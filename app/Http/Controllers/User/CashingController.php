@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Negotiation;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Project;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CashingController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,12 +22,12 @@ class CashingController extends Controller
      */
     public function index()
     {
-
         $user_id = Auth::id();
 
         $negotiations = Project::where('negotiator_id', $user_id)->latest()->get();
 
         return view('negotiations.cashings.index', [
+            'user' => Auth::user(),
             'projects' => $negotiations
         ]);
     }

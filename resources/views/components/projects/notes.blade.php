@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-        <h5 class="title is-5 text-center">Suivi de la négociation</h5>
+        <h5 class="text-center">Suivi de la négociation</h5>
 
         @if($project->notes->count())
         <table class="table table-sm table-borderless table-hover">

@@ -2,7 +2,7 @@
 <section class="mt-3">
 
     <div class="box">
-        <h3 class="title text-danger ">Administration</h3>
+        <h3 class="text-danger ">Administration</h3>
 
         <form method="POST" action="{{ route('admin.projects.update', $project->id) }}">
             @csrf
@@ -31,7 +31,7 @@
                 </div>
                 <p class="help">Montant négocié une fois le devis du négociateur déposé. Ce montant servira à la
                     facturation du négociateur par le client.</p>
-                <p class="help">Montant à exprimer dans la même devise que celle du devis</p>
+                <p class="help">Montant à exprimer euros</p>
             </div>
 
             <div class="field">
@@ -44,7 +44,7 @@
             </div>
 
 
-            <button type="submit" class="button is-primary">Sauvegarder</button>
+            <button type="submit" class="btn btn-primary">Sauvegarder</button>
 
         </form>
 

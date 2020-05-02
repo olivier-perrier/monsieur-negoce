@@ -68,7 +68,6 @@
 
             <a href="{{ route('faq.index') }}">FAQ</a>
             <a href="{{ route('about.index') }}">A propos</a>
-            <a href="{{ route('articles.index') }}">Articles</a>
 
         </div>
 

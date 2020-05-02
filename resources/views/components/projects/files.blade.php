@@ -1,7 +1,7 @@
 <div class="card mb-3">
     <div class="card-body">
 
-        <h5 class="title is-5 text-center">Documents disponible(s) ({{ $files->count() }})</h5>
+        <h5 class="text-center">Documents disponible(s) ({{ $files->count() }})</h5>
         @foreach($files as $file)
         <p><a href="{{ route('file.download', $file->id) }}">{{ $file->original_name }} </a></p>
         @endforeach
@@ -17,7 +17,7 @@
                         <span class="file-label">Selectionner un devis</span>
                     </span>
                 </label>
-                <input type="submit" value="Ajouter" name="submit" class="button ml-2">
+                <input type="submit" value="Ajouter" name="submit" class="btn btn-info ml-2">
             </div>
         </form>
     </div>

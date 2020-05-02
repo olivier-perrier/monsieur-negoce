@@ -63,11 +63,6 @@ class User extends Authenticatable
         return route("users.show", $this);
     }
 
-    public function articles()
-    {
-        return $this->hasMany(Article::class);
-    }
-
     public function projects()
     {
         return $this->hasMany(Project::class);
@@ -101,6 +96,21 @@ class User extends Authenticatable
     public function isAdministrator()
     {
         return $this->role === "administrator"; 
+    }
+
+    public function amount_total_due()
+    {
+        $value = 0;
+
+        $userId = $this->id;
+
+        $projects = Project::where('negotiator_id', $userId)->get();
+
+        foreach($projects as $project){
+            $value += $project->amount_due();
+        }
+
+        return $value;
     }
 
 }
