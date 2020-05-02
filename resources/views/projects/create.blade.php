@@ -1,4 +1,4 @@
-@component('layouts.exmachina')
+@component('layouts.app')
 
 
 <div class="container my-3">

@@ -1,7 +1,4 @@
-@component('layouts.exmachina')
-{{-- @extends('layouts.main') --}}
-
-@section('content')
+@component('layouts.app')
 
 <div class="container my-5">
 

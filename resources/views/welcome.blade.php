@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 
-@section('content')
+@section('app')
 
-<div class="flex-center position-ref full-height">
+<div class="flex-center position-ref full-height" id="home">
 
     <div class="content">
         
