@@ -51,7 +51,8 @@ class NoteAdded extends Notification
             ->line('Vous avez un nouveau message sur votre projet')
             ->line('Message :"' . $this->note->content . '"')
             ->action('Voir le projet', config('app.url') . '/projects/' . $this->project_id)
-            ->salutation('Merci d\'utiliser notre application');
+            ->salutation('Merci de votre confiance.');
+
     }
 
     /**

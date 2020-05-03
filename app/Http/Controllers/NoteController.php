@@ -70,6 +70,6 @@ class NoteController extends Controller
         // dd($request->session()->get('notification.note'));
 
         return redirect(route('negotiations.show', $project_id))
-            ->with('notification_note', 'Un mail a été envoyé avec succés pour signaler le commentaire.');
+            ->with('notification_note', 'Un mail a été envoyé avec succès pour signaler le commentaire.');
     }
 }

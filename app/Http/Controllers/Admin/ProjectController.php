@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Notifications\AssociationAdded;
+use App\Notifications\ProjectStateChanged;
 use App\Project;
 use App\User;
 use Illuminate\Http\Request;
@@ -96,9 +97,17 @@ class ProjectController extends Controller
 
         $project->save();
 
+        /*** Notifications ***/
+
+        //  Si l'état du projet à changé
+        if ($project->wasChanged('state_id')){
+         
+            Notification::send([$project->client, $project->negotiator], new ProjectStateChanged($project));
+         
+            $request->session()->flash('notification_state', "L'vancement de l'état du projet a été notifié par mail aux utilisateurs");
+        }
+
         return back();
-
-
     }
 
     /**
@@ -133,6 +142,7 @@ class ProjectController extends Controller
 
         /*** Notifications ***/
         Notification::send([$project->client, $project->negotiator], new AssociationAdded($project));
+
 
         return redirect(route('admin.projects.index'));
     }

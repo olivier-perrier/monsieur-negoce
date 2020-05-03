@@ -20,7 +20,13 @@
             <p class="text-muted">Le solde total correspond à la somme des encaissements des négociations terminées.
                 Appuyez sur demander un versement pour nous envoyer un mail afin qu'un versement vous soit effectué.</p>
             <p class="text-muted">Veillez à ce que vos informations bancaires soient bien rensignés</p>
-            <button type="submit" class="btn btn-warning">Demander un versement</button>
+            <form action="{{ route('users.cashings.payment', $user) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-warning">Demander un versement</button>
+            </form>
+            @if(session('notification_cashing'))
+            <p class="help is-success">{{ session('notification_cashing') }}</p>
+            @endif
         </div>
     </div>
 
@@ -51,7 +57,9 @@
                         <td>{{ $project->fee_negotiator_pourcent ? $project->fee_negotiator_pourcent . '%' : '-'}}</td>
                         <td>{{ $project->amount_due() ? $project->amount_due() . '€' : '-'}}
                         </td>
-                        <td><span class="badge badge-pill badge-{{ $project->state->level }} p-2">{{ $project->state->title }}</span></td>
+                        <td><span
+                                class="badge badge-pill badge-{{ $project->state->level }} p-2">{{ $project->state->title }}</span>
+                        </td>
                         <td><a href="{{ route('negotiations.show', $project->id) }}">></a></td>
                     </tr>
                     @endforeach

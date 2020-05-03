@@ -50,7 +50,8 @@ class AssociationAdded extends Notification
             ->line('Client ' . $this->project->client->fullname() 
                 . ' - Négociateur ' . $this->project->negotiator->fullname() . '.')
             ->action('Voir le projet', config('app.url') . '/projects/' . $this->project->id)
-            ->salutation('Merci d\'utiliser notre application');
+            ->salutation('Merci de votre confiance.');
+
     }
 
     /**

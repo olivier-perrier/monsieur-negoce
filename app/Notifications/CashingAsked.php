@@ -2,28 +2,30 @@
 
 namespace App\Notifications;
 
-use App\Note;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class FileUploaded extends Notification
+class CashingAsked extends Notification
 {
     use Queueable;
 
-    public $project_id;
-    public $filename;
+    public $user;
+    public $cashingAmount;
+    public $cashingDate;
+
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(String $filename, $project_id)
+    public function __construct($user, $cashingAmount, $cashingDate)
     {
-        $this->filename = $filename;
-        $this->project_id = $project_id;
+        $this->user = $user;
+        $this->cashingAmount = $cashingAmount;
+        $this->cashingDate = $cashingDate;
     }
 
     /**
@@ -46,12 +48,13 @@ class FileUploaded extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Monsieur Négoce - un devis a été ajouté')
-            ->greeting('Bonjour')
-            ->line('Un devis a été ajouté sur votre projet (' . $this->filename . ')')
-            ->action('Voir le projet', config('app.url') . '/projects/' . $this->project_id)
-            ->salutation('Merci de votre confiance.');
-
+        ->subject('Monsieur Négoce - demande d\'encaissement')
+        ->greeting('Bonjour')
+        ->line('Votre demande d\'encaissement a bien été reçu. Nous allons prendre contact avec vous dans les plus brefs délais.')
+        ->line('Date de la demande : ' . $this->cashingDate)
+        ->line('Montant de l\'encaissement : ' . $this->cashingAmount . '€')
+        ->action('Voir mes encaissements', config('app.url') . '/users/' . $this->user->id .'/cashings')
+        ->salutation('Merci de votre confiance.');
     }
 
     /**

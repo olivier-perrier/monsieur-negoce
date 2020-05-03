@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Notifications\CashingAsked;
 use App\Project;
+use App\User;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Session;
 
 class CashingController extends Controller
 {
@@ -20,16 +26,27 @@ class CashingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        $user_id = Auth::id();
-
-        $negotiations = Project::where('negotiator_id', $user_id)->latest()->get();
+        $projects = Project::where('negotiator_id', $user->id)->latest()->get();
 
         return view('users.cashings.index', [
-            'user' => Auth::user(),
-            'projects' => $negotiations
+            'user' => $user,
+            'projects' => $projects
         ]);
+    }
+
+    function payment(Request $request, User $user)
+    {
+        $amount_total_due = $user->amount_total_due();
+        $datetime = Carbon::now();
+
+        Notification::send($user, new CashingAsked($user, $amount_total_due, $datetime));
+        Notification::send(User::get_administrators(), new CashingAsked($user, $amount_total_due, $datetime));
+
+        $request->session()->flash('notification_cashing', "Un mail viens d'être envoyé avec succès.");
+        
+        return back();
     }
 
     /**
@@ -56,12 +73,12 @@ class CashingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Project  $project
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(User $user)
     {
-        //
+        // 
     }
 
     /**

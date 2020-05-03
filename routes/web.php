@@ -43,6 +43,7 @@ Route::post('/notes', 'NoteController@store')->name('notes.store');
 
 // Users
 Route::get('/users/{user}/cashings', 'User\CashingController@index')->name('users.cashings.index');
+Route::post('/users/{user}/cashings/payment', 'User\CashingController@payment')->name('users.cashings.payment');
 
 Route::get('/users/{user}', 'UserController@show')->name('users.show');
 Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');

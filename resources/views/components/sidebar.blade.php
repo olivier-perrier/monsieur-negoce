@@ -48,7 +48,7 @@
     <ul class="menu-list">
         <li><a href="{{ route('users.edit', Auth::id()) }}">Mon profil</a></li>
         <li><a href="{{ route('negotiations.index') }}">Mes négociations</a></li>
-        <li><a href="{{ route('users.cashings.index', Auth::id()) }}">Encaissements</a></li>
+        <li><a href="{{ route('users.cashings.index', Auth::id()) }}">Mes encaissements</a></li>
     </ul>
     @endcan
 

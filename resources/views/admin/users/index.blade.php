@@ -123,10 +123,10 @@
     </div>
 
     <div class="box">
-        <p> Symbole € correspond aux encaissements</p>
-        <p> Symbole <i class="fas fa-user-check text-success"></i> correspond à un utilisateur validé</p>
-        <p> Symbole <i class="fas fa-chevron-right"></i> correspond au lien vers l'utilisateur</p>
-        <p> Symbole <i class="far fa-trash-alt text-danger"></i> correspond au lien pour supprimer l'utlisateur</p>
+        <p> Le symbole € correspond aux encaissements</p>
+        <p> Le symbole <i class="fas fa-user-check text-success"></i> correspond à un utilisateur validé</p>
+        <p> Le symbole <i class="fas fa-chevron-right"></i> correspond au lien vers l'utilisateur</p>
+        <p> Le symbole <i class="far fa-trash-alt text-danger"></i> correspond au lien pour supprimer l'utlisateur</p>
     </div>
 
 </div>

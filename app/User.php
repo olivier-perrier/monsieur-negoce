@@ -24,7 +24,7 @@ class User extends Authenticatable
         'address',
         'address_postcode',
         'address_city',
-        'email' ,
+        'email',
         'phone',
         'password',
         'siren',
@@ -49,7 +49,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-      /**
+    /**
      * The model's default values for attributes.
      *
      * @var array
@@ -95,27 +95,29 @@ class User extends Authenticatable
 
     public function isAdministrator()
     {
-        return $this->role === "administrator"; 
+        return $this->role === "administrator";
     }
 
     public function fullname()
     {
-        return (String)($this->firstname . ' ' . $this->lastname);
+        return (string) ($this->firstname . ' ' . $this->lastname);
     }
 
     public function amount_total_due()
     {
         $value = 0;
 
-        $userId = $this->id;
+        $projects = Project::where('negotiator_id', $this->id)->get();
 
-        $projects = Project::where('negotiator_id', $userId)->get();
-
-        foreach($projects as $project){
+        foreach ($projects as $project) {
             $value += $project->amount_due();
         }
 
         return $value;
     }
 
+    public static function get_administrators()
+    {
+        return User::where("role", "administrator")->get();
+    }
 }

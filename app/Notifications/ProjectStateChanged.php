@@ -2,28 +2,26 @@
 
 namespace App\Notifications;
 
-use App\Note;
+use App\Project;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class FileUploaded extends Notification
+class ProjectStateChanged extends Notification
 {
     use Queueable;
 
-    public $project_id;
-    public $filename;
+    public Project $project;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(String $filename, $project_id)
+    public function __construct(Project $project)
     {
-        $this->filename = $filename;
-        $this->project_id = $project_id;
+        $this->project = $project;
     }
 
     /**
@@ -46,12 +44,13 @@ class FileUploaded extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Monsieur Négoce - un devis a été ajouté')
+            ->subject('Monsieur Négoce - avancement du projet')
             ->greeting('Bonjour')
-            ->line('Un devis a été ajouté sur votre projet (' . $this->filename . ')')
-            ->action('Voir le projet', config('app.url') . '/projects/' . $this->project_id)
+            ->line('Votre projet "' . $this->project->name
+                . '" est passé dans l\'état ' .$this->project->state->title)
+            ->line('Allez suivre votre projet')
+            ->action('Voir le projet', config('app.url') . '/projects/' . $this->project->id)
             ->salutation('Merci de votre confiance.');
-
     }
 
     /**
