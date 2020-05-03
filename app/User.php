@@ -98,6 +98,11 @@ class User extends Authenticatable
         return $this->role === "administrator"; 
     }
 
+    public function fullname()
+    {
+        return (String)($this->firstname . ' ' . $this->lastname);
+    }
+
     public function amount_total_due()
     {
         $value = 0;

@@ -78,7 +78,7 @@ class ProjectController extends Controller
             'address.street' => 'required',
             'address.postcode' => 'required',
             'address.city' => 'required',
-            'address.email' => 'required',
+            'address.email' => 'required|email',
             'address.phone' => 'required',
         ]);
 

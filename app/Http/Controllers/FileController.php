@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\File;
+use App\Notifications\FileUploaded;
 use App\Project;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
@@ -43,9 +46,9 @@ class FileController extends Controller
 
         $path = Storage::putFile('devis', $request->file('file'));
         // $path = $request->file('file')->store('devis');
-        
+
         $fileName = $request->file('file')->getClientOriginalName();
-        
+
         $file = new File([
             'path' => $path,
             'original_name' => $fileName,
@@ -55,7 +58,17 @@ class FileController extends Controller
 
         $file->save();
 
+        /*** Notifications */
 
-        return back(); // redirect(route('users.edit', $user));
+        // Client, negotiator et Admin
+        $client = Project::find($project_id)->client;
+        $negotiator = Project::find($project_id)->negotiator;
+        Notification::send([$client, $negotiator], new FileUploaded($fileName, $project_id));
+        
+        $admin = User::where('role', 'administrator')->get();
+        Notification::send($admin, new FileUploaded($fileName, $project_id));
+
+        return back()
+            ->with('notification_file', 'Un mail a été envoyé avec succés pour signaler le nouveau devis.');
     }
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Notifications\AssociationAdded;
 use App\Project;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class ProjectController extends Controller
 {
@@ -128,6 +130,9 @@ class ProjectController extends Controller
 
         $project->negotiator_id = $negotiatorId;
         $project->save();
+
+        /*** Notifications ***/
+        Notification::send([$project->client, $project->negotiator], new AssociationAdded($project));
 
         return redirect(route('admin.projects.index'));
     }

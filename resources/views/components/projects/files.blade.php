@@ -23,5 +23,8 @@
         @error('file')
         <p class="help is-danger">{{ $message }}</p>
         @enderror
+        @if(session('notification_file'))
+        <p class="help is-success">{{ session('notification_file') }}</p>
+        @endif
     </div>
 </div>

@@ -43,6 +43,9 @@
             <button type="submit" class="btn btn-info mb-2">Ajouter une note</button>
         </form>
         @endcan
+        @if(session('notification_note'))
+        <p class="help is-success">{{ session('notification_note') }}</p>
+        @endif
         <!-- FIN AJOUT NOTE -->
     </div>
 </div>
