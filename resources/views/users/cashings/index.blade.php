@@ -17,9 +17,9 @@
     <div class="card  mb-3">
         <div class="card-body">
             <h5>Mon solde total : {{ $user->amount_total_due() }}€ </h5>
-            <p class="text-muted">Le solde total correspond à la somme des encaissements des négociations terminées.
+            <p class="text-muted">Le solde total correspond à la somme des encaissements des négociations sur lesquelles vous travaillez.
                 Appuyez sur demander un versement pour nous envoyer un mail afin qu'un versement vous soit effectué.</p>
-            <p class="text-muted">Veillez à ce que vos informations bancaires soient bien rensignés</p>
+            <p class="text-muted">Veillez à ce que vos informations bancaires soient bien renseignées</p>
             <form action="{{ route('users.cashings.payment', $user) }}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-warning">Demander un versement</button>

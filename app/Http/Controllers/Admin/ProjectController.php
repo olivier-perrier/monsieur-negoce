@@ -85,9 +85,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        // dd($request);
-
-        // Todo validation
+        $this->authorize('admin');
 
         $project->update([
             'state_id' => request('state'),
@@ -100,10 +98,13 @@ class ProjectController extends Controller
         /*** Notifications ***/
 
         //  Si l'état du projet à changé
-        if ($project->wasChanged('state_id')){
-         
-            Notification::send([$project->client, $project->negotiator], new ProjectStateChanged($project));
-         
+        if ($project->wasChanged('state_id')) {
+
+            Notification::send($project->client, new ProjectStateChanged($project));
+
+            if ($project->negotiator())
+                Notification::send($project->negotiator, new ProjectStateChanged($project));
+
             $request->session()->flash('notification_state', "L'vancement de l'état du projet a été notifié par mail aux utilisateurs");
         }
 
@@ -121,7 +122,8 @@ class ProjectController extends Controller
         $this->authorize('admin');
 
         $project->delete();
-        return redirect(route('admin.projects.index'));
+
+        return back();
     }
 
     /**

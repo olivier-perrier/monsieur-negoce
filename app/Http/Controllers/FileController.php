@@ -63,10 +63,13 @@ class FileController extends Controller
         // Client, negotiator et Admin
         $client = Project::find($project_id)->client;
         $negotiator = Project::find($project_id)->negotiator;
-        Notification::send([$client, $negotiator], new FileUploaded($fileName, $project_id));
         
-        $admin = User::where('role', 'administrator')->get();
-        Notification::send($admin, new FileUploaded($fileName, $project_id));
+        Notification::send($client, new FileUploaded($fileName, $project_id));
+
+        if ($negotiator)
+            Notification::send($negotiator, new FileUploaded($fileName, $project_id));
+
+        Notification::send(User::get_administrators(), new FileUploaded($fileName, $project_id));
 
         return back()
             ->with('notification_file', 'Un mail a été envoyé avec succès pour signaler le nouveau devis.');

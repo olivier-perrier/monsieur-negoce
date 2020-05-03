@@ -53,7 +53,7 @@ class NoteController extends Controller
         // Client
         Notification::send($client, new NoteAdded($notification, $project_id));
         // Administrateur
-        Notification::send(User::where('role', 'administrator')->get(), new NoteAdded($notification, $project_id));
+        Notification::send(User::get_administrators(), new NoteAdded($notification, $project_id));
 
         // Send mails
         // dd($client_email);
