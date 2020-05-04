@@ -59,11 +59,6 @@ class User extends Authenticatable
         'validated' => false,
     ];
 
-    public function path()
-    {
-        return route("users.show", $this);
-    }
-
     public function projects()
     {
         return $this->hasMany(Project::class);

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Project;
 use App\State;
 use App\Address;
@@ -53,7 +52,6 @@ class ProjectController extends Controller
         $this->authorize('create', Project::class);
 
         return view('projects.create', [
-            // 'categories' => Category::All(),
             'categories' => Meta::where('key', 'CATEGORY')->get()
         ]);
     }

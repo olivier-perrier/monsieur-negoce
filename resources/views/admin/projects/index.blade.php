@@ -32,7 +32,7 @@
                     </td>
                     <th scope="row">N°{{ $project->id }}</th>
                     <td><a href="{{ route('projects.show', $project->id) }}" class="">{{ $project->name }}</a></td>
-                    <td>{{ $project->category->title }}</td>
+                    <td>{{ $project->category->value }}</td>
 
                     <!-- Négociateur associé -->
                     <td>

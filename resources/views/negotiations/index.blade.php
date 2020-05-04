@@ -25,7 +25,7 @@
                     <tr>
                         <td>{{$negotiation->created_at}}</td>
                         <td>{{$negotiation->client->firstname}} {{$negotiation->client->lastname}}</td>
-                        <td>{{$negotiation->category->title}}</td>
+                        <td>{{$negotiation->category->value}}</td>
                         <td>{{$negotiation->amount_negotiated ? $negotiation->amount_negotiated . ' €' : '-'}}</td>
                         <td><span class="badge badge-pill badge-{{ $negotiation->state->level }} p-2">{{ $negotiation->state->title }}</span></td>
                         <td><a href="{{ route('projects.show', $negotiation->id) }}" class="btn btn-link">></a></td>

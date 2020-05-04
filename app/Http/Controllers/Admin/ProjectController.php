@@ -105,7 +105,7 @@ class ProjectController extends Controller
             if ($project->negotiator())
                 Notification::send($project->negotiator, new ProjectStateChanged($project));
 
-            $request->session()->flash('notification_state', "L'vancement de l'état du projet a été notifié par mail aux utilisateurs");
+            $request->session()->flash('notification_state', "L'avancement de l'état du projet a été notifié par mail aux utilisateurs");
         }
 
         return back();

@@ -4,7 +4,7 @@
 
 <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header">{{ __('S\'inscrire') }}</div>
 
@@ -13,13 +13,14 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">Inscription en tant que</label>
+                            <label for="role" class="col-md-4 label text-md-right">Inscription en tant
+                                que</label>
                             <div class="col-md-6">
                                 <label class="radio">
-                                    <input type="radio" name="role" value="client" checked>Client
+                                    <input type="radio" name="role" value="client" checked> Client
                                 </label>
                                 <label class="radio">
-                                    <input type="radio" name="role" value="negotiator">Négociateur
+                                    <input type="radio" name="role" value="negotiator"> Négociateur
                                 </label>
                             </div>
                         </div>
@@ -100,8 +101,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="sponsor" class="col-md-4 col-form-label text-md-right">Vous avez été invité par
-                                quelqu'un, indiquez son adresse mail</label>
+                            <label for="sponsor" class="col-md-4 col-form-label text-md-right">Vous avez été invité,
+                                indiquez son adresse mail</label>
 
                             <div class="col-md-6">
                                 <input id="sponsor" type="email" class="form-control" name="sponsor"
@@ -110,6 +111,10 @@
                         </div>
 
                         {{-- Négociateur --}}
+                        <div class="form-group row">
+                            <label class="label col-md-4 text-md-right">Vous êtes négociateur</label>
+                        </div>
+
                         <div class="form-group row">
                             <label for="siren" class="col-md-4 col-form-label text-md-right">SIREN</label>
 
@@ -140,10 +145,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group row form-check row">
-                            <input type="checkbox" class="form-check-input" required>
-                            <label class="col-md-4 form-check-label" for="exampleCheck1">J'accepte les <a href="#">conditions
-                                    d'utilisations.</a></label>
+                        <div class="form-group row">
+
+                            <div class="mx-auto">
+                                <input type="checkbox" class="form-check-input" required>
+                                <label class=" form-check-label" for="exampleCheck1">J'accepte les <a
+                                        href="#">conditions
+                                        d'utilisations.</a></label>
+                            </div>
                         </div>
 
                         <div class="form-group row mb-0">

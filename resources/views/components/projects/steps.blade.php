@@ -1,4 +1,4 @@
-<div class="card mt-3">
+<div class="card mb-3">
     <div class="card-content">
 
         <h5 class="text-center">Avancement de la demande de négociation</h5>
