@@ -7,25 +7,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SponsorInvitation;
-use Illuminate\Support\Facades\Session;
+use App\Sponsor;
 
 class SponsorController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+
+        // $this->middleware('can:admin');
     }
 
-    public function index()
+    public function index(User $user)
     {
-    }
-
-    public function show(User $user)
-    {
-
-        if ($user)
-            $this->authorize('ownerOrAdmin2', $user);
-// Todo securité : une seule route doit etre possible pour acceder à une ressource
+        $this->authorize('ownerOrAdmin', $user->id);
 
         $sponsors = User::where('sponsor', $user->email)->get();
         $sponsor_link = route('register', ['sponsor' => $user->email]);
@@ -33,6 +28,10 @@ class SponsorController extends Controller
             'sponsors' => $sponsors,
             'sponsor_link' => $sponsor_link,
         ]);
+    }
+
+    public function show(User $user)
+    {
     }
 
     public function invite(Request $request)

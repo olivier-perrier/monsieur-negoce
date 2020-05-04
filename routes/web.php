@@ -32,9 +32,7 @@ Route::delete('/projects/{project}', 'ProjectController@destroy');
 
 
 // Négociations
-
 Route::get('/negotiations', 'NegotiationController@index')->name('negotiations.index');
-Route::get('/negotiations/{negotiation}', 'NegotiationController@show')->name('negotiations.show');
 
 
 // Notes
@@ -67,8 +65,8 @@ Route::post('/file/upload', 'FileController@upload')->name('file.upload');
 Route::get('/file/download/{file}', 'FileController@download')->name('file.download');
 
 // Sponsor
-Route::get('/sponsors', 'SponsorController@show')->name('sponsors.index');  //Alias pour l'utilisateur courant
-Route::get('/users/{user}/sponsors', 'SponsorController@show')->name('users.sponsors.show');
+// Route::get('/sponsors', 'SponsorController@index')->name('sponsors.index');  //Alias pour l'utilisateur courant
+Route::get('/users/{user}/sponsors', 'SponsorController@index')->name('users.sponsors.index');
 Route::post('/sponsors/invite', 'SponsorController@invite')->name('sponsors.invite');
 
 
@@ -83,5 +81,3 @@ Route::get('/faq', function () {
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

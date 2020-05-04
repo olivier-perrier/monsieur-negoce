@@ -57,7 +57,7 @@
                             <td><a href="{{ route('users.cashings.index', $negotiator->id) }}"
                                     class="btn btn-link p-0"><i class="fas fa-euro-sign"></i></a>
                             </td>
-                            <td><a href="{{ route('users.sponsors.show', $negotiator->id) }}"
+                            <td><a href="{{ route('users.sponsors.index', $negotiator->id) }}"
                                     class="btn btn-link p-0"><i class="fas fa-user-friends"></i></a></td>
                             <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0"><i
                                         class="fas fa-chevron-right"></i></a></td>
@@ -109,7 +109,7 @@
                                     {{ $client->firstname . ' ' . $client->lastname }}
                                 </a>
                             </td>
-                            <td><a href="{{ route('users.sponsors.show', $negotiator->id) }}"
+                            <td><a href="{{ route('users.sponsors.index', $negotiator->id) }}"
                                     class="btn btn-link p-0"><i class="fas fa-user-friends"></i></a></td>
                             <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0"><i
                                         class="fas fa-chevron-right"></i></a></td>

@@ -6,13 +6,10 @@ use App\Category;
 use App\Project;
 use App\State;
 use App\Address;
+use App\Meta;
 use App\User;
-use App\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
@@ -56,7 +53,8 @@ class ProjectController extends Controller
         $this->authorize('create', Project::class);
 
         return view('projects.create', [
-            'categories' => Category::All()
+            // 'categories' => Category::All(),
+            'categories' => Meta::where('key', 'CATEGORY')->get()
         ]);
     }
 
@@ -69,7 +67,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
 
-        $validatedAttributes = request()->validate([e;qil
+        $validatedAttributes = request()->validate([
             'name' => ['required'],
             'category' => 'required',
             'description' => 'required',
@@ -105,9 +103,15 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $states = State::All();
         $files = $project->files()->get();
-        return view('projects.show', compact('project', 'states', 'files'));
+        $note_types = Meta::where("key", "NOTE_TYPE")->get();
+
+        return view('projects.show', [
+            'project' => $project,
+            'states' => State::All(),
+            'files' => $files,
+            'noteTypes' => $note_types
+        ]);
     }
 
     /**

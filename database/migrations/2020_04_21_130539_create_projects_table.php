@@ -31,7 +31,7 @@ class CreateProjectsTable extends Migration
             $table->foreign('negotiator_id')->references('id')->on('users')->onDelete('set null');
 
             $table->foreign('state_id')->references('id')->on('states');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('metas');
 
             $table->foreign('address_contact_id')->references('id')->on('addresses')->cascadeOnDelete();
 

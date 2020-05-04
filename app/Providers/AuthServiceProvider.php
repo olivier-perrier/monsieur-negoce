@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Policies\ProjectPolicy;
+use App\Policies\SponsorPolicy;
 use App\Policies\UserPolicy;
 use App\Project;
+use App\Sponsor;
 use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;

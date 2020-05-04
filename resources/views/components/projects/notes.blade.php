@@ -16,7 +16,7 @@
                 @foreach($project->notes as $note)
                 <tr>
                     <td>{{ $note->created_at }}</td>
-                    <td>{{ $note->type }}</td>
+                    <td>{{ $note->type->value }}</td>
                     <td>{{ $note->content }}</td>
                 </tr>
                 @endforeach
@@ -34,15 +34,37 @@
         <form method="POST" action="{{ route('notes.store', ['negotiation' => $project->id ]) }}" class="form-inline">
             @csrf
 
-            <div class="form-group mx-2 mb-2">
-                <input type="text" class="form-control" name="content">
-                @error('content')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+            <div class="field is-grouped">
+
+                <p class="control">
+                    <button type="submit" class="button btn-info mb-2">Ajouter une note</button>
+                </p>
+
+                <div class="control">
+                    <div class="select ">
+                        <select name="type_id">
+                            @foreach ($noteTypes as $type)
+                            <option value="{{$type->id}}">{{ $type->value }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <p class="control">
+                    <input type="text" class="input" name="content" placeholder="Commentaire">
+                    @error('content')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </p>
+
             </div>
-            <button type="submit" class="btn btn-info mb-2">Ajouter une note</button>
+
         </form>
+
         @endcan
+        @error('content')
+        <p class="help is-danger">{{ $message }}</p>
+        @enderror
         @if(session('notification_note'))
         <p class="help is-success">{{ session('notification_note') }}</p>
         @endif

@@ -6,6 +6,7 @@ use App\Project;
 use App\State;
 use App\User;
 use App\File;
+use App\Meta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,22 +34,4 @@ class NegotiationController extends Controller
         return view('negotiations.index', compact('negotiations', 'states'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Project $negotiation)
-    {
-        $states = State::All();
-        // $files = File::where('project_id', $negotiation->id)->get();
-        $files = $negotiation->files()->get();
-        // return view('negotiations.show', compact('negotiation', 'states', 'files'));
-        return view('projects.show', [
-            'project' => $negotiation,
-            'states' => $states,
-            'files' => $files
-        ]);
-    }
 }

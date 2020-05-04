@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\Contact;
 use App\Mail\ContactMe;
+use App\Meta;
 use App\Note;
 use App\Notifications\NoteAdded;
 use App\User;
@@ -29,47 +30,30 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->authorize('negotiator');
 
         $project_id = $request->query('negotiation');
 
-        // dd($request->query('project'));
-
-        $validatedAttributes = request()->validate([
-            // 'type' => '',
-            'content' => ['required'],
+        $noteAtt = request()->validate([
+            'type_id' => 'required',
+            'content' => 'required',
         ]);
 
-        $notification = new Note(request(['type', 'content']));
-        $notification->type = "Contact entreprise";
-        $notification->project_id = $project_id;
-        $notification->save();
+        $note = new Note($noteAtt);
+        $note->project_id = $project_id;
+        $note->save();
 
-        $client_email = $notification->project->client->email;  // TODO véfification des objets existant
-        $client = $notification->project->client;  // TODO véfification des objets existant
+        /***  Notifications ***/
 
-        /***  Send notifications ***/
-        // Client
-        Notification::send($client, new NoteAdded($notification, $project_id));
+        if ($note->project->client) {
+            $client = $note->project->client;
+            Notification::send($client, new NoteAdded($note, $project_id));
+        }
         // Administrateur
-        Notification::send(User::get_administrators(), new NoteAdded($notification, $project_id));
+        Notification::send(User::get_administrators(), new NoteAdded($note, $project_id));
 
-        // Send mails
-        // dd($client_email);
-        // Mail::to($client_email)
-        //     ->send(new Contact($notification, $project_id));
-
-        // Mail::raw('It works', function ($message) {
-        //     $message->to('olivier.perrier.j@gmail.com')
-        //         ->subject('Hello there');
-        // });
-
-        // $request->session()->flash('notification.note', 'salut');
-
-        // dd($request->session()->get('notification.note'));
-
-        return redirect(route('negotiations.show', $project_id))
-            ->with('notification_note', 'Un mail a été envoyé avec succès pour signaler le commentaire.');
+        // redirect(route('projects.show', $project_id))
+        return back()
+            ->with('notification_note', 'Un mail a été envoyé pour informer le lcient de votre commentaire.');
     }
 }

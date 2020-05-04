@@ -27,7 +27,7 @@
                         <label for="body">Sélectionnez la catégorie de votre choix</label>
                         <select class="custom-select" name="category">
                             @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{$category->title}}</option>
+                            <option value="{{ $category->id }}">{{$category->value}}</option>
                             @endforeach
                         </select>
                         @error('category')
@@ -45,7 +45,6 @@
                     </div>
 
                     <div class="form-group">
-                        {{-- <label>Devis</label> --}}
                         <div class="file-cta">
                             <span class="file-icon"><i class="fas fa-file-upload"></i></span>
                             <span class="file-label">Devis</span>

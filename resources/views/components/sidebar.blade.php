@@ -40,7 +40,7 @@
     <ul class="menu-list">
         <li><a href="{{ route('users.edit', Auth::id()) }}">Mon profil</a></li>
         <li><a href="{{ route('projects.index') }}">Mes projets</a></li>
-        <li><a href="{{ route('sponsors.index') }}">Parrainage</a></li>
+        <li><a href="{{ route('users.sponsors.index', Auth::id()) }}">Parrainage</a></li>
     </ul>
     @endcan
 
@@ -50,7 +50,7 @@
         <li><a href="{{ route('users.edit', Auth::id()) }}">Mon profil</a></li>
         <li><a href="{{ route('negotiations.index') }}">Mes négociations</a></li>
         <li><a href="{{ route('users.cashings.index', Auth::id()) }}">Mes encaissements</a></li>
-        <li><a href="{{ route('sponsors.index') }}">Parrainage</a></li>
+        <li><a href="{{ route('users.sponsors.index', Auth::id()) }}">Parrainage</a></li>
     </ul>
     @endcan
 
@@ -59,7 +59,7 @@
     <ul class="menu-list">
         <li><a href="{{ route('admin.projects.index') }}">Tous les projets</a></li>
         <li><a href="{{ route('admin.users.index') }}">Tous les utilisateurs</a></li>
-        <li><a href="{{ route('sponsors.index') }}">Parrainage</a></li>
+        {{-- <li><a href="{{ route('sponsors.index') }}">Parrainage</a></li> --}}
     </ul>
     @endcan
 

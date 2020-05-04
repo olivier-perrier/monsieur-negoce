@@ -42,7 +42,6 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('ownerOrAdmin', function ($user, $id) {
             return $user->id === $id or $user->isAdministrator();
         });
-
       
     }
 }

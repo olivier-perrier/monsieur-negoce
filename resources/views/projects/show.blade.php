@@ -22,7 +22,7 @@
 
 
                 <!-- Suivi de la négociation -->
-                <x-projects.notes :project="$project" :notes="$project->notes" />
+                <x-projects.notes :project="$project" :notes="$project->notes" :noteTypes="$noteTypes"/>
 
 
                 <!-- Etapes d'avancement de la négociation -->

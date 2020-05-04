@@ -60,7 +60,7 @@
                         <td><span
                                 class="badge badge-pill badge-{{ $project->state->level }} p-2">{{ $project->state->title }}</span>
                         </td>
-                        <td><a href="{{ route('negotiations.show', $project->id) }}">></a></td>
+                        <td><a href="{{ route('projects.show', $project->id) }}">></a></td>
                     </tr>
                     @endforeach
 

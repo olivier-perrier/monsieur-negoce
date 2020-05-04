@@ -28,7 +28,7 @@
                         <td>{{$negotiation->category->title}}</td>
                         <td>{{$negotiation->amount_negotiated ? $negotiation->amount_negotiated . ' €' : '-'}}</td>
                         <td><span class="badge badge-pill badge-{{ $negotiation->state->level }} p-2">{{ $negotiation->state->title }}</span></td>
-                        <td><a href="{{ route('negotiations.show', $negotiation->id) }}" class="btn btn-link">></a></td>
+                        <td><a href="{{ route('projects.show', $negotiation->id) }}" class="btn btn-link">></a></td>
                     </tr>
                     @endforeach
 
