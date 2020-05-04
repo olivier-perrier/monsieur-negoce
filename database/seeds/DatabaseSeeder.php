@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             StateSeeder::class,
             UserSeeder::class,
             ProjectSeeder::class,
+            NoteSeeder::class,
         ]);
     }
 }

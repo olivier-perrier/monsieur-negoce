@@ -15,7 +15,8 @@ class UserSeeder extends Seeder
         factory(App\User::class)->create(['role' => 'negotiator', 'email' => 'nego@gmail.com']);
         factory(App\User::class)->create(['role' => 'administrator', 'email' => 'admin@gmail.com']);
 
-        factory(App\User::class, 10)->create();
+        factory(App\User::class, 3)->create(['role' => 'client']);
+        factory(App\User::class, 3)->create(['role' => 'negotiator']);
 
     }
 }
