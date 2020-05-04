@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->date('birthday')->nullable();
             $table->foreignId('address_id')->nullable();
             $table->string('phone')->nullable();
+            $table->string('sponsor')->nullable();
             $table->boolean('validated')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -18,6 +18,7 @@
                             <th scope="col">Nom</th>
                             <th scope="col"></th> <!-- Valider -->
                             <th scope="col"></th> <!-- Encaissements -->
+                            <th scope="col"></th> <!-- Parrainage -->
                             <th scope="col"></th> <!-- Voir -->
                         </tr>
                     </thead>
@@ -54,8 +55,10 @@
                             </td>
 
                             <td><a href="{{ route('users.cashings.index', $negotiator->id) }}"
-                                    class="btn btn-link p-0">€</a>
+                                    class="btn btn-link p-0"><i class="fas fa-euro-sign"></i></a>
                             </td>
+                            <td><a href="{{ route('users.sponsors.show', $negotiator->id) }}"
+                                    class="btn btn-link p-0"><i class="fas fa-user-friends"></i></a></td>
                             <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0"><i
                                         class="fas fa-chevron-right"></i></a></td>
                         </tr>
@@ -79,10 +82,11 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col"></th> <!-- Supression -->
+                            <th scope="col"></th>   <!-- Supression -->
                             <th scope="col">Identifiant</th>
                             <th scope="col">Nom</th>
-                            <th scope="col"></th>
+                            <th scope="col"></th>   <!-- Parrainage -->
+                            <th scope="col"></th>   <!-- Voir -->
                         </tr>
                     </thead>
 
@@ -105,6 +109,8 @@
                                     {{ $client->firstname . ' ' . $client->lastname }}
                                 </a>
                             </td>
+                            <td><a href="{{ route('users.sponsors.show', $negotiator->id) }}"
+                                    class="btn btn-link p-0"><i class="fas fa-user-friends"></i></a></td>
                             <td><a href="{{ route('users.show', $negotiator->id) }}" class="btn btn-link p-0"><i
                                         class="fas fa-chevron-right"></i></a></td>
 
@@ -123,7 +129,8 @@
     </div>
 
     <div class="box">
-        <p> Le symbole € correspond aux encaissements</p>
+        <p> Le symbole <i class="fas fa-euro-sign"></i> correspond aux encaissements</p>
+        <p> Le symbole <i class="fas fa-user-friends"></i> correspond aux parrainages</p>
         <p> Le symbole <i class="fas fa-user-check text-success"></i> correspond à un utilisateur validé</p>
         <p> Le symbole <i class="fas fa-chevron-right"></i> correspond au lien vers l'utilisateur</p>
         <p> Le symbole <i class="far fa-trash-alt text-danger"></i> correspond au lien pour supprimer l'utlisateur</p>

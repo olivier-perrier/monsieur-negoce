@@ -40,6 +40,7 @@
     <ul class="menu-list">
         <li><a href="{{ route('users.edit', Auth::id()) }}">Mon profil</a></li>
         <li><a href="{{ route('projects.index') }}">Mes projets</a></li>
+        <li><a href="{{ route('sponsors.index') }}">Parrainage</a></li>
     </ul>
     @endcan
 
@@ -49,16 +50,16 @@
         <li><a href="{{ route('users.edit', Auth::id()) }}">Mon profil</a></li>
         <li><a href="{{ route('negotiations.index') }}">Mes négociations</a></li>
         <li><a href="{{ route('users.cashings.index', Auth::id()) }}">Mes encaissements</a></li>
+        <li><a href="{{ route('sponsors.index') }}">Parrainage</a></li>
     </ul>
     @endcan
 
     @can('admin')
     <p class="menu-label">Administrateur</p>
     <ul class="menu-list">
-        <li><a href="{{ route('admin.projects.index') }}"
-                class="{{ Request::is('/admin/users') ? 'is-active' :'' }}">Tous les projets</a></li>
-        <li><a href="{{ route('admin.users.index') }}"
-                class="{{ Request::is('/admin/projects') ? 'is-active' :'' }}">Tous les utilisateurs</a></li>
+        <li><a href="{{ route('admin.projects.index') }}">Tous les projets</a></li>
+        <li><a href="{{ route('admin.users.index') }}">Tous les utilisateurs</a></li>
+        <li><a href="{{ route('sponsors.index') }}">Parrainage</a></li>
     </ul>
     @endcan
 

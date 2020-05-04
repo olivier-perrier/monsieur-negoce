@@ -69,7 +69,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
 
-        $validatedAttributes = request()->validate([
+        $validatedAttributes = request()->validate([e;qil
             'name' => ['required'],
             'category' => 'required',
             'description' => 'required',

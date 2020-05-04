@@ -12,9 +12,9 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group">
-                            <label for="role">Inscription en tant que</label>
-                            <div class="control">
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Inscription en tant que</label>
+                            <div class="col-md-6">
                                 <label class="radio">
                                     <input type="radio" name="role" value="client" checked>Client
                                 </label>
@@ -99,6 +99,16 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="sponsor" class="col-md-4 col-form-label text-md-right">Vous avez été invité par
+                                quelqu'un, indiquez son adresse mail</label>
+
+                            <div class="col-md-6">
+                                <input id="sponsor" type="email" class="form-control" name="sponsor"
+                                    value="{{ request()->query('sponsor') }}">
+                            </div>
+                        </div>
+
                         {{-- Négociateur --}}
                         <div class="form-group row">
                             <label for="siren" class="col-md-4 col-form-label text-md-right">SIREN</label>
@@ -130,9 +140,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group form-check row">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">J'accepte les <a href="#">conditions d'utilisations.</a></label>
+                        <div class="form-group row form-check row">
+                            <input type="checkbox" class="form-check-input" required>
+                            <label class="col-md-4 form-check-label" for="exampleCheck1">J'accepte les <a href="#">conditions
+                                    d'utilisations.</a></label>
                         </div>
 
                         <div class="form-group row mb-0">

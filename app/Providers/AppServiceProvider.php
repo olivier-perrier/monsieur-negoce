@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Project;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -41,5 +42,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('ownerOrAdmin', function ($user, $id) {
             return $user->id === $id or $user->isAdministrator();
         });
+
+      
     }
 }

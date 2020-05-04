@@ -66,6 +66,11 @@ Route::delete('/admin/projects/{project}', 'Admin\ProjectController@destroy')->n
 Route::post('/file/upload', 'FileController@upload')->name('file.upload');
 Route::get('/file/download/{file}', 'FileController@download')->name('file.download');
 
+// Sponsor
+Route::get('/sponsors', 'SponsorController@show')->name('sponsors.index');  //Alias pour l'utilisateur courant
+Route::get('/users/{user}/sponsors', 'SponsorController@show')->name('users.sponsors.show');
+Route::post('/sponsors/invite', 'SponsorController@invite')->name('sponsors.invite');
+
 
 Route::get('/about', function () {
     return view('about');
