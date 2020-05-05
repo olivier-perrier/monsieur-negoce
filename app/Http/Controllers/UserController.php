@@ -86,7 +86,7 @@ class UserController extends Controller
             'name' => request('bank_name'),
             'address' => request('bank_address'),
             'iban' => request('bank_iban'),
-            'swift' => request('bank_iban'),
+            'swift' => request('bank_swift'),
             'user_id' => $user->id,
         ];
 

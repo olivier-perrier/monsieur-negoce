@@ -109,16 +109,6 @@
                             @enderror
                         </div>
 
-                        {{-- <div class="field">
-                            <label>Email</label>
-                            <p class="control has-icons-left">
-                                <input class="input" type="email" name="address[email]"
-                                    value="{{ old('address.email') }}" placeholder="Email">
-                                <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
-                            </p>
-                            @error('address.email')<p class="help is-danger">{{ $message }}</p>@enderror
-                        </div> --}}
-
                         <div class="form-group col-md-6">
                             <label>Téléphone</label>
                             <input type="phone" class="form-control" name="address[phone]"

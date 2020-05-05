@@ -12,7 +12,7 @@ class SponsorInvitation extends Notification
 {
     use Queueable;
 
-    public User $user;
+    public $user;
 
     /**
      * Create a new notification instance.
@@ -48,7 +48,7 @@ class SponsorInvitation extends Notification
             ->greeting('Bonjour')
             ->line('Vous avez été invité à vous inscrire sur le site de Monsieur Négoce. Le premier site de négociation pour vos contrats en ligne.')
             ->line($this->user->fullname() . " vous a invité.")
-            ->action("S'inscrire maintenant", route('register',  ['sponsor' => $this->user->mail]))
+            ->action("S'inscrire maintenant", route('register',  ['sponsor' => $this->user->email]))
             ->salutation('Merci de votre confiance.');
 
     }

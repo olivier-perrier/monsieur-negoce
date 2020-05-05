@@ -28,6 +28,9 @@ class CashingController extends Controller
      */
     public function index(User $user)
     {
+
+        $this->authorize('ownerOrAdmin', $user->id);
+
         $projects = Project::where('negotiator_id', $user->id)->latest()->get();
 
         return view('users.cashings.index', [
@@ -38,6 +41,9 @@ class CashingController extends Controller
 
     function payment(Request $request, User $user)
     {
+
+        $this->authorize('ownerOrAdmin', $user->id);
+
         $amount_total_due = $user->amount_total_due();
         $datetime = Carbon::now();
 

@@ -12,7 +12,7 @@ class ProjectStateChanged extends Notification
 {
     use Queueable;
 
-    public Project $project;
+    public $project;
 
     /**
      * Create a new notification instance.

@@ -32,9 +32,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::id();
+        $user = Auth::user();
 
-        $projects = Project::where('client_id', $user_id)->latest()->get();
+        $projects = Project::where('client_id', $user->id)->latest()->get();
 
         return view('projects.index', [
             'projects' => $projects,
