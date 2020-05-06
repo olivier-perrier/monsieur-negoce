@@ -45,11 +45,13 @@ class NoteAdded extends Notification
      */
     public function toMail($notifiable)
     {
+        $noteContent = $this->note ? $this->note->content : "Vide";
+
         return (new MailMessage)
             ->subject('Monsieur Négoce - vous avez un nouveau message')
             ->greeting('Bonjour')
             ->line('Vous avez un nouveau message sur votre projet')
-            ->line('Message :"' . $this->note->content . '"')
+            ->line('Message :"' . $noteContent . '"')
             ->action('Voir le projet', config('app.url') . '/projects/' . $this->project_id)
             ->salutation('Merci de votre confiance.');
 

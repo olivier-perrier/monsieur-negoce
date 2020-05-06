@@ -43,11 +43,13 @@ class ProjectStateChanged extends Notification
      */
     public function toMail($notifiable)
     {
+        $stateTitle = $this->project->state ? $this->project->state->title : "-";
+
         return (new MailMessage)
             ->subject('Monsieur Négoce - avancement du projet')
             ->greeting('Bonjour')
             ->line('Votre projet "' . $this->project->name
-                . '" est passé dans l\'état ' .$this->project->state->title)
+                . '" est passé dans l\'état ' .$stateTitle)
             ->line('Allez suivre votre projet')
             ->action('Voir le projet', config('app.url') . '/projects/' . $this->project->id)
             ->salutation('Merci de votre confiance.');

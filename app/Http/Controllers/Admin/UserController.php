@@ -95,6 +95,7 @@ class UserController extends Controller
         $this->authorize('admin');
 
         $user->delete();
+        
         return redirect(route('admin.users.index'));
     }
 

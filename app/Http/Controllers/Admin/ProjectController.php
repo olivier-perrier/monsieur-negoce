@@ -121,6 +121,7 @@ class ProjectController extends Controller
     {
         $this->authorize('admin');
 
+        dd($project);
         $project->delete();
 
         return back();
@@ -143,7 +144,13 @@ class ProjectController extends Controller
         $project->save();
 
         /*** Notifications ***/
-        Notification::send([$project->client, $project->negotiator], new AssociationAdded($project));
+        if ($project->client) {
+            Notification::send($project->client, new AssociationAdded($project));
+        }
+
+        if ($project->negotiator) {
+            Notification::send($project->negotiator, new AssociationAdded($project));
+        }
 
 
         return redirect(route('admin.projects.index'));

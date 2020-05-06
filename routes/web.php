@@ -60,8 +60,6 @@ Route::put('/admin/projects/{project}/associate', 'Admin\ProjectController@assoc
 Route::delete('/admin/users/{user}', 'Admin\UserController@destroy')->name('admin.users.delete');
 Route::delete('/admin/projects/{project}', 'Admin\ProjectController@destroy')->name('admin.projects.delete');
 
-Route::delete('/admin/login', 'Admin\ProjectController@destroy')->name('admin.projects.delete');
-
 // File
 Route::post('/file/upload', 'FileController@upload')->name('file.upload');
 Route::get('/file/download/{file}', 'FileController@download')->name('file.download');

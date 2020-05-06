@@ -43,15 +43,17 @@ class AssociationAdded extends Notification
      */
     public function toMail($notifiable)
     {
+        $clientName = $this->project->client ? $this->project->client->fullname() : "Aucun client";
+        $negoName = $this->project->negotiator ? $this->project->negotiator->fullname() : "Aucun négociateur";
+        
         return (new MailMessage)
             ->subject('Monsieur Négoce - avancement du projet')
             ->greeting('Bonjour')
             ->line('Le projet "' . $this->project->name . '" est maintenant associé à un négociateur.')
-            ->line('Client ' . $this->project->client->fullname() 
-                . ' - Négociateur ' . $this->project->negotiator->fullname() . '.')
+            ->line('Client ' . $clientName
+                . ' - Négociateur ' . $negoName . '.')
             ->action('Voir le projet', config('app.url') . '/projects/' . $this->project->id)
             ->salutation('Merci de votre confiance.');
-
     }
 
     /**
