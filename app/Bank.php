@@ -11,7 +11,6 @@ class Bank extends Model
         'swift',
         'address',
         'name',
-        'birthday',
         'user_id'
     ];
 }

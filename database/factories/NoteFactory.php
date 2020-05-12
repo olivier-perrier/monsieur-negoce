@@ -20,7 +20,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Note::class, function (Faker $faker) {
     return [
-        'type_id' => $faker->numberBetween(7, 9),
+        'type_id' => $faker->numberBetween(42, 44),
         'content' => $faker->word(),
         'project_id' => $faker->numberBetween(1, 10),
     ];

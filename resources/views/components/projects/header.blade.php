@@ -2,7 +2,7 @@
     <div class="column">
         @if ($project->client)
         <div class="alert alert-success" role="alert">
-            <p>{{ $project->client->fullname() }} n°suivi {{ $project->id }} - {{ $project->category->value }}
+            <p>{{ $project->client->fullname() }} n°suivi {{ $project->id }} - {{ $project->category->value | replace:" - " }}
             </p>
         </div>
         @else

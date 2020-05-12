@@ -1,7 +1,7 @@
 @component('layouts.site')
 
 
-<div class="container my-5">
+<div class="my-5">
 
     <div style="text-align:right;">
         <a class="btn btn-danger" href="{{ route('projects.create') }}" role="button">Nouveau projet</a>
@@ -27,10 +27,10 @@
 
                     @foreach($projects as $project)
                     <tr>
-                        <th scope="row">N° {{$project->id}}</th>
+                        <th scope="row">N° {{ $project->created_at->format('dmY') . '-' . $project->id }}</th>
                         <td>{{$project->created_at}}</td>
                         <td><a href="{{ route('projects.show', $project->id) }}"
-                                class="btn btn-link">{{$project->name}}</a></td>
+                                class="btn btn-link text-left">{{$project->name}}</a></td>
                         <td>
                             @if($project->negotiator)
                             {{$project->negotiator->firstname . ' ' . $project->negotiator->lastname}}

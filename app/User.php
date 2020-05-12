@@ -19,8 +19,6 @@ class User extends Authenticatable
         'role',
         'firstname',
         'lastname',
-        'nationality',
-        'birthday',
         'address',
         'address_postcode',
         'address_city',

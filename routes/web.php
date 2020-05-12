@@ -74,10 +74,13 @@ Route::get('/about', function () {
     return view('about');
 })->name('about.index');
 
-Route::get('/faq', function () {
-    return view('faq');
-})->name('faq.index');
+Route::get('/faq-client', function () {
+    return view('pages.faq-client');
+})->name('faq-client');
 
+Route::get('/faq-nego', function () {
+    return view('pages.faq-nego');
+})->name('faq-nego');
 
 
 Auth::routes();

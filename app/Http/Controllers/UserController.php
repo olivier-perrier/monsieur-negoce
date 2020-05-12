@@ -58,8 +58,6 @@ class UserController extends Controller
         $validatedUser = $request->validate([
             'firstname' => ['required'],
             'lastname' => 'required',
-            'nationality' => '',
-            'birthday' => '',
             'email' => 'required|email',
             'phone' => '',
         ]);

@@ -22,8 +22,6 @@ $factory->define(User::class, function (Faker $faker) {
         'role' => $faker->randomElement(['client', 'negotiator']),
         'firstname' => $faker->firstName(),
         'lastname' => $faker->lastName(),
-        'nationality' => $faker->country(),
-        'birthday' => $faker->date(),
         'address_id' => factory(App\Address::class),
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->phoneNumber(),

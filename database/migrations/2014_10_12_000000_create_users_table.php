@@ -19,8 +19,6 @@ class CreateUsersTable extends Migration
             $table->enum('role', ['client', 'negotiator', 'administrator']);
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('nationality')->nullable();
-            $table->date('birthday')->nullable();
             $table->foreignId('address_id')->nullable();
             $table->string('phone')->nullable();
             $table->string('sponsor')->nullable();

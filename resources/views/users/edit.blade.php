@@ -21,23 +21,9 @@
                 </div>
             </div>
 
-            <div class="form-group w-50">
-                <label for="birthday">Date de naissance</label>
-                <input type="date" class="form-control" name="birthday" value="{{$user->birthday}}">
-            </div>
-
-            <!-- Nationalité -->
-            <div class="form-group w-50">
-                <label for="nationality">Nationalité</label>
-                <input type="text" class="form-control" name="nationality" value="{{$user->nationality}}">
-                @error('nationality')
-                <div class="invalid-feedback">{{$message}}</div>
-                @enderror
-            </div>
-
             <!-- Address -->
             <div class="form-group">
-                <label for="address_street">Adresse</label>
+                <label for="address_street"><b>Adresse</b></label>
                 <input type="text" class="form-control" name="address_street" value="{{$address->street}}">
             </div>
 
@@ -60,7 +46,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="phone">Téléphone</label>
-                    <input type="phone" class="form-control" name="phone" value="{{$user->phone}}">
+                    <input type="phone" class="form-control" name="phone" value="{{$user->phone}}" maxlength="10">
                 </div>
             </div>
 

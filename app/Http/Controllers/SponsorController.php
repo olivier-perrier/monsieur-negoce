@@ -20,12 +20,21 @@ class SponsorController extends Controller
     {
         $this->authorize('ownerOrAdmin', $user->id);
 
+
         $sponsors = User::where('sponsor', $user->email)->get();
         $sponsor_link = route('register', ['sponsor' => $user->email]);
-        return view('sponsors.index', [
-            'sponsors' => $sponsors,
-            'sponsor_link' => $sponsor_link,
-        ]);
+
+
+        if ($user->isClient())
+            return view('sponsors.index', [
+                'sponsors' => $sponsors,
+                'sponsor_link' => $sponsor_link,
+            ]);
+        else if ($user->isNegotiator())
+            return view('sponsors.nego.index', [
+                'sponsors' => $sponsors,
+                'sponsor_link' => $sponsor_link,
+            ]);
     }
 
     public function show(User $user)

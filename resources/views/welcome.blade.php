@@ -5,11 +5,12 @@
 <div class="flex-center position-ref full-height" id="home">
 
     <div class="content">
-        
+
         @auth
         @if(Auth::user()->isNegotiator() & !Auth::user()->validated)
         <div class="alert alert-info" role="alert" style="color:red;">
-            <p>Votre compte est en cours de vérification. Des projets vous seront attribués une fois votre compte validé.</p>
+            <p>Votre compte est en cours de vérification. Des projets vous seront attribués une fois votre compte
+                validé.</p>
         </div>
         @endif
         @endauth
@@ -28,12 +29,14 @@
 
             @can('client')
             <a href="{{ route('users.edit', Auth::id()) }}">Profil client</a>
-                <a href=" {{ route('projects.index') }}">Mes projets</a>
+            <a href=" {{ route('projects.index') }}">Mes projets</a>
+            <a href="{{ route('faq-client') }}">FAQ</a>
             @endcan
 
             @can('negotiator')
             <a href="{{ route('users.edit', Auth::id()) }}">Profil négociateur</a>
             <a href="{{ route('negotiations.index') }}">Négociations</a>
+            <a href="{{ route('faq-nego') }}">FAQ</a>
             @endcan
 
             @can('admin')
@@ -43,7 +46,6 @@
 
             @endauth
 
-            <a href="{{ route('faq.index') }}">FAQ</a>
             <a href="{{ route('about.index') }}">A propos</a>
 
         </div>

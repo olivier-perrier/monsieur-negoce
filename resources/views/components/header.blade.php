@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
 
-
     <a class="navbar-brand" href="/">
+        <img src="{{ asset('logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
         @if(!Request::is('/')) Monsieur Négoce @endif
     </a>
 

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
+use Pine\BladeFilters\BladeFilters;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -41,6 +43,11 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::define('ownerOrAdmin', function ($user, $id) {
             return $user->id === $id or $user->isAdministrator();
+        });
+
+        // Filters
+       BladeFilters::macro('replace', function ($value, $search, $replace = '') {
+            return str_replace($search, $replace, $value);
         });
       
     }
