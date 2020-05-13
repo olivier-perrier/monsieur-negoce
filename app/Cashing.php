@@ -10,6 +10,7 @@ class Cashing extends Model
         'state_id',
         'amount',
         'taxe',
+        'user_id',
     ];
 
 

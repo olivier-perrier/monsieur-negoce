@@ -4,7 +4,7 @@
     <label for="{{ $name }}">{{ $label }}</label>
     @endisset
 
-    <input class="form-control" type="{{ $type ? $type : 'text' }}" name="{{ $name }}" value="{{ $value }}"
+    <input class="form-control" type="{{ $type ?? 'text' }}" name="{{ $name }}" value="{{ $value }}"
         {{ $atts ?? '' }}>
 
     @isset ($help)

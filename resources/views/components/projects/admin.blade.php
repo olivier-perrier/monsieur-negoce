@@ -6,8 +6,8 @@
 
         <div class="col-md-6">
 
-            <div class="box">
-                <h3 class="text-danger ">Administration</h3>
+            <div class="card card-body">
+                <h3 class="text-danger ">Administration projet</h3>
 
                 <form method="POST" action="{{ route('admin.projects.update', $project->id) }}">
                     @csrf
@@ -30,23 +30,12 @@
                     </div>
 
                     <div class="field">
-                        <label class="label">Montant négocié</label>
+                        <label class="label">Montant négocié (€)</label>
                         <div class="control">
                             <input class="input" type="number" name="amount_negotiated"
                                 value="{{ $project->amount_negotiated }}" placeholder="0">
                         </div>
-                        <p class="help">Montant négocié une fois le devis du négociateur déposé. Ce montant servira à la
-                            facturation du négociateur par le client.</p>
-                        <p class="help">Montant à exprimer euros</p>
-                    </div>
-
-                    <div class="field">
-                        <label class="label">Taxe pour le négociateur (%)</label>
-                        <div class="control">
-                            <input class="input" type="number" step="0.01" min="0" max="100" placeholder="0"
-                                name="fee_negotiator_pourcent" value="{{ $project->fee_negotiator_pourcent }}">
-                        </div>
-                        <p class="help">Taxe appliquée au montant négocié qui sera bénéficiée par le négociateur.</p>
+                        <p class="help">Montant négocié sur le projet. Ce montant est à titre indicatif uniquement visible sur le projet.</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
@@ -61,8 +50,10 @@
         </div>
 
         <div class="col-md-6">
-            <div class="box">
+            <div class="card card-body">
                 <h3 class="text-danger ">Encaissement négociateur</h3>
+
+                @if ($cashing)
 
                 <form method="POST" action="{{ route('admin.cashings.update', $cashing->id) }}">
                     @csrf
@@ -84,17 +75,34 @@
                         </div>
                     </div>
 
-                    <x-fields.input name="amount" :value="$cashing->amount" type="number"
-                        label="Montant brut (€)" help="Montant brut de la négociation" />
+                    <x-fields.input name="amount" :value="$cashing->amount" type="number" label="Montant brut (€)"
+                        help="Montant brut de la négociation" />
 
-                    <x-fields.input name="taxe" :value="$cashing->taxe" type="number"
-                        label="Taxe (%)" help="Taxe qui sera reversé au négotiateur" />
+                    <x-fields.input name="taxe" :value="$cashing->taxe" type="number" label="Taxe (%)"
+                        help="Taxe qui sera reversé au négotiateur" />
 
                     <x-fields.input name="net_amount" :value="$cashing->net_amount" type="number"
                         label="Montant net (€)" atts="disabled"
                         help="Montant calculé automatiquement lors de la sauvegarde" />
 
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                </form>
+
+                @else
+
+                @if($project->negotiator)
+                <form method="POST" action="{{ route('admin.projects.cashings.store', $project->id) }}">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Ajouter un encaissement</button>
+                </form>
+                @else
+                <span>Attention un projet doit être associé à un négociateur pour pouvoir lui ajouter un
+                    encaissement.</span>
+                @endif
+
+                @endif
+
+
 
             </div>
         </div>

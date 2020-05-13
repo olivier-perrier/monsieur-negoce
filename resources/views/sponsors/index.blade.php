@@ -2,7 +2,6 @@
 
 <div class="container">
 
-
     <div class="text-center my-5">
         <h3 style="color: orange">Pour chaque filleul parrainé.</h3>
         <span class="tag is-info is-large">Gangnez une Smartbox d'une valeur de 100€</span>

@@ -16,6 +16,5 @@ $factory->define(Project::class, function (Faker $faker) {
         'state_id' => $faker->randomElement([1, 2, 3, 4, 5]),
         'category_id' => $faker->randomElement([1, 2, 3, 4, 5, 6]),
         'amount_negotiated' => $faker->randomNumber(4),
-        'fee_negotiator_pourcent' => $faker->randomNumber(2),
     ];
 });

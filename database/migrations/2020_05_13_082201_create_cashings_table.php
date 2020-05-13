@@ -20,7 +20,7 @@ class CreateCashingsTable extends Migration
             $table->float('net_amount')->nullable();
             $table->foreignId('state_id')->nullable();
 
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('project_id')->nullable();
             $table->timestamps();
 

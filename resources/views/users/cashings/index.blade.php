@@ -1,21 +1,10 @@
 @component('layouts.site')
 
-<style>
-    .card {
-        box-shadow: 0px 0px lightgrey;
-    }
-
-    .card:hover {
-        box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02);
-    }
-</style>
-
 <div class="container my-3">
 
     <h3>Mes encaissements</h3>
 
-    <div class="card  mb-3">
-        <div class="card-body">
+    <div class="card card-body mb-3">
             <h5>Mon solde total : {{ $user->amount_total_due() }}€ </h5>
             <p class="text-muted">Le solde total correspond à la somme des encaissements des négociations sur lesquelles
                 vous travaillez.
@@ -30,10 +19,9 @@
             <p class="help is-success">{{ session('notification_cashing') }}</p>
             @endif
 
-        </div>
     </div>
 
-    {{-- Nouveau encaissements --}}
+    {{-- Liste des encaissements --}}
     <div class="card mb-3">
         <div class="card-body">
 
@@ -61,10 +49,13 @@
                         <td>{{ $cashing->taxe ? $cashing->taxe . '%' : '-'}}</td>
                         <td>{{ $cashing->net_amount ? $cashing->net_amount . '€' : '-'}}
                         </td>
-                        <td>
+                        <td>@if($cashing->state)
                             <span
                                 class="badge badge-pill badge-primary p-2 d-flex justify-content-center">{{ $cashing->state->value }}</span>
-                        </td>
+                            @else
+                            -
+                            @endif
+                            </td>
                         <td>
                             <a href="{{ route('projects.show', $cashing->project->id) }}"><i
                                     class="fas fa-chevron-right"></i></a>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Project extends Model
 {
     protected $fillable = [
-        'name', 'description', 'state_id', 'amount_negotiated', 'fee_negotiator_pourcent'
+        'name', 'description', 'state_id', 'amount_negotiated',
     ];
 
     /**
@@ -60,8 +60,4 @@ class Project extends Model
         return $this->belongsTo(Address::class, 'address_contact_id');
     }
 
-    public function amount_due()
-    {
-        return $this->amount_negotiated * $this->fee_negotiator_pourcent / 100;
-    }
 }

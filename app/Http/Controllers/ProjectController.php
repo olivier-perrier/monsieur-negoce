@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Project;
 use App\State;
 use App\Address;
+use App\Cashing;
 use App\Meta;
 use App\User;
 use Illuminate\Http\Request;
@@ -87,6 +88,10 @@ class ProjectController extends Controller
         $project->category_id =  request('category');
         $project->contactAddress()->associate($address);
         $project->save();
+
+        $cashing = new Cashing();
+        $cashing->project_id = $project->id;
+        $cashing->user_id = $project->negotiator_id ?? '';
 
         // Project::create($project);
 
