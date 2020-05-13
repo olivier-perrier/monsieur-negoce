@@ -11,7 +11,7 @@
     <small class="form-text text-muted">{{ $help }}</small>
     @endisset
 
-    @error("{{ $name }}")
+    @error(strval($name))
     <p class="help is-success">{{ $message }}</p>
     @enderror
 

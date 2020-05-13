@@ -66,11 +66,11 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
 
-        $validatedAttributes = request()->validate([
-            'name' => ['required'],
+        $validation = request()->validate([
+            'name' => 'required',
             'category' => 'required',
             'description' => 'required',
-            'address.company_name' => ['required'],
+            'address.company_name' => 'required',
             'address.person_name' => 'required',
             'address.street' => 'required',
             'address.postcode' => 'required',
@@ -81,19 +81,14 @@ class ProjectController extends Controller
 
         $address = new Address($request->get('address'));
         $address->save();
-
-        $project = new Project($validatedAttributes);
+        
+        $project = new Project($validation);
         $project->client_id = Auth::id();
         $project->state_id = 1;
         $project->category_id =  request('category');
-        $project->contactAddress()->associate($address);
         $project->save();
 
-        $cashing = new Cashing();
-        $cashing->project_id = $project->id;
-        $cashing->user_id = $project->negotiator_id ?? '';
-
-        // Project::create($project);
+        $project->contactAddress()->associate($address);
 
         return redirect(route('projects.show', $project->id));
     }
@@ -106,13 +101,12 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $files = $project->files()->get();
         $note_types = Meta::where("key", "NOTE_TYPE")->get();
 
         return view('projects.show', [
             'project' => $project,
             'states' => State::All(),
-            'files' => $files,
+            'files' => $project->files,
             'noteTypes' => $note_types,
             'cashing' => $project->cashing
         ]);

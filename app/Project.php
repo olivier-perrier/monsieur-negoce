@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Project extends Model
 {
     protected $fillable = [
-        'name', 'description', 'state_id', 'amount_negotiated',
+        'name',
+        'description',
+        'state_id',
+        'amount_negotiated',
     ];
 
     /**
@@ -59,5 +62,4 @@ class Project extends Model
     {
         return $this->belongsTo(Address::class, 'address_contact_id');
     }
-
 }

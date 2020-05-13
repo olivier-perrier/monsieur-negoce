@@ -39,8 +39,8 @@ class UserController extends Controller
     {
         return view('users.edit', [
             'user' => $user,
-            'bank' => $user->bank ?: new Bank(),
-            'address' => $user->address ?: new Address()
+            'bank' => $user->bank ?? new Bank(),
+            'address' => $user->address ?? new Address()
         ]);
     }
 
@@ -54,52 +54,41 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
 
-        // User
-        $validatedUser = $request->validate([
-            'firstname' => ['required'],
+        $validation = $request->validate([
+            'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email',
             'phone' => '',
+            'address[street]' => '',
+            'address[postcode]' => '',
+            'address[city]' => '',
+            'bank[iban]' => '',
+            'bank[swift]' => '',
+            'bank[name]' => '',
+            'bank[address]' => '',
         ]);
 
-        $user->update($validatedUser);
+        $user->update($validation);
 
+        // Adresse
+        if ($user->address) {
+            $user->address->update($request->get('address'));
+        } else {
+            $address = new Address($request->get('address'));
+            $address->save();
 
-        // Address
-        $addressFields = [
-            'street' => request('address_street'),
-            'postcode' => request('address_postcode'),
-            'city' => request('address_city'),
-        ];
-
-        if ($user->address)
-            $user->address->update($addressFields);
-        else {
-            $address = Address::create($addressFields);
-            $user->address_id = $address->id;
+            $user->address()->associate($address);
+            $user->save();
         }
 
         // Bank
-        $bank_request = [
-            'name' => request('bank_name'),
-            'address' => request('bank_address'),
-            'iban' => request('bank_iban'),
-            'swift' => request('bank_swift'),
-            'user_id' => $user->id,
-        ];
-
         if ($user->bank)
-            $user->bank->update($bank_request);
+            $user->bank->update($request->get('bank'));
         else {
-            $bank = new Bank($bank_request);
-            $bank->save();
+            $bank = new Bank($request->get('bank'));
+            $user->bank()->save($bank);
         }
 
-        // Bank::firstOrCreate(['user_id' => $user->id], $bank_request);
-
-
-        $user->save();
-
-        return redirect(route('users.show', $user));
+        return back();
     }
 }

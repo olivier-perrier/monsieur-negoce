@@ -25,18 +25,18 @@
 
                 <!-- Address -->
                 <div class="form-group">
-                    <label for="address_street"><b>Adresse</b></label>
-                    <input type="text" class="form-control" name="address_street" value="{{$address->street}}">
+                    <label for="address[street]"><b>Adresse</b></label>
+                    <input type="text" class="form-control" name="address[street]" value="{{$address->street}}">
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="address_postcode">Code postal</label>
-                        <input type="text" class="form-control" name="address_postcode" value="{{$address->postcode}}">
+                        <label for="address[postcode]">Code postal</label>
+                        <input type="text" class="form-control" name="address[postcode]" value="{{$address->postcode}}">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="address_city">Ville</label>
-                        <input type="text" class="form-control" name="address_city" value="{{$address->city}}">
+                        <label for="address[city]">Ville</label>
+                        <input type="text" class="form-control" name="address[city]" value="{{$address->city}}">
                     </div>
                 </div>
 
@@ -58,13 +58,13 @@
                 <div class="mt-3">
                     <h3 class="">Mes encaissements</h3>
 
-                    <x-fields.input name="bank_iban" :value="$bank->iban" label="N°IBAN"/>
+                    <x-fields.input name="bank[iban]" :value="$bank->iban" label="N°IBAN"/>
 
-                    <x-fields.input name="bank_swift" :value="$bank->swift" label="Code SWIFT"/>
+                    <x-fields.input name="bank[swift]" :value="$bank->swift" label="Code SWIFT"/>
 
-                    <x-fields.input name="bank_name" :value="$bank->name" label="Nom de votre banque"/>
+                    <x-fields.input name="bank[name]" :value="$bank->name" label="Nom de votre banque"/>
 
-                    <x-fields.input name="bank_address" :value="$bank->address" label="Adresse de la Banque"/>
+                    <x-fields.input name="bank[address]" :value="$bank->address" label="Adresse de la Banque"/>
 
                 </div>
 
