@@ -39,7 +39,7 @@
 
     </section>
 
-    <x-projects.admin :project="$project" :states="$states" />
+    <x-projects.admin :project="$project" :states="$states" :cashing="$cashing"/>
 
 </div>
 

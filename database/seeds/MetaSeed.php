@@ -1,5 +1,6 @@
 <?php
 
+use App\Cashing;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -67,5 +68,9 @@ class MetaSeed extends Seeder
         DB::table('metas')->insert(['key' => 'NOTE_TYPE', 'value' => 'Contact entreprise']);
         DB::table('metas')->insert(['key' => 'NOTE_TYPE', 'value' => 'Ajout devis']);
         DB::table('metas')->insert(['key' => 'NOTE_TYPE', 'value' => 'Avancement état']);
+
+        // Cashings states
+        DB::table('metas')->insert(['key' => 'STATE_CASHING', 'value' => Cashing::$STATE_EN_COURS]);
+        DB::table('metas')->insert(['key' => 'STATE_CASHING', 'value' => Cashing::$STATE_REVERSE]);
     }
 }

@@ -13,7 +13,7 @@
                 <tbody>
                     @foreach($states as $state)
                     <tr>
-                        <th><span class="badge badge-pill badge-{{ $state->level }} p-2 d-flex justify-content-center">{{ $state->title }}</span></th>
+                        <th><x-projects.badge-state :state="$state" /></th>
                         <td><small class="text-muted">{{ $state->description }}</small></td>
                     </tr>
                     @endforeach

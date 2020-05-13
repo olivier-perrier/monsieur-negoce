@@ -1,0 +1,1 @@
+<span class="badge badge-pill badge-{{ $state->level }} p-2 d-flex justify-content-center">{{ $state->title }}</span>

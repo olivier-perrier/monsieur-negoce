@@ -38,8 +38,8 @@
                             -
                             @endif
                         </td>
-                        <td><span
-                                class="badge badge-pill badge-{{ $project->state->level }} p-2">{{ $project->state->title }}</span>
+                        <td>
+                            <x-projects.badge-state :state="$project->state" />
                         </td>
                         <td><a href="{{ route('projects.show', $project->id) }}" class="btn btn-link"><i
                                     class="fas fa-chevron-right"></i></a></td>
@@ -57,7 +57,9 @@
             <tbody>
                 @foreach($states as $state)
                 <tr>
-                    <th><span class="tag is-{{ $state->level }} is-rounded">{{ $state->title }}</span></th>
+                    <th>
+                        <x-projects.badge-state :state="$state" />
+                    </th>
                     <td>{{ $state->description }}</td>
                 </tr>
                 @endforeach

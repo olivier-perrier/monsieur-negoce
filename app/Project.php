@@ -50,6 +50,11 @@ class Project extends Model
         return $this->belongsTo(Meta::class);
     }
 
+    public function cashing()
+    {
+        return $this->hasOne(Cashing::class);
+    }
+
     public function contactAddress()
     {
         return $this->belongsTo(Address::class, 'address_contact_id');

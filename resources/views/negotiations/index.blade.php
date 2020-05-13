@@ -27,7 +27,7 @@
                         <td>{{$negotiation->client->firstname}} {{$negotiation->client->lastname}}</td>
                         <td>{{$negotiation->category->value | replace:" - "}}</td>
                         <td>{{$negotiation->amount_negotiated ? $negotiation->amount_negotiated . ' €' : '-'}}</td>
-                        <td><span class="badge badge-pill badge-{{ $negotiation->state->level }} p-2 d-flex justify-content-center">{{ $negotiation->state->title }}</span></td>
+                        <td><x-projects.badge-state :state="$negotiation->state" /></td>
                         <td><a href="{{ route('projects.show', $negotiation->id) }}" class="btn btn-link"><i class="fas fa-chevron-right"></i></a></td>
                     </tr>
                     @endforeach

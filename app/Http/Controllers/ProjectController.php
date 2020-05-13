@@ -38,7 +38,7 @@ class ProjectController extends Controller
 
         return view('projects.index', [
             'projects' => $projects,
-            'states' => State::all()
+            'states' => State::all(),
         ]);
     }
 
@@ -108,7 +108,8 @@ class ProjectController extends Controller
             'project' => $project,
             'states' => State::All(),
             'files' => $files,
-            'noteTypes' => $note_types
+            'noteTypes' => $note_types,
+            'cashing' => $project->cashing
         ]);
     }
 

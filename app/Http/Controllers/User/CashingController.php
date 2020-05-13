@@ -32,10 +32,12 @@ class CashingController extends Controller
         $this->authorize('ownerOrAdmin', $user->id);
 
         $projects = Project::where('negotiator_id', $user->id)->latest()->get();
+        $cashings = $user->cashings;
 
         return view('users.cashings.index', [
             'user' => $user,
-            'projects' => $projects
+            'projects' => $projects,
+            'cashings' => $cashings,
         ]);
     }
 

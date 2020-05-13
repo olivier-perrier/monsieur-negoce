@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->hasMany(File::class);
     }
 
+    public function cashings()
+    {
+        return $this->hasMany(Cashing::class);
+    }
+
     public function address()
     {
         return $this->belongsTo(Address::class);
@@ -101,10 +106,28 @@ class User extends Authenticatable
     {
         $value = 0;
 
-        $projects = Project::where('negotiator_id', $this->id)->get();
+        $cashings = Cashing::where([
+            'user_id' => $this->id,
+            'state_id' => Cashing::state_id(Cashing::$STATE_EN_COURS)
+        ])->get();
 
-        foreach ($projects as $project) {
-            $value += $project->amount_due();
+        foreach ($cashings as $cashing) {
+            $value += $cashing->net_amount;
+        }
+
+        return $value;
+    }
+    public function amount_total_reversed()
+    {
+        $value = 0;
+
+        $cashings = Cashing::where([
+            'user_id' => $this->id,
+            'state_id' => Cashing::state_id(Cashing::$STATE_REVERSE)
+        ])->get();
+
+        foreach ($cashings as $cashing) {
+            $value += $cashing->net_amount;
         }
 
         return $value;
