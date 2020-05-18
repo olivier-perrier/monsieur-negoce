@@ -16,7 +16,7 @@
                     <i class="far fa-circle fa-stack-2x"></i>
                     <i class="fa  fa-stack-1x">1</i>
                 </span>
-                <p><strong>Invitez votre réseau</strong>par email, via réseau sociaux ou en partageant votre lien</p>
+                <p><strong>Invitez votre réseau</strong> par email, via réseau sociaux ou en partageant votre lien</p>
             </div>
             <div class="column">
                 <span class="fa-stack fa-2x  mb-2">

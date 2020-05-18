@@ -13,7 +13,6 @@ class Cashing extends Model
         'user_id',
     ];
 
-
     public function allStates()
     {
         return Meta::allCashingStates();

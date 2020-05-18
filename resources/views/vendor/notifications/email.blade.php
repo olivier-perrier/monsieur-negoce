@@ -19,14 +19,14 @@
 {{-- Action Button --}}
 @isset($actionText)
 <?php
-    switch ($level) {
-        case 'success':
-        case 'error':
-            $color = $level;
-            break;
-        default:
-            $color = 'primary';
-    }
+switch ($level) {
+    case 'success':
+    case 'error':
+        $color = $level;
+        break;
+    default:
+        $color = 'primary';
+}
 ?>
 @component('mail::button', ['url' => $actionUrl, 'color' => $color])
 {{ $actionText }}
@@ -51,7 +51,8 @@
 @isset($actionText)
 @slot('subcopy')
 @lang(
-"Si vous avez des difficultés pour cliquer sur le lien \":actionText\", \n".
+"Ceci est un email automatique, merci de ne pas y répondre. \n" . 
+"Si vous avez des difficultés pour cliquer sur le lien \":actionText\", \n" .
 'vous pouvez copier et coller l\'url ci dessous dans votre navigateur:',
 [
 'actionText' => $actionText,

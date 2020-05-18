@@ -10,7 +10,7 @@ $factory->define(Cashing::class, function (Faker $faker) {
     return [
         'amount' => $faker->numberBetween(0, 5000),
         'taxe' => $faker->numberBetween(0, 30),
-        'state_id' => 1,
+        'state_id' => $faker->numberBetween(45, 46),
         'project_id' => 1,
         'user_id' => 2,
         

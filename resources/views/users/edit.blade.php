@@ -47,22 +47,26 @@
                 {{-- Pour les encaissements --}}
                 @can('negotiator')
 
-                <div class="mt-3">
+                <div class="my-3">
                     <h3 class="">Mes encaissements</h3>
 
-                    <x-fields.input name="bank_iban" :value="$bank->iban" label="N°IBAN" />
+                    <x-fields.input-bulma label="N°IBAN" name="bank_iban" :value="$bank->iban" icon="fas fa-money-check" />
 
-                    <x-fields.input name="bank_swift" :value="$bank->swift" label="Code SWIFT" />
+                    <x-fields.input-bulma label="Code SWIFT" name="bank_swift" :value="$bank->swift" icon="fas fa-money-check" />
 
-                    <x-fields.input name="bank_name" :value="$bank->name" label="Nom de votre banque" />
+                    <x-fields.input-bulma label="Nom de votre banque" name="bank_name" :value="$bank->name" icon="fas fa-university" />
 
-                    <x-fields.input name="bank_address" :value="$bank->address" label="Adresse de la Banque" />
+                    <x-fields.input-bulma label="Adresse de la Banque" name="bank_address" :value="$bank->address" icon="fas fa-map-marker-alt" />
 
                 </div>
 
                 @endcan
 
-                <button type="submit" class="btn btn-danger">Sauvegarder mon profil</button>
+                <div class="field">
+                    <div class="control">
+                        <button type="submit" class="button is-danger">Sauvegarder mon profil</button>
+                    </div>
+                </div>
 
             </form>
 

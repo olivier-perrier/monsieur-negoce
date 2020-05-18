@@ -14,13 +14,7 @@
 
                 <div class="box">
 
-                    <div class="form-group">
-                        <label for="name">Nom de votre projet</label>
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                        @error('name')
-                        <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-fields.input-bulma label="Nom de votre projet" name="name" :value="old('name')" icon="fas fa-file-alt" />
 
                     <!-- Categorie -->
                     <div class="form-group">
@@ -60,72 +54,34 @@
             <div class="col-md-6">
                 <div class="box">
 
-                    <div class="form-group">
-                        <label>Ajoutez le nom de l'entreprise concernée</label>
-                        <input type="text" class="input form-control" name="address[company_name]"
-                            value="{{ old('address.company_name') }}">
-                        @error('address.company_name')
-                        <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-fields.input-bulma label="Ajoutez le nom de l'entreprise concernée" name="address[company_name]" :value="old('address.company_name')" icon="fas fa-building" />
 
                     <!-- Adresse entreprise -->
-                    <div class="form-group">
-                        <label>Adresse de l'entreprise concernée</label>
-                        <input type="text" class="input form-control" name="address[street]"
-                            value="{{old('address.street')}}">
-                        @error('address.street')
-                        <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-fields.input-bulma label="Adresse de l'entreprise concernée" name="address[street]" :value="old('address.street')" icon="fas fa-map-marker-alt" />
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>Code postal</label>
-                            <input type="text" class="form-control" name="address[postcode]"
-                                value="{{ old('address.postcode') }}">
-                            @error('address.postcode')
-                            <p class="help is-danger">{{ $message }}</p>
-                            @enderror
+                            <x-fields.input-bulma label="Code postal" name="address[postcode]" :value="old('address.postcode')" icon="fas fa-map-marker-alt" />
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Ville</label>
-                            <input type="text" class="form-control" name="address[city]"
-                                value="{{ old('address.city') }}">
-                            @error('address.city')
-                            <p class="help is-danger">{{ $message }}</p>
-                            @enderror</div>
+                            <x-fields.input-bulma label="Ville" name="address[city]" :value="old('address.city')" icon="fas fa-map-marker-alt" />
+                        </div>
                     </div>
 
                     <!-- Email et Phone -->
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
-                            <label>Email</label>
-                            <input type="email" class="form-control" name="address[email]"
-                                value="{{ old('address.email') }}" placeholder="Email" required>
-                            @error('address.email')
-                            <p class="help is-danger">{{ $message }}</p>
-                            @enderror
+                            <x-fields.input-bulma label="Email" name="address[email]" :value="old('address.email')" icon="fas fa-envelope" />
                         </div>
-
                         <div class="form-group col-md-6">
-                            <label>Téléphone</label>
-                            <input type="phone" class="form-control" name="address[phone]"
-                                value="{{ old('address.phone') }}">
-                            @error('address.phone')
-                            <p class="help is-danger">{{ $message }}</p>
-                            @enderror</div>
+                            <x-fields.input-bulma label="Téléphone" name="address[phone]" :value="old('address.phone')" icon="fas fa-phone" />
+                        </div>
                     </div>
 
                     <!-- Personne rencontrée -->
                     <div class="form-group">
-                        <label>Indiquez le nom de la personne rencontrée</label>
-                        <input type="text" class="form-control" name="address[person_name]"
-                            value="{{ old('address.person_name') }}">
-                        @error('address.person_name')
-                        <p class="help is-danger">{{ $message }}</p>
-                        @enderror
+                        <x-fields.input-bulma label="Indiquez le nom de la personne rencontrée" name="address[person_name]" :value="old('address.person_name')" icon="fas fa-user-friends" />
                     </div>
 
                 </div>

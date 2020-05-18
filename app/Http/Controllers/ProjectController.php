@@ -7,9 +7,11 @@ use App\State;
 use App\Address;
 use App\Cashing;
 use App\Meta;
+use App\Notifications\ProjectCreated;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class ProjectController extends Controller
 {
@@ -79,16 +81,22 @@ class ProjectController extends Controller
             'address.phone' => 'required',
         ]);
 
+
         $address = new Address($request->get('address'));
         $address->save();
-        
+
         $project = new Project($validation);
         $project->client_id = Auth::id();
         $project->state_id = 1;
         $project->category_id =  request('category');
-        $project->save();
 
         $project->contactAddress()->associate($address);
+
+        $project->save();
+
+        // Envoi un mail à l'utilisateur pour lui confirmer la création de son projet
+        Notification::send(Auth::user(), new ProjectCreated(Auth::user()));
+
 
         return redirect(route('projects.show', $project->id));
     }
