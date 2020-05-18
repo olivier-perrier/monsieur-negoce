@@ -14,41 +14,33 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="firstname">Prénom</label>
-                        <input type="text" class="form-control" name="firstname" value="{{$user->firstname}}">
+                        <x-fields.input-bulma label="Prénom" name="firstname" :value="$user->firstname" icon="fas fa-user" />
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="lastname">Nom</label>
-                        <input type="text" class="form-control" name="lastname" value="{{$user->lastname}}">
+                        <x-fields.input-bulma label="Nom" name="lastname" :value="$user->lastname" icon="fas fa-users" />
                     </div>
                 </div>
 
                 <!-- Address -->
-                <div class="form-group">
-                    <label for="address[street]"><b>Adresse</b></label>
-                    <input type="text" class="form-control" name="address[street]" value="{{$address->street}}">
-                </div>
+                <x-fields.input-bulma name="address_street" :value="$address->street" label="Adresse" icon="fas fa-map-marker-alt" />
+
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="address[postcode]">Code postal</label>
-                        <input type="text" class="form-control" name="address[postcode]" value="{{$address->postcode}}">
+                        <x-fields.input-bulma label="Code postal" name="address_postcode" :value="$address->postcode" icon="fas fa-map-marker-alt" />
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="address[city]">Ville</label>
-                        <input type="text" class="form-control" name="address[city]" value="{{$address->city}}">
+                        <x-fields.input-bulma label="Ville" name="address_city" :value="$address->city" icon="fas fa-map-marker-alt" />
                     </div>
                 </div>
 
                 <!-- Email et Phone -->
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" value="{{$user->email}}" required>
+                        <x-fields.input-bulma label="Email" name="email" :value="$user->email" icon="fas fa-envelope" />
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="phone">Téléphone</label>
-                        <input type="phone" class="form-control" name="phone" value="{{$user->phone}}" maxlength="10">
+                        <x-fields.input-bulma label="Téléphone" name="phone" :value="$user->phone" icon="fas fa-phone" />
                     </div>
                 </div>
 
@@ -58,13 +50,13 @@
                 <div class="mt-3">
                     <h3 class="">Mes encaissements</h3>
 
-                    <x-fields.input name="bank[iban]" :value="$bank->iban" label="N°IBAN"/>
+                    <x-fields.input name="bank_iban" :value="$bank->iban" label="N°IBAN" />
 
-                    <x-fields.input name="bank[swift]" :value="$bank->swift" label="Code SWIFT"/>
+                    <x-fields.input name="bank_swift" :value="$bank->swift" label="Code SWIFT" />
 
-                    <x-fields.input name="bank[name]" :value="$bank->name" label="Nom de votre banque"/>
+                    <x-fields.input name="bank_name" :value="$bank->name" label="Nom de votre banque" />
 
-                    <x-fields.input name="bank[address]" :value="$bank->address" label="Adresse de la Banque"/>
+                    <x-fields.input name="bank_address" :value="$bank->address" label="Adresse de la Banque" />
 
                 </div>
 

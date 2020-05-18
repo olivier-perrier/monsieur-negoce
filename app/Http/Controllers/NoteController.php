@@ -54,6 +54,6 @@ class NoteController extends Controller
 
         // redirect(route('projects.show', $project_id))
         return back()
-            ->with('notification_note', 'Un mail a été envoyé pour informer le lcient de votre commentaire.');
+            ->with('notification_note', 'Un mail a été envoyé pour informer le client de votre commentaire.');
     }
 }

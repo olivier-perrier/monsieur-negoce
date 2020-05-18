@@ -72,6 +72,6 @@ class FileController extends Controller
         Notification::send(User::get_administrators(), new FileUploaded($fileName, $project_id));
 
         return back()
-            ->with('notification_file', 'Un mail a été envoyé avec succès pour signaler le nouveau devis.');
+            ->with('notification_file', 'Un mail a été envoyé avec succès pour informé du nouveau devis.');
     }
 }
