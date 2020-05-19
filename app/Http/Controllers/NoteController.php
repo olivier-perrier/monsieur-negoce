@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Client\NoteAdded;
 use App\Mail\Contact;
 use App\Mail\ContactMe;
 use App\Meta;
 use App\Note;
-use App\Notifications\NoteAdded;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -43,16 +43,17 @@ class NoteController extends Controller
         $note->project_id = $project_id;
         $note->save();
 
-        /***  Notifications ***/
 
-        if ($note->project->client) {
-            $client = $note->project->client;
-            Notification::send($client, new NoteAdded($note, $project_id));
+        /*** Mails ****/
+
+        $client = $note->project->client;
+        if ($client) {
+            Mail::to($note->project->client)->send(new NoteAdded($client));
         }
-        // Administrateur
-        Notification::send(User::get_administrators(), new NoteAdded($note, $project_id));
 
-        // redirect(route('projects.show', $project_id))
+        // Administrateur
+        Mail::to(User::get_administrators())->send(new NoteAdded($client));
+
         return back()
             ->with('notification_note', 'Un mail a été envoyé pour informer le client de votre commentaire.');
     }

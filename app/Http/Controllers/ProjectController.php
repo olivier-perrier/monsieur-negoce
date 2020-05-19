@@ -6,11 +6,12 @@ use App\Project;
 use App\State;
 use App\Address;
 use App\Cashing;
+use App\Mail\Client\ProjectCreated;
 use App\Meta;
-use App\Notifications\ProjectCreated;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 class ProjectController extends Controller
@@ -94,8 +95,13 @@ class ProjectController extends Controller
 
         $project->save();
 
+        /*** Mails ****/
+        
         // Envoi un mail à l'utilisateur pour lui confirmer la création de son projet
-        Notification::send(Auth::user(), new ProjectCreated(Auth::user()));
+        Mail::to(Auth::user())->send(new ProjectCreated(Auth::user(), $project));
+
+        // Admin
+        Mail::to(User::get_administrators())->send(new ProjectCreated(Auth::user(), $project));
 
 
         return redirect(route('projects.show', $project->id));
