@@ -47,7 +47,7 @@
                         <td>N°{{ $cashing->id }}</td>
                         <td>{{ $cashing->amount ? $cashing->amount . '€' : '-' }}</td>
                         <td>{{ $cashing->taxe ? $cashing->taxe . '%' : '-'}}</td>
-                        <td>{{ $cashing->net_amount ? $cashing->net_amount . '€' : '-'}}
+                        <td>{{ $cashing->net_amount() ? $cashing->net_amount() . '€' : '-'}}
                         </td>
                         <td>@if($cashing->state)
                             <span

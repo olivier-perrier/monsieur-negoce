@@ -3,7 +3,7 @@
 
 @component('mail::message')
 
-# Bonjour {{ $user->fullname() }}
+# Bonjour {{ $user->fullname() }},  
 
 Votre négociateur est parvenu à négocier votre prestation.  
 Connectez-vous pour en prendre connaissance dès à présent.  

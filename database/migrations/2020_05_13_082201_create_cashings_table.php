@@ -17,7 +17,6 @@ class CreateCashingsTable extends Migration
             $table->id();
             $table->float('amount')->nullable();
             $table->float('taxe')->nullable();
-            $table->float('net_amount')->nullable();
             $table->foreignId('state_id')->nullable();
 
             $table->foreignId('user_id')->nullable();

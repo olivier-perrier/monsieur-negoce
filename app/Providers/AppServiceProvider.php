@@ -41,6 +41,10 @@ class AppServiceProvider extends ServiceProvider
             return $user->isNegotiator();
         });
 
+        Gate::define('negotiatorOrAdmin', function ($user) {
+            return $user->isNegotiator() or $user->isAdministrator();
+        });
+
         Gate::define('ownerOrAdmin', function ($user, $id) {
             return $user->id === $id or $user->isAdministrator();
         });

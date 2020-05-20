@@ -3,7 +3,7 @@
 
 @component('mail::message')
 
-# Bonjour {{ $user->fullname() }}
+# Bonjour {{ $user->fullname() }},  
 
 Votre demande de projet a bien été reçue, elle actuellement en cours de traitement. <br>
 Une fois le traitement effectué, votre projet sera attribué à un négociateur qui reviendra vers vous. <br>

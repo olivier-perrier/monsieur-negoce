@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Notifications\CashingAsked;
+use App\Mail\Admin\CashingAsked as AdminCashingAsked;
+use App\Mail\Nego\CashingAsked;
 use App\Project;
 use App\User;
-use Carbon\Carbon;
-use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
 
 class CashingController extends Controller
 {
@@ -41,19 +38,22 @@ class CashingController extends Controller
         ]);
     }
 
+    /**
+     * Demande d'encaissement par le négociateur
+     */
     function payment(Request $request, User $user)
     {
 
         $this->authorize('ownerOrAdmin', $user->id);
 
-        $amount_total_due = $user->amount_total_due();
-        $datetime = Carbon::now();
 
-        Notification::send($user, new CashingAsked($user, $amount_total_due, $datetime));
-        Notification::send(User::get_administrators(), new CashingAsked($user, $amount_total_due, $datetime));
+        Mail::to($user)->send(new CashingAsked($user));
 
-        $request->session()->flash('notification_cashing', "Un mail viens d'être envoyé avec succès.");
-        
+        Mail::to(User::get_administrators())->send(new AdminCashingAsked($user));
+
+
+        $request->session()->flash('notification_cashing', "Votre demande de versement a bien été recue");
+
         return back();
     }
 

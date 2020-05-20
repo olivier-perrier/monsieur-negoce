@@ -3,7 +3,7 @@
 
 @component('mail::message')
 
-# Bonjour {{ $user->fullname() }}
+# Bonjour {{ $user->fullname() }},  
 
 Nous tenons à vous informer que le traitement de votre projet étant effectué, votre projet vient d’être attribué à un négociateur.  
 Ce négociateur va maintenant prendre en charge la négociation de votre projet.  

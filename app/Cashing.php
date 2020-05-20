@@ -28,6 +28,11 @@ class Cashing extends Model
         return $this->belongsTo(Project::class);
     }
 
+    public function net_amount()
+    {
+        return $this->amount * $this->taxe / 100;
+    }
+
     /**
      * @return identifiant pour un nom d'état
      */

@@ -45,7 +45,7 @@
                 </div>
 
                 {{-- Pour les encaissements --}}
-                @can('negotiator')
+                @can('negotiatorOrAdmin')
 
                 <div class="my-3">
                     <h3 class="">Mes encaissements</h3>

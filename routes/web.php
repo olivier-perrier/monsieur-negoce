@@ -54,6 +54,7 @@ Route::get('/admin/projects', 'Admin\ProjectController@index')->name('admin.proj
 Route::put('/admin/projects/{project}', 'Admin\ProjectController@update')->name('admin.projects.update');
 
 Route::post('/admin/projects/{project}/cashings', 'Admin\CashingController@store')->name('admin.projects.cashings.store');
+Route::post('/admin/projects/{project}/cashings/alert-nego', 'Admin\CashingController@alertNego')->name('admin.projects.cashings.alert-nego');
 Route::put('/admin/cashings/{cashing}', 'Admin\CashingController@update')->name('admin.cashings.update');
 
 Route::post('/admin/users/{user}/validate', 'Admin\UserController@validateUser')->name('admin.users.validate');

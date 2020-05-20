@@ -109,7 +109,7 @@ class User extends Authenticatable
         ])->get();
 
         foreach ($cashings as $cashing) {
-            $value += $cashing->net_amount;
+            $value += $cashing->net_amount();
         }
 
         return $value;
@@ -124,7 +124,7 @@ class User extends Authenticatable
         ])->get();
 
         foreach ($cashings as $cashing) {
-            $value += $cashing->net_amount;
+            $value += $cashing->net_amount();
         }
 
         return $value;

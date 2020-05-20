@@ -3,7 +3,7 @@
 
 @component('mail::message')
 
-# Bonjour {{ $user->fullname() }}
+# Bonjour {{ $user->fullname() }},  
 
 Un nouveau projet à négocier vient de vous être attribué.  
 Nous comptons sur vous pour mener à bien cette négociation et nous vous invitons à vous connecter pour en prendre connaissance.  
