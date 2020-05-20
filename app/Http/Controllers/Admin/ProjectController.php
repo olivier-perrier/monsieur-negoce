@@ -6,13 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Mail\Client\NegoAssociated;
 use App\Mail\Client\ProjectSucced;
 use App\Mail\Nego\ProjectAssociated;
-use App\Mail\Nego\ProjectSucced as NegoProjectSucced;
-use App\Notifications\ProjectStateChanged;
 use App\Project;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Notification;
 
 class ProjectController extends Controller
 {
@@ -74,21 +71,8 @@ class ProjectController extends Controller
         if ($project->state->isSucced()) {
             if ($project->client)
                 Mail::to($project->client)->send(new ProjectSucced($project->client, $project));
-
-           
         }
 
-        //  Si l'état du projet à changé
-        if ($project->wasChanged('state_id')) {
-
-            // if ($project->client)
-            //     Notification::send($project->client, new ProjectStateChanged($project));
-
-            // if ($project->negotiator)
-            //     Notification::send($project->negotiator, new ProjectStateChanged($project));
-
-            $request->session()->flash('notification_state', "L'avancement de l'état du projet a été notifié par mail aux utilisateurs");
-        }
 
         return back();
     }

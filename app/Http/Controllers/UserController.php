@@ -74,19 +74,24 @@ class UserController extends Controller
         if ($user->address) {
             $user->address->update($request->get('address'));
         } else {
-            $address = new Address($request->get('address'));
-            $address->save();
+            if ($request->get('address')) {
+                // dd($request->get('address'));
+                $address = new Address($request->get('address'));
+                $address->save();
 
-            $user->address()->associate($address);
-            $user->save();
+                $user->address()->associate($address);
+                $user->save();
+            }
         }
 
         // Bank
         if ($user->bank)
             $user->bank->update($request->get('bank'));
         else {
-            $bank = new Bank($request->get('bank'));
-            $user->bank()->save($bank);
+            if ($request->get('bank')) {
+                $bank = new Bank($request->get('bank'));
+                $user->bank()->save($bank);
+            }
         }
 
         return back();

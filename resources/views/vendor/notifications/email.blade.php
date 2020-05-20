@@ -1,3 +1,6 @@
+@component('vendor.mail.html.logo')
+@endcomponent
+
 @component('mail::message')
 {{-- Greeting --}}
 @if (! empty($greeting))
@@ -43,15 +46,18 @@ switch ($level) {
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('Regards'),<br>
-{{ config('app.name') }}
+@lang('Cordialement,'),<br>
+L'équipe {{ config('app.name') }}
 @endif
+
+@component('vendor.mail.html.address')
+@endcomponent
 
 {{-- Subcopy --}}
 @isset($actionText)
 @slot('subcopy')
 @lang(
-"Ceci est un email automatique, merci de ne pas y répondre. \n" . 
+"Ceci est un email automatique, merci de ne pas y répondre. <br>" . 
 "Si vous avez des difficultés pour cliquer sur le lien \":actionText\", \n" .
 'vous pouvez copier et coller l\'url ci dessous dans votre navigateur:',
 [

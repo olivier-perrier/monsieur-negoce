@@ -38,10 +38,6 @@
 
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
 
-                    @if(session('notification_state'))
-                    <p class="help is-success">{{ session('notification_state') }}</p>
-                    @endif
-
                 </form>
 
             </div>

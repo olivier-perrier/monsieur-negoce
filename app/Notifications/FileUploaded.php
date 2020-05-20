@@ -46,12 +46,10 @@ class FileUploaded extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Monsieur Négoce - un devis a été ajouté')
-            ->greeting('Bonjour')
+            ->subject('Monsieur Négoce - Un devis a été ajouté')
+            ->greeting('Bonjour,')
             ->line('Un devis a été ajouté sur votre projet (' . $this->filename . ')')
-            ->action('Voir le projet', config('app.url') . '/projects/' . $this->project_id)
-            ->salutation('Merci de votre confiance.');
-
+            ->action('Voir le projet', config('app.url') . '/projects/' . $this->project_id);
     }
 
     /**

@@ -87,4 +87,4 @@ Route::get('/faq-nego', function () {
 })->name('faq-nego');
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
