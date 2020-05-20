@@ -46,6 +46,6 @@ class Cashing extends Model
         return $id;
     }
 
-    public static string $STATE_EN_COURS = "En cours de traitement";
-    public static string $STATE_REVERSE = "Montant reversé";
+    public static $STATE_EN_COURS = "En cours de traitement";
+    public static $STATE_REVERSE = "Montant reversé";
 }
