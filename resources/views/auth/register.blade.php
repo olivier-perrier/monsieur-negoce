@@ -112,7 +112,7 @@
 
                         {{-- Négociateur --}}
                         <div class="form-group row">
-                            <label class="label col-md-4 text-md-right">Vous êtes négociateur</label>
+                            <label class="label text-md-center">Vous représentez une entreprise, société, indépendant, auto-entrepreneur, etc... veuillez compléter le SIREN</label>
                         </div>
 
                         <div class="form-group row">

@@ -5,9 +5,9 @@
 
     <h1 class="">Moniseur négoce en détail</h1>
 
-    <div class="box">
+    <!-- <div class="box">
         <p></p>
-    </div>
+    </div> -->
     
 </div>
 

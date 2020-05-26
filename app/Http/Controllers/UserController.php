@@ -59,6 +59,7 @@ class UserController extends Controller
             'lastname' => 'required',
             'email' => 'required|email',
             'phone' => '',
+            'siren' => '',
             'address[street]' => '',
             'address[postcode]' => '',
             'address[city]' => '',

@@ -1,6 +1,6 @@
 @component('layouts.site')
 
-<div class="container my-3">
+<div class="container my-5">
 
     <h3>Mes encaissements</h3>
 

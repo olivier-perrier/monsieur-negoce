@@ -3,8 +3,6 @@
 
 <div class="container my-5">
 
-    {{-- <h1 class="">FAQ</h1> --}}
-
     <ul>
         <li class="my-2">
             <div class="box">

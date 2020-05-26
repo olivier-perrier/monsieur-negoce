@@ -1,6 +1,6 @@
 @component('layouts.site')
 
-<div class="container my-3">
+<div class="container my-5">
 
     <div class="col-md-10 mx-auto">
 
@@ -43,6 +43,11 @@
                         <x-fields.input-bulma label="Téléphone" name="phone" :value="$user->phone" icon="fas fa-phone" />
                     </div>
                 </div>
+
+                @can('negotiatorOrAdmin')
+                <x-fields.input-bulma label="SIREN" name="siren" :value="$user->siren" icon="fas fa-money-check" />
+                @endcan
+
 
                 {{-- Pour les encaissements --}}
                 @can('negotiatorOrAdmin')

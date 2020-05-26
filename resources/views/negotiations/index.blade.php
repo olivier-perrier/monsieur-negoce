@@ -6,6 +6,7 @@
     <h3 class="">Mes négociations</h3>
 
     <div class="box">
+        @if($negotiations->count())
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
@@ -27,7 +28,9 @@
                         <td>{{$negotiation->client->firstname}} {{$negotiation->client->lastname}}</td>
                         <td>{{$negotiation->category->value | replace:" - "}}</td>
                         <td>{{$negotiation->amount_negotiated ? $negotiation->amount_negotiated . ' €' : '-'}}</td>
-                        <td><x-projects.badge-state :state="$negotiation->state" /></td>
+                        <td>
+                            <x-projects.badge-state :state="$negotiation->state" />
+                        </td>
                         <td><a href="{{ route('projects.show', $negotiation->id) }}" class="btn btn-link"><i class="fas fa-chevron-right"></i></a></td>
                     </tr>
                     @endforeach
@@ -35,6 +38,10 @@
             </table>
 
         </div>
+
+        @else
+        Vos négociations apparaitront ici.
+        @endif
     </div>
 </div>
 

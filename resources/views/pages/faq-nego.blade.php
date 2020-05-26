@@ -3,40 +3,20 @@
 
 <div class="container my-5">
 
-    <h1 class="">FAQ</h1>
-
     <ul>
-        <li class="my-2">
-            <div class="box">
-                <h3 class="text-info">Ce service est il complétement gratuit ?</h3>
-                <p>Oui blababal </p>
-            </div>
-        </li>
 
         <li class="my-2">
             <div class="box">
-                <h3 class="text-info">Comment ça marche ?</h3>
-                <p>C'est easy </p>
-            </div>
-        </li>
-
-        <li class="my-2">
-
-            <div class="box">
-                <h3 class="text-info">Puis je être espagnol ?</h3>
-                <p>Claro que si </p>
-            </div>
-        </li>
-
-        <li class="my-2">
-            <div class="box">
-                <h3 class="text-info">As tu des enfants ?</h3>
-                <p>: ) </p>
+                <h3 class="text-info">Décrivez-moi votre concept ?</h3>
+                <p>Monsieur Négoce est une plateforme destinée aux particuliers &amp; professionnels
+                    désireux de faire des économies dans leurs achats. Notre objectif est
+                    de <b>négocier pour vous</b> vos services &amp; achats du quotidien (Travaux, immobilier,
+                    ameublements, mariage, événements, assurance, mutuelle…etc).</p>
             </div>
         </li>
 
     </ul>
-    
+
 </div>
 
 
