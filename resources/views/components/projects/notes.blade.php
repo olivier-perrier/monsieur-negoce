@@ -24,8 +24,7 @@
             </tbody>
         </table>
         @else
-        <small class="form-text text-muted m-5">Ajoutez une note de l'avancement de la négociation du
-            client.</small>
+        <small class="form-text text-muted m-5">Ajoutez une note de l'avancement de la négociation au client.</small>
         @endif
 
         <!-- Ajoute d'une note pour les négociateurs -->

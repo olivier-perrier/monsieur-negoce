@@ -31,7 +31,7 @@
         </div>
 
         <div class="text-center mt-4">
-            Développement <a href="http://olivierperrier.com">Olivier Perrier</a>
+            Tous droits réservés © Monsieur Negoce 2020. <a href="http://olivierperrier.com">Olivier Perrier</a>
         </div>
     </div>
 </footer>
