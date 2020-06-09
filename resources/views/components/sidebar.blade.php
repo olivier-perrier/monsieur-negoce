@@ -24,7 +24,7 @@
     }
 
     .menu-list a:hover {
-        background-color: #f5f5f5;
+        background-color: #9e9e9e61;
         color: #363636;
     }
 </style>

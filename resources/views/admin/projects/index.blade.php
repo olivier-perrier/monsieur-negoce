@@ -1,6 +1,6 @@
 @component('layouts.site')
 
-<div>
+<div class="container">
 
     <h3 class="">Projets</h3>
 

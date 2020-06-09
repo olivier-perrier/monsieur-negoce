@@ -1,4 +1,4 @@
-<footer class="footer pb-4 mt-5">
+<footer class="footer bg-info text-white pb-4 mt-5">
     <div class="container py-3 border-top">
         <div class="row">
             <div class="col-md-3 mb-3">
@@ -35,3 +35,10 @@
         </div>
     </div>
 </footer>
+
+<style scoped>
+    a, strong {
+        color: white
+    }
+    
+</style>
