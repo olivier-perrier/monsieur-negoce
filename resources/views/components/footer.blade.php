@@ -37,7 +37,7 @@
 </footer>
 
 <style scoped>
-    a, strong {
+    footer a, strong {
         color: white
     }
     

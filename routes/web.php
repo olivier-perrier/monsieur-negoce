@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 // Projects
 Route::get('/projects', 'ProjectController@index')->name('projects.index');

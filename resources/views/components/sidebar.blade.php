@@ -31,7 +31,7 @@
 
 <aside class="menu">
     <ul class="menu-list">
-        <li><a href="/" class="{{Request::is('/') ? 'is-active' :'' }}">Accueil</a></li>
+        <li><a href="{{ route('home') }}">Accueil</a></li>
     </ul>
     @auth
 
