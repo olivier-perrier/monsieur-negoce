@@ -6,5 +6,6 @@
 
 @yield('content')
 
+<x-footer />
 
 @endsection
