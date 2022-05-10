@@ -76,7 +76,6 @@ class UserController extends Controller
             $user->address->update($request->get('address'));
         } else {
             if ($request->get('address')) {
-                // dd($request->get('address'));
                 $address = new Address($request->get('address'));
                 $address->save();
 

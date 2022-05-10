@@ -34,26 +34,13 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Project $project)
-    {
-        //
-    }
-
-    public function edit(Project $project)
-    {
-        //
-    }
-
+   /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\User  $user
+     * @param  \App\Project  $project
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, Project $project)
     {
         $this->authorize('admin');

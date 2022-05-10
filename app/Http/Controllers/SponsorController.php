@@ -15,7 +15,12 @@ class SponsorController extends Controller
     {
         $this->middleware('auth');
     }
-
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(User $user)
     {
         $this->authorize('ownerOrAdmin', $user->id);

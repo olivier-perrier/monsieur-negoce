@@ -66,10 +66,8 @@
 
     @endauth
 
-    <p class="menu-label">
+    <!--<p class="menu-label">
         Aide
-    </p>
-    <ul class="menu-list">
-        <li><a href="{{ route('about.index') }}">A propos</a></li>
-    </ul>
+    </p>-->
+  
 </aside>

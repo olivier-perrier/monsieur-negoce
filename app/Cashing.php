@@ -41,7 +41,7 @@ class Cashing extends Model
         $id = Meta::where([
             "key" => "STATE_CASHING",
             "value" => $stateName
-        ])->first()->id;
+        ])->first()?->id;
 
         return $id;
     }

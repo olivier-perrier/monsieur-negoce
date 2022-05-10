@@ -1,4 +1,4 @@
-@component('layouts.site')
+@component('layouts.app')
 
 
 <div class="container my-3">
@@ -28,7 +28,7 @@
                         <p class="help is-danger">{{ $message }}</p>
                         @enderror
                     </div>
-
+ 
                     <!-- Description -->
                     <div class="form-group">
                         <label for="excerpt">Description</label>

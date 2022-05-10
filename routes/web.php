@@ -69,7 +69,6 @@ Route::post('/file/upload', 'FileController@upload')->name('file.upload');
 Route::get('/file/download/{file}', 'FileController@download')->name('file.download');
 
 // Sponsor
-// Route::get('/sponsors', 'SponsorController@index')->name('sponsors.index');  //Alias pour l'utilisateur courant
 Route::get('/users/{user}/sponsors', 'SponsorController@index')->name('users.sponsors.index');
 Route::post('/sponsors/invite', 'SponsorController@invite')->name('sponsors.invite');
 

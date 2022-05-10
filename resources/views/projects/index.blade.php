@@ -1,4 +1,4 @@
-@component('layouts.site')
+@component('layouts.app')
 
 
 <div class="my-5">

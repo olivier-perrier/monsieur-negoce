@@ -1,4 +1,4 @@
-@component('layouts.site')
+@component('layouts.app')
 
 
 <div class="container my-5">
@@ -16,7 +16,7 @@
 
         <li class="my-2">
             <div class="box">
-                <h3 class="text-info">Comment ca fonctionne ?</h3>
+                <h3 class="text-info">Comment ca fonctionne ?</h3>
                 <p>Vous êtes prêts à vous lancer dans : <br>
                     - De nouveaux travaux… <br>
                     - Acquérir un ou plusieurs biens immobiliers <br>
@@ -87,33 +87,29 @@
             </div>
         </li>
 
-        {{-- <li class="my-2">
+        <li class="my-2">
             <div class="box">
                 <h3 class="text-info">Quels sont vos domaines d’intervention ?</h3>
-                <p></p>
+                <p>Nous intervenons dans de nombreux domaines : <br />
+				Travaux, Achat / Vente Immobilier, Objet de valeur, Véhicule, Services aux Entreprises, Événementiels, Publicité, Agents professionnels, & autres.</p>
             </div>
         </li>
 
         <li class="my-2">
             <div class="box">
                 <h3 class="text-info">Je souhaite annuler la prestation, est-ce possible ?</h3>
-                <p></p>
+                <p>Vous pouvez demander l’annulation de la formation tant que le processus de négociation n’est pas finalisé. <br />
+				Une fois la négociation aboutie (avec remise obtenue) il ne sera plus possible d’annuler.</p>
             </div>
         </li>
 
         <li class="my-2">
             <div class="box">
                 <h3 class="text-info">Combien de temps mettez-vous pour traiter un dossier ?</h3>
-                <p></p>
+                <p>Sous 24 à 48h un négociateur prendra connaissance de votre dossier, puis le traitera dans la foulée.<br />
+				La négociation pourra alors démarrer avec l’entreprise ou l’organisme choisi précédemment par vos soins.</p>
             </div>
         </li>
-
-        <li class="my-2">
-            <div class="box">
-                <h3 class="text-info">Je ne suis pas satisfait de la remise</h3>
-                <p></p>
-            </div>
-        </li> --}}
 
     </ul>
 

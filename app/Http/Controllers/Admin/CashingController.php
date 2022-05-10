@@ -17,6 +17,12 @@ class CashingController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request, Project $project)
     {
 
@@ -35,6 +41,13 @@ class CashingController extends Controller
         return back();
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\User  $user
+     * @param  \App\Project  $project
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, Cashing $cashing)
     {
         $this->authorize('admin');
@@ -44,7 +57,7 @@ class CashingController extends Controller
             'amount' => request('amount'),
             'taxe' => request('taxe'),
         ]);
-     
+
         $cashing->save();
 
         return back();
@@ -60,13 +73,12 @@ class CashingController extends Controller
             if ($project->state->isSucced()) {
                 Mail::to($project->client)->send(new ProjectSucced($project->client, $project));
                 $request->session()->flash('mail_sent', "Un mail a été envoyé au négociateur.");
-            }else{
+            } else {
                 $request->session()->flash('mail_sent', "La négociation doit être réussie pour envoyer un mail au négociteur.");
             }
-        }else{
+        } else {
             $request->session()->flash('mail_sent', "Impossible d'envoyer un mail au négociateur.");
         }
-
 
         return back();
     }

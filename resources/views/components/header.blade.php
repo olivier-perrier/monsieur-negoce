@@ -1,7 +1,7 @@
 <nav class="shadow-sm navbar navbar-expand-lg navbar-light bg-light">
 
-    <a class="navbar-brand" href="/">
-        <img src="{{ asset('logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+    <a class="navbar-brand" href="{{ route('home') }}">
+        <img src="{{ asset('logo.png') }}" width="60" height="60" class="d-inline-block align-top" alt="">
         @if(!Request::is('/')) Monsieur Négoce @endif
     </a>
 
@@ -34,7 +34,7 @@
             @auth
 
             <li class="nav-item">
-                <a class="nav-link">
+                <a class="nav-link" href="{{ route('users.edit', Auth::user()) }}">
                     {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}
                 </a>
             </li>

@@ -13,7 +13,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="role" class="col-md-4 label text-md-right">Inscription en tant
+                            <label for="role" class="col-md-4 label text-md-right">Je m'inscris en tant
                                 que</label>
                             <div class="col-md-6">
                                 <label class="radio">
@@ -102,7 +102,7 @@
 
                         <div class="form-group row">
                             <label for="sponsor" class="col-md-4 col-form-label text-md-right">Vous avez été invité,
-                                indiquez son adresse mail</label>
+                                indiquez l'adresse mail de votre parrain</label>
 
                             <div class="col-md-6">
                                 <input id="sponsor" type="email" class="form-control" name="sponsor"
@@ -112,7 +112,7 @@
 
                         {{-- Négociateur --}}
                         <div class="form-group row">
-                            <label class="label text-md-center">Vous représentez une entreprise, société, indépendant, auto-entrepreneur, etc... veuillez compléter le SIREN</label>
+                            <label class="label text-md-center">Vous représentez une entreprise, société, auto-entrepreneur, ou autre.Veuillez compléter le n° SIREN</label>
                         </div>
 
                         <div class="form-group row">
@@ -149,9 +149,9 @@
 
                             <div class="mx-auto">
                                 <input type="checkbox" class="form-check-input" required>
-                                <label class=" form-check-label" for="exampleCheck1">J'accepte les <a
+                                <label class=" form-check-label" for="exampleCheck1">En cliquant sur le bouton s'inscrire, <br />j'accepte les <a
                                         href="#">conditions
-                                        d'utilisations.</a></label>
+                                        d'utilisations</a> de Monsieur Négoce</label>
                             </div>
                         </div>
 

@@ -15,11 +15,11 @@
     <div class="column">
         @if ($project->negotiator)
         <div class="alert alert-primary" role="alert">
-            <p>Négotiateur associé {{ $project->negotiator->fullname() }}</p>
+            <p>Négociateur associé {{ $project->negotiator->fullname() }}</p>
         </div>
         @else
         <div class="alert alert-primary" role="alert">
-            <p>En attente de négotiateur</p>
+            <p>En attente de négociateur</p>
         </div>
         @endif
     </div>
@@ -28,6 +28,6 @@
 
 @if($project->state->step === 3 & $project->amount_negotiated !== null)
 <div class="alert alert-info" role="alert">
-    <p>Félicitation la négociation a réussi - Montant négocié {{ $project->amount_negotiated }}€</p>
+    <p>Félicitations la négociation a réussi - Montant négocié {{ $project->amount_negotiated }}€</p>
 </div>
 @endif

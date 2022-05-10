@@ -30,22 +30,12 @@ class FileController extends Controller
     {
 
         $validatedData = $request->validate([
-            'file' => 'required|mimes:jpeg,bmp,png,pdf',
+            'file' => 'required|mimes:jpeg,bmp,png,pdf|file|max:2048',
         ]);
 
         $project_id = $request->query('project_id');
 
-        // Project::find($project_id)->contains();
-        // dd(Auth::user()->projects.contains($project_id, 'client_id'));
-
-        // TODO Sécurité : L'utilisateur doit etre négociateur et sur un de ses projets
-        // Autoriser uniquement certain type de fichier
-
-        // TODO vérifier s'il y a vraiment un fichier
-
-
         $path = Storage::putFile('devis', $request->file('file'));
-        // $path = $request->file('file')->store('devis');
 
         $fileName = $request->file('file')->getClientOriginalName();
 
