@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Cashing;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +15,6 @@ class MetaSeed extends Seeder
      */
     public function run()
     {
-
         // Catégories
         DB::table('metas')->insert(['key' => 'CATEGORY', 'value' => 'Travaux de la maison']);
         DB::table('metas')->insert(['key' => 'CATEGORY', 'value' => ' - Rénovation complète']);

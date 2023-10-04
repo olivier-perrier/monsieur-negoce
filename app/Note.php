@@ -2,12 +2,14 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
-    protected $fillable = ['type_id', 'content', 'project_id'];
+    use HasFactory;
 
+    protected $fillable = ['type_id', 'content', 'project_id'];
 
     public function project()
     {

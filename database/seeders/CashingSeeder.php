@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use App\Cashing;
 use Illuminate\Database\Seeder;
 
 class CashingSeeder extends Seeder
@@ -11,6 +14,6 @@ class CashingSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Cashing::class, 20)->create();
+        Cashing::factory(20)->create();
     }
 }

@@ -1,18 +1,24 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use App\Cashing;
-use App\Model;
-use Faker\Generator as Faker;
-
-$factory->define(Cashing::class, function (Faker $faker) {
-    return [
-        'amount' => $faker->numberBetween(0, 5000),
-        'taxe' => $faker->numberBetween(0, 30),
-        'state_id' => $faker->numberBetween(45, 46),
-        'project_id' => 1,
-        'user_id' => 2,
-        
-    ];
-});
+use Illuminate\Database\Eloquent\Factories\Factory;
+ 
+class CashingFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'amount' => $this->faker->numberBetween(0, 5000),
+            'taxe' => $this->faker->numberBetween(0, 30),
+            'state_id' => $this->faker->numberBetween(45, 46),
+            'project_id' => 1,
+            'user_id' => 2,
+        ];
+    }
+}
