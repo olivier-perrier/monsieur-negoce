@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use App\Note;
 use Illuminate\Database\Seeder;
 
 class NoteSeeder extends Seeder
@@ -11,6 +14,6 @@ class NoteSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Note::class, 20)->create();
+        Note::factory(20)->create();
     }
 }

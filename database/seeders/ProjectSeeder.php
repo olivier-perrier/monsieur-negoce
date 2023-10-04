@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use App\Project;
 use Illuminate\Database\Seeder;
 
 class ProjectSeeder extends Seeder
@@ -11,9 +14,8 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Project::class, 5)->create(['client_id' => 1, 'negotiator_id' => 2]);
+        Project::factory(5)->create(['client_id' => 1, 'negotiator_id' => 2]);
 
-        factory(App\Project::class, 5)->create();
-
+        Project::factory(5)->create();
     }
 }
